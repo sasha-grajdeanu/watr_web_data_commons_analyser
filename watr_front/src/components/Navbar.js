@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "../styles/Navbar.css";
 import logo from "../assets/sadsadfatcat.jpg";
 
@@ -11,10 +12,10 @@ const Navbar = () => {
             </a>
             
             <ul className="nav-links">
-                <li><a href='/visualize'>Visualize</a></li>
-                <li><a href="/classification">Classification</a></li>
-                <li><a href='/compare'>Compare</a></li>
-                <li><a href='/align'>Align</a></li>
+                <li><Link to='/visualize'>Visualize</Link></li>
+                <li><Link to="/classification">Classification</Link></li>
+                <li><Link to='/compare'>Compare</Link></li>
+                <li><Link to='/align'>Align</Link></li>
             </ul>
         </nav>
     );
