@@ -10,35 +10,50 @@ const Classification = () => {
     const [chartData, setChartData] = useState(null); 
 
     // Example class, property
-    const classOptions = ["Book", "Place", "Movie"];
-    const propertyOptions = ["schema:genre", "schema:author", "schema:datePublished"];
+    const classOptions = ["AdministrativeArea", "Place", "Movie"];
+    const propertyOptions = ["containsPlace", "schema:author", "schema:datePublished"];
 
     // Simulate fetching results (replace with actual backend calls)
-    const handleClassify = () => {
-        // Mock data for demonstration
-        const mockResults = [
-            { propertyValue: "Fiction", count: 45 },
-            { propertyValue: "Non-Fiction", count: 30 },
-            { propertyValue: "Science Fiction", count: 25 },
-        ];
-
-        setResults(mockResults);
-
-        // Create data for Bar chart
-        const labels = mockResults.map((item) => item.propertyValue);
-        const data = mockResults.map((item) => item.count);
-
-        setChartData({
-            labels,
-            datasets: [
-                {
-                    label: "Count of Entities",
-                    data,
-                    backgroundColor: ["#4caf50", "#2196f3", "#ff5722"],
-                    borderWidth: 1,
+    const handleClassify = async () => {
+        try{
+            console.log(selectedClass);
+            console.log(selectedProperty);
+            const response = await fetch("http://localhost:5000/api/classify",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json", 
                 },
-            ],
-        });
+                body: JSON.stringify({
+                    class: selectedClass,
+                    property: selectedProperty,
+                }),
+            });
+
+            if(!response.ok){
+                throw new Error("API call failed");
+            }
+
+            const data = await response.json();
+            setResults(data);
+
+            const labels = data.map((item) => item.propertyValue);
+            const counts = data.map((item) => item.count);
+
+
+            setChartData({
+                labels,
+                datasets: [
+                    {
+                        label: "Count of Entities",
+                        data: counts,
+                        backgroundColor: ["#4caf50", "#2196f3", "#ff5722"],
+                        borderWidth: 1,
+                    },
+                ],
+            });
+        }catch(error){
+            console.error("Error fetching classification data: ", error);
+        }
     };
 
     return (
@@ -79,29 +94,34 @@ const Classification = () => {
 
             <div className="results-area">
                 <h2>Results Area</h2>
+
                 {chartData && (
                     <div className="chart-container">
                         <Bar data={chartData} />
                     </div>
                 )}
 
-                {results.length > 0 && (
+                {results.length > 0 ? (
                     <table className="results-table">
                         <thead>
                             <tr>
-                                <th>Property Value</th>
-                                <th>Count</th>
+                                <th>Subject</th>
+                                <th>Predicate</th>
+                                <th>Object</th>
                             </tr>
                         </thead>
                         <tbody>
                             {results.map((item, index) => (
                                 <tr key={index}>
-                                    <td>{item.propertyValue}</td>
-                                    <td>{item.count}</td>
+                                    <td>{item.subject}</td>
+                                    <td>{item.predicate}</td>
+                                    <td>{item.object}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                ) : (
+                    <p>No results to display.</p>
                 )}
             </div>
         </div>
