@@ -4,7 +4,7 @@ from ..services.classification_service import classify as service_classify
 
 classification = Blueprint('classification', __name__)
 
-@classification.route('/classify', methods=['GET'])
+@classification.route('/classify', methods=['POST'])
 def classify():
     data = request.json
     rdf_class = data.get('class')
