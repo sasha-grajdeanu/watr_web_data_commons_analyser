@@ -1,35 +1,86 @@
-import React, { useEffect, useState } from "react";
-import "../styles/Classification.css"; 
-import { Bar } from "react-chartjs-2"; 
+import React, { useEffect, useState, useRef } from "react";
+import "../styles/Classification.css";
 import "chart.js/auto";
+import { Network, DataSet } from "vis-network/standalone/umd/vis-network.min.js";
 
 const Classification = () => {
     const [selectedClass, setSelectedClass] = useState("");
     const [selectedProperty, setSelectedProperty] = useState("");
-    const [results, setResults] = useState([]); 
-    const [chartData, setChartData] = useState(null); 
+    const [results, setResults] = useState([]);
     const [propertyOptions, setPropertyOptions] = useState([]);
+    const [graphMLData, setGraphMLData] = useState("");
+    const graphContainer = useRef(null);
 
-    // Example class, property
     const classOptions = [
-        "AdministrativeArea", "Airport", "Answer", "Book", "City", "ClaimReview", "CollegeOrUniversity",
-        "Continent", "Country", "CreativeWork", "Dataset", "EducationalOrganization", "Event", "FAQPage", "GeoCoordinates", 
-        "GovernmentOrganization", "Hospital", "Hotel", "JobPosting", "LakeBodyOfWater", "LandmarksOrHistoricalBuildings", 
-        "Language", "Library", "LocalBusiness", "Mountain", "Movie", "Museum", "MusicAlbum", "MusicRecording", "Organization",
-        "Painting", "Park", "Person", "Place", "Product", "QAPage", "Question", "RadioStation", "Recipe", "Restaurant", "RiverBodyOfWater",
-        "School", "SearchAction", "ShoppingCenter", "SkiResort", "SportsEvent", "SportsTeam", "StadiumOrArena", "TVEpisode", "TelevisionStation"
+        "AdministrativeArea", "Airport", "Answer", "Book", "City", "ClaimReview",
+        "CollegeOrUniversity", "Continent", "Country", "CreativeWork", "Dataset",
+        "EducationalOrganization", "Event", "FAQPage", "GeoCoordinates", "GovernmentOrganization",
+        "Hospital", "Hotel", "JobPosting", "LakeBodyOfWater", "LandmarksOrHistoricalBuildings",
+        "Language", "Library", "LocalBusiness", "Mountain", "Movie", "Museum",
+        "MusicAlbum", "MusicRecording", "Organization", "Painting", "Park", "Person",
+        "Place", "Product", "QAPage", "Question", "RadioStation", "Recipe",
+        "Restaurant", "RiverBodyOfWater", "School", "SearchAction", "ShoppingCenter",
+        "SkiResort", "SportsEvent", "SportsTeam", "StadiumOrArena", "TVEpisode", "TelevisionStation"
     ];
-    
-    // const propertyOptions = ["containsPlace", "schema:author", "schema:datePublished"];
 
     useEffect(() => {
-        if(selectedClass){
-            fecthProperties(selectedClass);
+        if (selectedClass) {
+            fetchProperties(selectedClass);
         }
     }, [selectedClass]);
 
 
-    const fecthProperties = async (rdfClass) => {
+    useEffect(() => {
+        if (graphMLData) {
+            try {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(graphMLData, "application/xml");
+
+                const nodes = [];
+                const edges = [];
+
+                const graphmlNodes = xmlDoc.getElementsByTagName("node");
+                for (let i = 0; i < graphmlNodes.length; i++) {
+                    const node = graphmlNodes[i];
+                    const id = node.getAttribute("id");
+                    const label = node.getElementsByTagName("data")[0]?.textContent || id;
+                    nodes.push({ id, label });
+                }
+
+                const graphmlEdges = xmlDoc.getElementsByTagName("edge");
+                for (let i = 0; i < graphmlEdges.length; i++) {
+                    const edge = graphmlEdges[i];
+                    const source = edge.getAttribute("source");
+                    const target = edge.getAttribute("target");
+
+                    const dataElements = edge.getElementsByTagName("data");
+                        let label = "";
+                        if (dataElements.length > 0) {
+                            label = dataElements[0].textContent; 
+                        }
+
+                    edges.push({ from: source, to: target, label});
+                }
+
+                const data = {
+                    nodes: new DataSet(nodes),
+                    edges: new DataSet(edges),
+                };
+
+                const options = {
+                    physics: { enabled: true },
+                    nodes: { shape: "dot", size: 10 },
+                };
+
+                new Network(graphContainer.current, data, options);
+            } catch (error) {
+                console.error("Error parsing GraphML data: ", error);
+            }
+        }
+    }, [graphMLData]);
+
+
+    const fetchProperties = async (rdfClass) => {
         try {
             const response = await fetch(`http://localhost:5000/api/properties?class=${rdfClass}`);
             if (!response.ok) {
@@ -40,18 +91,20 @@ const Classification = () => {
         } catch (error) {
             console.error("Error fetching properties:", error);
         }
-    }
+    };
 
 
     const handleClassify = async () => {
+        if (!selectedClass || !selectedProperty) {
+            alert("Please select both a class and a property.");
+            return;
+        }
+
         try {
-            console.log(selectedClass);
-            console.log(selectedProperty);
             const response = await fetch("http://localhost:5000/api/classify", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json", 
-                    "Accept": "*/*"
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     class: selectedClass,
@@ -66,25 +119,29 @@ const Classification = () => {
             const data = await response.json();
             setResults(data);
 
-            // Prepare data for the chart
-            const labels = data.map((item) => item.initial_subject);  // Assuming initial_subject can serve as the label
-            const counts = data.map((item) => item.blankNode ? 1 : 0);  // Example for counting blankNodes
-
-            setChartData({
-                labels,
-                datasets: [
-                    {
-                        label: "Count of Entities",
-                        data: counts,
-                        backgroundColor: ["#4caf50", "#2196f3", "#ff5722"],
-                        borderWidth: 1,
-                    },
-                ],
+            const graphmlResponse = await fetch("http://localhost:5000/api/classify/graph", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    class: selectedClass,
+                    property: selectedProperty,
+                }),
             });
+
+            if (!graphmlResponse.ok) {
+                throw new Error("Failed to fetch GraphML data");
+            }
+
+            const graphMLData = await graphmlResponse.text();
+            setGraphMLData(graphMLData);
+
         } catch (error) {
-            console.error("Error fetching classification data: ", error);
+            console.error("Error fetching classification data:", error);
         }
     };
+
 
     return (
         <div className="classification-page">
@@ -124,13 +181,6 @@ const Classification = () => {
 
             <div className="results-area">
                 <h2>Results Area</h2>
-
-                {/* {chartData && (
-                    <div className="chart-container">
-                        <Bar data={chartData} />
-                    </div>
-                )} */}
-
                 {results.length > 0 ? (
                     <table className="results-table">
                         <thead>
@@ -166,8 +216,11 @@ const Classification = () => {
                     <p>No results to display.</p>
                 )}
             </div>
+
+            <div ref={graphContainer} style={{ height: "500px", border: "1px solid black" }}></div>
         </div>
     );
 };
+
 
 export default Classification;

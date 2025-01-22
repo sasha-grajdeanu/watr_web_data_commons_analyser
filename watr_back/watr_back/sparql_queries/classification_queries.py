@@ -27,7 +27,7 @@ WHERE {{
         ?initial_subject ?initial_predicate ?blankNode .  
         FILTER (?initial_predicate = {property})
         
-        FILTER (!isBlank(?initial_subject))
+        # FILTER (!isBlank(?initial_subject))
 
         OPTIONAL {{
             ?blankNode ?level1_predicate ?level1_object .

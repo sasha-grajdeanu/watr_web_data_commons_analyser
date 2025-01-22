@@ -5,6 +5,7 @@ from ..sparql_queries.classification_queries import CLASSIFY_NEW
 
 sparql = SPARQLWrapper("http://localhost:3030/watr-dataset/sparql")
 
+
 def classify(rdf_class, rdf_property):
     sparql_query = CLASSIFY_NEW.format(rdf_class=rdf_class, property=rdf_property)
     sparql.setQuery(sparql_query)
@@ -26,21 +27,17 @@ def classify(rdf_class, rdf_property):
                 row["level1_predicate"] = result["level1_predicate"]["value"]
                 row["level1_object"] = result["level1_object"]["value"]
 
-
             # Check for level 2 data
             if "level2_predicate" in result and "level2_object" in result:
                 row["level2_predicate"] = result["level2_predicate"]["value"]
                 row["level2_object"] = result["level2_object"]["value"]
-
 
             # Check for level 3 data
             if "level3_predicate" in result and "level3_object" in result:
                 row["level3_predicate"] = result["level3_predicate"]["value"]
                 row["level3_object"] = result["level3_object"]["value"]
 
-
             output.append(row)
-
         return output
     except Exception as e:
-        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
+        return jsonify({"error": f"An error occurred: {e}"}), 500
