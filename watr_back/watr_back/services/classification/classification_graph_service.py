@@ -18,25 +18,31 @@ def generate_graph_data(classify_data):
     except Exception as e:
         return jsonify({"error": f"An error occurred: {e}"}), 500
 
+def clean_property_name(prop):
+    if "#" in prop:
+        return "rdf:" + prop.split('/')[-1].split('#')[-1]
+    else:
+        return "schema:" + prop.split('/')[-1]
+
 
 def create_graph_edges(results):
     edges = set()
 
     for result in results:
         subject = result.get("initial_subject")
-        predicate = result.get("initial_predicate")
+        predicate = clean_property_name(result.get("initial_predicate"))
         obj = result.get("blankNode")
 
         edges.add((subject, predicate, obj))
 
         if result.get("level1_predicate") is not None:
-            edges.add((obj, result["level1_predicate"], result["level1_object"]))
+            edges.add((obj, clean_property_name(result["level1_predicate"]), result["level1_object"]))
 
         if result.get("level2_predicate") is not None:
-            edges.add((result["level1_object"], result["level2_predicate"], result["level2_object"]))
+            edges.add((result["level1_object"], clean_property_name(result["level2_predicate"]), result["level2_object"]))
 
         if result.get("level3_predicate") is not None:
-            edges.add((result["level2_object"], result["level3_predicate"], result["level3_object"]))
+            edges.add((result["level2_object"], clean_property_name(result["level3_predicate"]), result["level3_object"]))
 
     return edges
 
