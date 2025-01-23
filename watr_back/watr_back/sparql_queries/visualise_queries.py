@@ -1,24 +1,18 @@
 VISUALISE_QUERY = """
-SELECT ?entity ?entityProperty ?entityValue 
-       ?property ?value ?bnodeProperty ?bnodeValue
-WHERE {
-  GRAPH ?graph { 
-    # Retrieve entities of type AdministrativeArea
-    ?entity a <http://schema.org/AdministrativeArea>;
-            ?property ?value.                       # Retrieve properties of the entity
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+SELECT ?entity ?property ?value ?bnodeProperty ?bnodeValue
+WHERE {{
+  GRAPH ?graph {{ 
+    ?entity rdf:type schema:{rdf_class};  # Searching for entities of the specified RDF class
+            ?property ?value.            # Entity has some property and value
 
-    # If the entity itself is a blank node, explore its deeper properties
-    OPTIONAL {
-      ?entity ?entityProperty ?entityValue.         # Follow deeper properties of the entity
-      FILTER(isBlank(?entity))                     # Ensure ?entity is a blank node
-    }
-
-    # If the value is a blank node, explore its deeper properties
-    OPTIONAL {
-      ?value ?bnodeProperty ?bnodeValue.            # Follow deeper properties of ?value
-      FILTER(isBlank(?value))                      # Ensure ?value is a blank node
-    }
-  }
-}
-
+    # Check if the value is a blank node (bnode) and explore further
+    OPTIONAL {{
+      ?value ?bnodeProperty ?bnodeValue.  # If value is a bnode, follow its properties
+      FILTER(isBlank(?value))            # Ensure that the value is a blank node
+    }}
+  }}
+}}
 """
+
