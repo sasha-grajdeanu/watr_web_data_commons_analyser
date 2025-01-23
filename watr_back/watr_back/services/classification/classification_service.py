@@ -41,3 +41,48 @@ def classify(rdf_class, rdf_property):
         return output
     except Exception as e:
         return abort(500, f"An error occurred: {e}")
+
+def convert_results_to_html(results):
+    html_output = "<html><body><h1>Classification Results</h1><table>"
+    html_output += ("<tr>"
+                        "<th>Initial Subject</th>"
+                        "<th>Initial Predicate</th>"
+                        "<th>Blank Node</th>"
+                        "<th>Level 1 Predicate</th>"
+                        "<th>Level 1 Object</th>"
+                        "<th>Level 2 Predicate</th>"
+                        "<th>Level 2 Object</th>"
+                        "<th>Level 3 Predicate</th>"
+                        "<th>Level 3 Object</th>"
+                    "</tr>")
+    for row in results:
+        html_output += f"<tr><td>{row.get('initial_subject', '')}</td><td>{row.get('initial_predicate', '')}</td><td>{row.get('blankNode', '')}</td>"
+        html_output += f"<td>{row.get('level1_predicate', '')}</td><td>{row.get('level1_object', '')}</td>"
+        html_output += f"<td>{row.get('level2_predicate', '')}</td><td>{row.get('level2_object', '')}</td>"
+        html_output += f"<td>{row.get('level3_predicate', '')}</td><td>{row.get('level3_object', '')}</td></tr>"
+    html_output += "</table></body></html>"
+    return html_output
+
+
+def convert_results_to_jsonld(results):
+    jsonld_output = {
+        "@context": "http://schema.org",
+        "@type": "ClassificationResults",
+        "results": []
+    }
+
+    for row in results:
+        result_entry = {
+            "initialSubject": row.get("initial_subject", ""),
+            "initialPredicate": row.get("initial_predicate", ""),
+            "blankNode": row.get("blankNode", ""),
+            "level1Predicate": row.get("level1_predicate", ""),
+            "level1Object": row.get("level1_object", ""),
+            "level2Predicate": row.get("level2_predicate", ""),
+            "level2Object": row.get("level2_object", ""),
+            "level3Predicate": row.get("level3_predicate", ""),
+            "level3Object": row.get("level3_object", ""),
+        }
+        jsonld_output["results"].append(result_entry)
+
+    return jsonld_output
