@@ -1,6 +1,6 @@
 from flask import Blueprint, request, abort
 
-from ..services.classification_service import classify as service_classify
+from watr_back.services.classification.classification_service import classify as service_classify
 
 classification = Blueprint('classification', __name__)
 

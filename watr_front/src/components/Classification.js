@@ -23,6 +23,7 @@ const Classification = () => {
         "SkiResort", "SportsEvent", "SportsTeam", "StadiumOrArena", "TVEpisode", "TelevisionStation"
     ];
 
+
     useEffect(() => {
         if (selectedClass) {
             fetchProperties(selectedClass);
@@ -54,12 +55,12 @@ const Classification = () => {
                     const target = edge.getAttribute("target");
 
                     const dataElements = edge.getElementsByTagName("data");
-                        let label = "";
-                        if (dataElements.length > 0) {
-                            label = dataElements[0].textContent; 
-                        }
+                    let label = "";
+                    if (dataElements.length > 0) {
+                        label = dataElements[0].textContent;
+                    }
 
-                    edges.push({ from: source, to: target, label});
+                    edges.push({ from: source, to: target, label });
                 }
 
                 const data = {
@@ -93,7 +94,7 @@ const Classification = () => {
         }
     };
 
-
+    
     const handleClassify = async () => {
         if (!selectedClass || !selectedProperty) {
             alert("Please select both a class and a property.");
@@ -101,7 +102,7 @@ const Classification = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/api/classify", {
+            const response = await fetch("http://localhost:5000/api/classify/stats", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -142,7 +143,7 @@ const Classification = () => {
         }
     };
 
-
+    
     return (
         <div className="classification-page">
             <h1>Classification</h1>
@@ -180,34 +181,22 @@ const Classification = () => {
             </div>
 
             <div className="results-area">
-                <h2>Results Area</h2>
+                <h2>Statistics</h2>
                 {results.length > 0 ? (
                     <table className="results-table">
                         <thead>
                             <tr>
-                                <th>Subject</th>
-                                <th>Predicate</th>
-                                <th>BlankNode</th>
-                                <th>Level 1 Predicate</th>
-                                <th>Level 1 Object</th>
-                                <th>Level 2 Predicate</th>
-                                <th>Level 2 Object</th>
-                                <th>Level 3 Predicate</th>
-                                <th>Level 3 Object</th>
+                                <th>Initial Subject</th>
+                                <th>Initial Predicate</th>
+                                <th>Number of Levels</th>
                             </tr>
                         </thead>
                         <tbody>
                             {results.map((item, index) => (
                                 <tr key={index}>
-                                    <td>{item.initial_subject}</td>
-                                    <td>{item.initial_predicate}</td>
-                                    <td>{item.blankNode}</td>
-                                    <td>{item.level1_predicate || "N/A"}</td>
-                                    <td>{item.level1_object || "N/A"}</td>
-                                    <td>{item.level2_predicate || "N/A"}</td>
-                                    <td>{item.level2_object || "N/A"}</td>
-                                    <td>{item.level3_predicate || "N/A"}</td>
-                                    <td>{item.level3_object || "N/A"}</td>
+                                    <td>{item.initialSubject}</td>
+                                    <td>{item.initialPredicate}</td>
+                                    <td>{item.numberOfLevels}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -217,10 +206,9 @@ const Classification = () => {
                 )}
             </div>
 
-            <div ref={graphContainer} style={{ height: "500px", border: "1px solid black" }}></div>
+            <div ref={graphContainer} className="graph-container"></div>
         </div>
     );
 };
-
 
 export default Classification;

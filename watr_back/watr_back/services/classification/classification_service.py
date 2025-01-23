@@ -1,13 +1,13 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
-from flask import jsonify
+from flask import abort
 
-from ..sparql_queries.classification_queries import CLASSIFY_NEW
+from watr_back.sparql_queries.classification_queries import CLASSIFY_QUERY
 
 sparql = SPARQLWrapper("http://localhost:3030/watr-dataset/sparql")
 
 
 def classify(rdf_class, rdf_property):
-    sparql_query = CLASSIFY_NEW.format(rdf_class=rdf_class, property=rdf_property)
+    sparql_query = CLASSIFY_QUERY.format(rdf_class=rdf_class, property=rdf_property)
     sparql.setQuery(sparql_query)
     sparql.setReturnFormat(JSON)
 
@@ -40,4 +40,4 @@ def classify(rdf_class, rdf_property):
             output.append(row)
         return output
     except Exception as e:
-        return jsonify({"error": f"An error occurred: {e}"}), 500
+        return abort(500, f"An error occurred: {e}")
