@@ -11,6 +11,7 @@ def get_classification_stats(classify_data):
     try:
         graph = create_rdf_graph()
         index = 0
+        unique_subjects = {}
 
         for result in classify_data:
             subject = result.get("initial_subject")
@@ -34,11 +35,17 @@ def get_classification_stats(classify_data):
 
             index += 1
 
+            if subject not in unique_subjects:
+                unique_subjects[subject] = 0
+            unique_subjects[subject] += 1
+
             add_observation_to_graph(graph, subject_uri, predicate, level_no, index)
 
         json_ld = graph.serialize(format="json-ld", indent=4)
         json = simplify_json_ld(json_ld)
-        return json, 200
+
+        stats = {"unique_subjects:" : unique_subjects}
+        return {"data": json, "stats": stats}, 200
 
     except Exception as e:
         return abort(500, f"An error occurred: {e}")

@@ -7,6 +7,7 @@ const Classification = () => {
     const [selectedClass, setSelectedClass] = useState("");
     const [selectedProperty, setSelectedProperty] = useState("");
     const [results, setResults] = useState([]);
+    const [moreStats, setMoreStats] = useState([]);
     const [propertyOptions, setPropertyOptions] = useState([]);
     const [graphMLData, setGraphMLData] = useState("");
     const graphContainer = useRef(null);
@@ -118,7 +119,8 @@ const Classification = () => {
             }
 
             const data = await response.json();
-            setResults(data);
+            setResults(data.data);
+            setMoreStats(data.stats);
 
             const graphmlResponse = await fetch("http://localhost:5000/api/classify/graph", {
                 method: "POST",
@@ -182,6 +184,17 @@ const Classification = () => {
 
             <div className="results-area">
                 <h2>Statistics</h2>
+                {moreStats["unique_subjects:"] && (
+                    <div className="stats-summary">
+                        <p><strong>Unique Subjects Count: </strong>{Object.keys(moreStats["unique_subjects:"]).length}</p>
+                            {Object.entries(moreStats["unique_subjects:"]).map(([subject, count], index) => (
+                                    <p id="stats-summary-p" key={index}>
+                                        {subject}: {count}
+                                    </p>
+                            ))}    
+                    </div>
+                )}
+                
                 {results.length > 0 ? (
                     <table className="results-table">
                         <thead>
