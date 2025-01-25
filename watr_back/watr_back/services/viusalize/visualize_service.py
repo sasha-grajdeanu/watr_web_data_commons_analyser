@@ -8,9 +8,14 @@ from enviromment.enviromment import SPARQL_ENDPOINT
 sparql = SPARQLWrapper(SPARQL_ENDPOINT)
 
 
-def visualise_service(rdf_class):
+def visualise_service(rdf_class, limit, count_limit):
     print(rdf_class)
-    sparql_query = VISUALISE_QUERY.format(rdf_class=rdf_class)
+    print(limit)
+    print(count_limit)
+    if limit:
+        sparql_query = VISUALISE_QUERY.format(rdf_class=rdf_class) + f" LIMIT {count_limit}"
+    else:
+        sparql_query = VISUALISE_QUERY.format(rdf_class=rdf_class)
     sparql.setQuery(sparql_query)
     sparql.setReturnFormat(JSON)
 
