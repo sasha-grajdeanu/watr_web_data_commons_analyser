@@ -13,25 +13,34 @@ def align(target_ontology):
     sparql.setReturnFormat(TURTLE)
 
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".nt")
+    output_file = tempfile.NamedTemporaryFile(delete=False, suffix=".nt")
 
     try:
         results = sparql.query().convert()
         with open(temp_file.name, "wb") as f:
             f.write(results)
-        print("File saved as output.nt")
     except Exception as e:
         print(f"Error: {e}")
 
-    # comanda AML pentru aliniere
-    aml_command = [
-        "java", "-jar", "C:\AML_v3.2\AgreementMakerLight.jar",
-        "-s", temp_file.name, "-t", target_ontology,
-        "-o", "output_alignment.nq",
-        "-a"
-    ]
-    subprocess.run(aml_command)
+    ontology_path = get_path(target_ontology)
 
-    return temp_file.name
+    try:
+        # comanda AML pentru aliniere
+        aml_command = [
+            "java", "-jar", "C:\\AML_v3.2\\AgreementMakerLight.jar",
+            "-s", temp_file.name,
+            "-t", ontology_path,
+            "-o", output_file.name,
+            "-a"
+        ]
+
+        subprocess.run(aml_command, check=True)
+
+    except subprocess.CalledProcessError as e:
+        print(f"Error during AML execution: {e}")
+        return None
+
+    return output_file.name
 
 
 def get_path(target_ontology):
