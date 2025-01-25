@@ -15,7 +15,7 @@ const Navbar = () => {
                 <li><Link to='/visualize'>Visualize</Link></li>
                 <li><Link to="/classification">Classification</Link></li>
                 <li><Link to='/compare'>Compare</Link></li>
-                <li><Link to='/align'>Align</Link></li>
+                <li><Link to='/alignment'>Align</Link></li>
             </ul>
         </nav>
     );

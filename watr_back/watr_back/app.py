@@ -3,6 +3,7 @@ import logging
 from flask import Flask
 from flask_cors import CORS
 
+from watr_back.controllers.alignment.alignment_controller import alignment
 from watr_back.controllers.classification.classification_controller import classification
 from watr_back.controllers.classification.classification_graph_controller import classificationGraph
 from watr_back.controllers.classification.classification_stats_controller import classificationStats
@@ -23,6 +24,7 @@ app.register_blueprint(classification, url_prefix='/api')
 app.register_blueprint(properties, url_prefix='/api')
 app.register_blueprint(classificationGraph, url_prefix='/api')
 app.register_blueprint(classificationStats, url_prefix='/api')
+app.register_blueprint(alignment, url_prefix='/api')
 
 @app.route('/')
 def hello_world():  # put application's code here

@@ -1,0 +1,1996 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment'
+	 xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' 
+	 xmlns:xsd='http://www.w3.org/2001/XMLSchema#' 
+	 alignmentSource='AgreementMakerLight'>
+
+<Alignment>
+	<xml>yes</xml>
+	<level>0</level>
+	<type>??</type>
+	<onto1>C:\Users\ENBYSE~1\AppData\Local\Temp\tmph7x95kfm.nt</onto1>
+	<onto2>C:\Users\enbysenpai\watr_web_data_commons_analyser\watr_back\watr_back\.\ontologies\schemaorg.rdf</onto2>
+	<uri1>C:\Users\ENBYSE~1\AppData\Local\Temp\tmph7x95kfm.nt</uri1>
+	<uri2>C:\Users\enbysenpai\watr_web_data_commons_analyser\watr_back\watr_back\.\ontologies\schemaorg.rdf</uri2>
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Mountain"/>
+			<entity2 rdf:resource="https://schema.org/Mountain"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/JobPosting"/>
+			<entity2 rdf:resource="https://schema.org/JobPosting"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/State"/>
+			<entity2 rdf:resource="https://schema.org/State"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Brand"/>
+			<entity2 rdf:resource="https://schema.org/Brand"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/BuyAction"/>
+			<entity2 rdf:resource="https://schema.org/BuyAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Airport"/>
+			<entity2 rdf:resource="https://schema.org/Airport"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/SkiResort"/>
+			<entity2 rdf:resource="https://schema.org/SkiResort"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ProfessionalService"/>
+			<entity2 rdf:resource="https://schema.org/ProfessionalService"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Continent"/>
+			<entity2 rdf:resource="https://schema.org/Continent"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Suite"/>
+			<entity2 rdf:resource="https://schema.org/Suite"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Answer"/>
+			<entity2 rdf:resource="https://schema.org/Answer"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Thing"/>
+			<entity2 rdf:resource="https://schema.org/Thing"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Country"/>
+			<entity2 rdf:resource="https://schema.org/Country"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/TouristAttraction"/>
+			<entity2 rdf:resource="https://schema.org/TouristAttraction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/LandmarksOrHistoricalBuildings"/>
+			<entity2 rdf:resource="https://schema.org/LandmarksOrHistoricalBuildings"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/GeoShape"/>
+			<entity2 rdf:resource="https://schema.org/GeoShape"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Museum"/>
+			<entity2 rdf:resource="https://schema.org/Museum"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DaySpa"/>
+			<entity2 rdf:resource="https://schema.org/DaySpa"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/QAPage"/>
+			<entity2 rdf:resource="https://schema.org/QAPage"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Distance"/>
+			<entity2 rdf:resource="https://schema.org/Distance"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Airline"/>
+			<entity2 rdf:resource="https://schema.org/Airline"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Sculpture"/>
+			<entity2 rdf:resource="https://schema.org/Sculpture"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DiscussionForumPosting"/>
+			<entity2 rdf:resource="https://schema.org/DiscussionForumPosting"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/StadiumOrArena"/>
+			<entity2 rdf:resource="https://schema.org/StadiumOrArena"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/WPSideBar"/>
+			<entity2 rdf:resource="https://schema.org/WPSideBar"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/FAQPage"/>
+			<entity2 rdf:resource="https://schema.org/FAQPage"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Motel"/>
+			<entity2 rdf:resource="https://schema.org/Motel"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/webApplication"/>
+			<entity2 rdf:resource="https://schema.org/WebApplication"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/TouristDestination"/>
+			<entity2 rdf:resource="https://schema.org/TouristDestination"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/HowTo"/>
+			<entity2 rdf:resource="https://schema.org/HowTo"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Corporation"/>
+			<entity2 rdf:resource="https://schema.org/Corporation"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/BarOrPub"/>
+			<entity2 rdf:resource="https://schema.org/BarOrPub"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/WPHeader"/>
+			<entity2 rdf:resource="https://schema.org/WPHeader"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/BedDetails"/>
+			<entity2 rdf:resource="https://schema.org/BedDetails"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/TVSeries"/>
+			<entity2 rdf:resource="https://schema.org/TVSeries"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Campground"/>
+			<entity2 rdf:resource="https://schema.org/Campground"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Question"/>
+			<entity2 rdf:resource="https://schema.org/Question"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/WPFooter"/>
+			<entity2 rdf:resource="https://schema.org/WPFooter"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/AdministrativeArea"/>
+			<entity2 rdf:resource="https://schema.org/AdministrativeArea"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/TVEpisode"/>
+			<entity2 rdf:resource="https://schema.org/TVEpisode"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/GeoCoordinates"/>
+			<entity2 rdf:resource="https://schema.org/GeoCoordinates"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/CollegeOrUniversity"/>
+			<entity2 rdf:resource="https://schema.org/CollegeOrUniversity"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/TVSeason"/>
+			<entity2 rdf:resource="https://schema.org/TVSeason"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Recipe"/>
+			<entity2 rdf:resource="https://schema.org/Recipe"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Hospital"/>
+			<entity2 rdf:resource="https://schema.org/Hospital"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ProfilePage"/>
+			<entity2 rdf:resource="https://schema.org/ProfilePage"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Painting"/>
+			<entity2 rdf:resource="https://schema.org/Painting"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Accommodation"/>
+			<entity2 rdf:resource="https://schema.org/Accommodation"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.99</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/SiteNavigationElement"/>
+			<entity2 rdf:resource="https://schema.org/SiteNavigationElement"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9899</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MusicComposition"/>
+			<entity2 rdf:resource="https://schema.org/MusicComposition"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9899</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/LiveBlogPosting"/>
+			<entity2 rdf:resource="https://schema.org/LiveBlogPosting"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9899</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/BlogPosting"/>
+			<entity2 rdf:resource="https://schema.org/BlogPosting"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9899</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ShoppingCenter"/>
+			<entity2 rdf:resource="https://schema.org/ShoppingCenter"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9899</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/SportsTeam"/>
+			<entity2 rdf:resource="https://schema.org/SportsTeam"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9899</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MusicPlaylist"/>
+			<entity2 rdf:resource="https://schema.org/MusicPlaylist"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9899</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ItemPage"/>
+			<entity2 rdf:resource="https://schema.org/ItemPage"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9899</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MusicRecording"/>
+			<entity2 rdf:resource="https://schema.org/MusicRecording"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9899</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/WebPageElement"/>
+			<entity2 rdf:resource="https://schema.org/WebPageElement"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9898</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Hotel"/>
+			<entity2 rdf:resource="https://schema.org/Hotel"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9898</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/SportsOrganization"/>
+			<entity2 rdf:resource="https://schema.org/SportsOrganization"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9898</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/FinancialService"/>
+			<entity2 rdf:resource="https://schema.org/FinancialService"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9898</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/BroadcastService"/>
+			<entity2 rdf:resource="https://schema.org/BroadcastService"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9898</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/RadioBroadcastService"/>
+			<entity2 rdf:resource="https://schema.org/RadioBroadcastService"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9898</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/TouristInformationCenter"/>
+			<entity2 rdf:resource="https://schema.org/TouristInformationCenter"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9898</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Comment"/>
+			<entity2 rdf:resource="https://schema.org/Comment"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9897</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/VirtualLocation"/>
+			<entity2 rdf:resource="https://schema.org/VirtualLocation"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9897</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Rating"/>
+			<entity2 rdf:resource="https://schema.org/Rating"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9897</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ContactPage"/>
+			<entity2 rdf:resource="https://schema.org/ContactPage"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9896</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/BroadcastFrequencySpecification"/>
+			<entity2 rdf:resource="https://schema.org/BroadcastFrequencySpecification"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9895</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DataDownload"/>
+			<entity2 rdf:resource="https://schema.org/DataDownload"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9894</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/GovernmentService"/>
+			<entity2 rdf:resource="https://schema.org/GovernmentService"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9894</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/LocationFeatureSpecification"/>
+			<entity2 rdf:resource="https://schema.org/LocationFeatureSpecification"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9893</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/SpeakableSpecification"/>
+			<entity2 rdf:resource="https://schema.org/SpeakableSpecification"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9893</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/GovernmentOrganization"/>
+			<entity2 rdf:resource="https://schema.org/GovernmentOrganization"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9893</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DataCatalog"/>
+			<entity2 rdf:resource="https://schema.org/DataCatalog"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9893</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/CreativeWork"/>
+			<entity2 rdf:resource="https://schema.org/CreativeWork"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9891</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/EducationalOrganization"/>
+			<entity2 rdf:resource="https://schema.org/EducationalOrganization"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.989</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/InteractionCounter"/>
+			<entity2 rdf:resource="https://schema.org/InteractionCounter"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9889</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/PostalAddress"/>
+			<entity2 rdf:resource="https://schema.org/PostalAddress"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9889</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/VisualArtwork"/>
+			<entity2 rdf:resource="https://schema.org/VisualArtwork"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9889</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/OfferCatalog"/>
+			<entity2 rdf:resource="https://schema.org/OfferCatalog"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9888</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/NutritionInformation"/>
+			<entity2 rdf:resource="https://schema.org/NutritionInformation"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9887</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/AggregateOffer"/>
+			<entity2 rdf:resource="https://schema.org/AggregateOffer"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9887</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/EntryPoint"/>
+			<entity2 rdf:resource="https://schema.org/EntryPoint"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9885</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/LocalBusiness"/>
+			<entity2 rdf:resource="https://schema.org/LocalBusiness"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9882</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/SaleEvent"/>
+			<entity2 rdf:resource="https://schema.org/SaleEvent"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9881</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/EducationEvent"/>
+			<entity2 rdf:resource="https://schema.org/EducationEvent"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9881</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/HomeAndConstructionBusiness"/>
+			<entity2 rdf:resource="https://schema.org/HomeAndConstructionBusiness"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.988</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/CreativeWorkSeries"/>
+			<entity2 rdf:resource="https://schema.org/CreativeWorkSeries"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9879</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/CriticReview"/>
+			<entity2 rdf:resource="https://schema.org/CriticReview"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9879</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Offer"/>
+			<entity2 rdf:resource="https://schema.org/Offer"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9878</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Specialty"/>
+			<entity2 rdf:resource="https://schema.org/Specialty"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/BroadcastEvent"/>
+			<entity2 rdf:resource="https://schema.org/BroadcastEvent"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Flight"/>
+			<entity2 rdf:resource="https://schema.org/Flight"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Legislation"/>
+			<entity2 rdf:resource="https://schema.org/Legislation"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Photograph"/>
+			<entity2 rdf:resource="https://schema.org/Photograph"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Language"/>
+			<entity2 rdf:resource="https://schema.org/Language"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Library"/>
+			<entity2 rdf:resource="https://schema.org/Library"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Physician"/>
+			<entity2 rdf:resource="https://schema.org/Physician"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Place"/>
+			<entity2 rdf:resource="https://schema.org/Place"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Restaurant"/>
+			<entity2 rdf:resource="https://schema.org/Restaurant"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/SportsEvent"/>
+			<entity2 rdf:resource="https://schema.org/SportsEvent"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/SoftwareApplication"/>
+			<entity2 rdf:resource="https://schema.org/SoftwareApplication"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Park"/>
+			<entity2 rdf:resource="https://schema.org/Park"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9877</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/SportsActivityLocation"/>
+			<entity2 rdf:resource="https://schema.org/SportsActivityLocation"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9875</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MusicEvent"/>
+			<entity2 rdf:resource="https://schema.org/MusicEvent"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9875</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/RadioSeries"/>
+			<entity2 rdf:resource="https://schema.org/RadioSeries"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9875</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/FinancialProduct"/>
+			<entity2 rdf:resource="https://schema.org/FinancialProduct"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9873</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/BreadcrumbList"/>
+			<entity2 rdf:resource="https://schema.org/BreadcrumbList"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9873</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/AudioObject"/>
+			<entity2 rdf:resource="https://schema.org/AudioObject"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9872</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/RadioStation"/>
+			<entity2 rdf:resource="https://schema.org/RadioStation"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9871</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/HairSalon"/>
+			<entity2 rdf:resource="https://schema.org/HairSalon"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.987</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DefenceEstablishment"/>
+			<entity2 rdf:resource="https://schema.org/DefenceEstablishment"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.987</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/LodgingBusiness"/>
+			<entity2 rdf:resource="https://schema.org/LodgingBusiness"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9868</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/HotelRoom"/>
+			<entity2 rdf:resource="https://schema.org/HotelRoom"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9868</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ListItem"/>
+			<entity2 rdf:resource="https://schema.org/ListItem"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9867</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/LakeBodyOfWater"/>
+			<entity2 rdf:resource="https://schema.org/LakeBodyOfWater"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9867</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/RiverBodyOfWater"/>
+			<entity2 rdf:resource="https://schema.org/RiverBodyOfWater"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9867</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/QuantitativeValue"/>
+			<entity2 rdf:resource="https://schema.org/QuantitativeValue"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9866</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/HowToStep"/>
+			<entity2 rdf:resource="https://schema.org/HowToStep"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9866</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/RadioEpisode"/>
+			<entity2 rdf:resource="https://schema.org/RadioEpisode"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9865</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MenuItem"/>
+			<entity2 rdf:resource="https://schema.org/MenuItem"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9864</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/BankOrCreditUnion"/>
+			<entity2 rdf:resource="https://schema.org/BankOrCreditUnion"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9864</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DefinedTermSet"/>
+			<entity2 rdf:resource="https://schema.org/DefinedTermSet"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9864</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/CollectionPage"/>
+			<entity2 rdf:resource="https://schema.org/CollectionPage"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9864</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/TelevisionStation"/>
+			<entity2 rdf:resource="https://schema.org/TelevisionStation"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9863</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MusicAlbum"/>
+			<entity2 rdf:resource="https://schema.org/MusicAlbum"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9863</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/AutoDealer"/>
+			<entity2 rdf:resource="https://schema.org/AutoDealer"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9863</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MusicRelease"/>
+			<entity2 rdf:resource="https://schema.org/MusicRelease"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9863</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/EducationalOccupationalCredential"/>
+			<entity2 rdf:resource="https://schema.org/EducationalOccupationalCredential"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9862</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DataFeed"/>
+			<entity2 rdf:resource="https://schema.org/DataFeed"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9862</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MusicGroup"/>
+			<entity2 rdf:resource="https://schema.org/MusicGroup"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9858</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MonetaryAmount"/>
+			<entity2 rdf:resource="https://schema.org/MonetaryAmount"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9858</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/OpinionNewsArticle"/>
+			<entity2 rdf:resource="https://schema.org/OpinionNewsArticle"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9857</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/HowToSection"/>
+			<entity2 rdf:resource="https://schema.org/HowToSection"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9853</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/PerformingGroup"/>
+			<entity2 rdf:resource="https://schema.org/PerformingGroup"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9853</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/EventSeries"/>
+			<entity2 rdf:resource="https://schema.org/EventSeries"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9852</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Product"/>
+			<entity2 rdf:resource="https://schema.org/Product"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9847</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/NewsMediaOrganization"/>
+			<entity2 rdf:resource="https://schema.org/NewsMediaOrganization"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9845</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/PublicationEvent"/>
+			<entity2 rdf:resource="https://schema.org/PublicationEvent"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9844</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/GovernmentOffice"/>
+			<entity2 rdf:resource="https://schema.org/GovernmentOffice"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9841</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/BusinessAudience"/>
+			<entity2 rdf:resource="https://schema.org/BusinessAudience"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.984</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/LegalService"/>
+			<entity2 rdf:resource="https://schema.org/LegalService"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.984</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Course"/>
+			<entity2 rdf:resource="https://schema.org/Course"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9839</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/NewsArticle"/>
+			<entity2 rdf:resource="https://schema.org/NewsArticle"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.983</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ImageObject"/>
+			<entity2 rdf:resource="https://schema.org/ImageObject"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9829</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Audience"/>
+			<entity2 rdf:resource="https://schema.org/Audience"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9826</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/AutoRental"/>
+			<entity2 rdf:resource="https://schema.org/AutoRental"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9822</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MediaObject"/>
+			<entity2 rdf:resource="https://schema.org/MediaObject"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9822</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/FoodService"/>
+			<entity2 rdf:resource="https://schema.org/FoodService"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9817</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ActionAccessSpecification"/>
+			<entity2 rdf:resource="https://schema.org/ActionAccessSpecification"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.981</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/PriceSpecification"/>
+			<entity2 rdf:resource="https://schema.org/PriceSpecification"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.981</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Trip"/>
+			<entity2 rdf:resource="https://schema.org/Trip"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/SeekToAction"/>
+			<entity2 rdf:resource="https://schema.org/SeekToAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/contactPoint"/>
+			<entity2 rdf:resource="https://schema.org/ContactPoint"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ContactPoint"/>
+			<entity2 rdf:resource="https://schema.org/ContactPoint"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/openingHoursSpecification"/>
+			<entity2 rdf:resource="https://schema.org/OpeningHoursSpecification"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/OpeningHoursSpecification"/>
+			<entity2 rdf:resource="https://schema.org/OpeningHoursSpecification"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MedicalWebPage"/>
+			<entity2 rdf:resource="https://schema.org/MedicalWebPage"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Website"/>
+			<entity2 rdf:resource="https://schema.org/WebSite"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/WebSite"/>
+			<entity2 rdf:resource="https://schema.org/WebSite"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="https://kidzoniacredenceinternational.org/blog/Website"/>
+			<entity2 rdf:resource="https://schema.org/WebSite"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Store"/>
+			<entity2 rdf:resource="https://schema.org/Store"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/propertyValue"/>
+			<entity2 rdf:resource="https://schema.org/PropertyValue"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/PropertyValue"/>
+			<entity2 rdf:resource="https://schema.org/PropertyValue"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ListenAction"/>
+			<entity2 rdf:resource="https://schema.org/ListenAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Dataset"/>
+			<entity2 rdf:resource="http://purl.org/dc/dcmitype/Dataset"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Dataset"/>
+			<entity2 rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Dataset"/>
+			<entity2 rdf:resource="http://rdfs.org/ns/void#Dataset"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Dataset"/>
+			<entity2 rdf:resource="https://schema.org/Dataset"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DataSet"/>
+			<entity2 rdf:resource="http://purl.org/dc/dcmitype/Dataset"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DataSet"/>
+			<entity2 rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DataSet"/>
+			<entity2 rdf:resource="http://rdfs.org/ns/void#Dataset"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DataSet"/>
+			<entity2 rdf:resource="https://schema.org/Dataset"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/DownloadAction"/>
+			<entity2 rdf:resource="https://schema.org/DownloadAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/School"/>
+			<entity2 rdf:resource="https://schema.org/School"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/SearchAction"/>
+			<entity2 rdf:resource="https://schema.org/SearchAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ReadAction"/>
+			<entity2 rdf:resource="https://schema.org/ReadAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Article"/>
+			<entity2 rdf:resource="https://schema.org/Article"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Book"/>
+			<entity2 rdf:resource="https://schema.org/Book"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/MedicalClinic"/>
+			<entity2 rdf:resource="https://schema.org/MedicalClinic"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/CommentAction"/>
+			<entity2 rdf:resource="https://schema.org/CommentAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Service"/>
+			<entity2 rdf:resource="https://schema.org/Service"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/service"/>
+			<entity2 rdf:resource="https://schema.org/Service"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Movie"/>
+			<entity2 rdf:resource="https://schema.org/Movie"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Review"/>
+			<entity2 rdf:resource="https://schema.org/Review"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/review"/>
+			<entity2 rdf:resource="https://schema.org/Review"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Action"/>
+			<entity2 rdf:resource="https://schema.org/Action"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/LikeAction"/>
+			<entity2 rdf:resource="https://schema.org/LikeAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/搜索Action"/>
+			<entity2 rdf:resource="https://schema.org/Action"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Reservation"/>
+			<entity2 rdf:resource="https://schema.org/Reservation"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/WebPage"/>
+			<entity2 rdf:resource="https://schema.org/WebPage"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="https://kidzoniacredenceinternational.org/blog/Webpage"/>
+			<entity2 rdf:resource="https://schema.org/WebPage"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/City"/>
+			<entity2 rdf:resource="https://schema.org/City"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/city"/>
+			<entity2 rdf:resource="https://schema.org/City"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/VideoObject"/>
+			<entity2 rdf:resource="https://schema.org/VideoObject"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Event"/>
+			<entity2 rdf:resource="https://schema.org/Event"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Event"/>
+			<entity2 rdf:resource="http://purl.org/dc/dcmitype/Event"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="https://www.riseart.com/art/107427/ItemList"/>
+			<entity2 rdf:resource="https://schema.org/ItemList"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="https://www.riseart.com/fr/art/139056/ItemList"/>
+			<entity2 rdf:resource="https://schema.org/ItemList"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ItemList"/>
+			<entity2 rdf:resource="https://schema.org/ItemList"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="https://www.riseart.com/art/108459/ItemList"/>
+			<entity2 rdf:resource="https://schema.org/ItemList"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/TypeAndQuantityNode"/>
+			<entity2 rdf:resource="https://schema.org/TypeAndQuantityNode"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Organization"/>
+			<entity2 rdf:resource="https://schema.org/Organization"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="https://kidzoniacredenceinternational.org/blog/Organization"/>
+			<entity2 rdf:resource="https://schema.org/Organization"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/organization"/>
+			<entity2 rdf:resource="https://schema.org/Organization"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/CategoryCode"/>
+			<entity2 rdf:resource="https://schema.org/CategoryCode"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/ReserveAction"/>
+			<entity2 rdf:resource="https://schema.org/ReserveAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/CommunityHealth"/>
+			<entity2 rdf:resource="https://schema.org/CommunityHealth"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Person"/>
+			<entity2 rdf:resource="https://schema.org/Person"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Person"/>
+			<entity2 rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/person"/>
+			<entity2 rdf:resource="https://schema.org/Person"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/person"/>
+			<entity2 rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/WatchAction"/>
+			<entity2 rdf:resource="https://schema.org/WatchAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/aggregateRating"/>
+			<entity2 rdf:resource="https://schema.org/AggregateRating"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/AggregateRating"/>
+			<entity2 rdf:resource="https://schema.org/AggregateRating"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9801</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/servicechannel"/>
+			<entity2 rdf:resource="https://schema.org/ServiceChannel"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9703</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/Action"/>
+			<entity2 rdf:resource="https://schema.org/LikeAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9603</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/LikeAction"/>
+			<entity2 rdf:resource="https://schema.org/Action"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9603</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+	<map>
+		<Cell>
+			<entity1 rdf:resource="http://schema.org/搜索Action"/>
+			<entity2 rdf:resource="https://schema.org/LikeAction"/>
+			<measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.9603</measure>
+			<relation>=</relation>
+		</Cell>
+	</map>
+
+</Alignment>
+</rdf:RDF>
