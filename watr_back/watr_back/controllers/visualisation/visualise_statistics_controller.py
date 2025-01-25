@@ -1,10 +1,11 @@
 from flask import Blueprint, request, abort
-from services.viusalize.visualize_service import visualise_service
 
-visualisation = Blueprint('visualisation', __name__)
+from services.viusalize.visualisation_statistics_service import statistics_classification
 
-@visualisation.route('/visualise', methods=['GET'])
-def visualise_controller():
+visualisation_statistics = Blueprint('visualisation_statistics', __name__)
+
+@visualisation_statistics.route('/visualise_statistics', methods=['GET'])
+def visualise_statistics_controller():
     rdf_class = request.args.get('class')
     if not rdf_class or not isinstance(rdf_class, str):
         abort(400, 'class parameter is required and must be a string')
@@ -28,6 +29,6 @@ def visualise_controller():
         else:
             abort(400, 'count_limit is required when limit is true')
 
-    results = visualise_service(rdf_class, limit=limit, count_limit=count_limit)
+    results = statistics_classification(rdf_class, limit=limit, count_limit=count_limit)
 
     return results

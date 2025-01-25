@@ -1,23 +1,16 @@
-from SPARQLWrapper import SPARQLWrapper, JSON
 from flask import jsonify
-from sparql_queries.visualise_queries import VISUALISE_QUERY
-from enviromment.enviromment import SPARQL_ENDPOINT
 
-sparql = SPARQLWrapper(SPARQL_ENDPOINT)
+from auxiliary.visualise_auxiliary.execute_visualise_query import execute_sparql_query
+from auxiliary.visualise_auxiliary.process_sparql_results import process_sparql_results
+
 
 def visualise_service_json_ld(rdf_class, limit, count_limit):
-    print(rdf_class)
-    print(limit)
-    print(count_limit)
-    if limit:
-        sparql_query = VISUALISE_QUERY.format(rdf_class=rdf_class) + f" LIMIT {count_limit}"
-    else:
-        sparql_query = VISUALISE_QUERY.format(rdf_class=rdf_class)
-    sparql.setQuery(sparql_query)
-    sparql.setReturnFormat(JSON)
-
+    """
+    Returns the SPARQL query results as JSON-LD.
+    """
     try:
-        output = sparql.query().convert()
+        output = execute_sparql_query(rdf_class, limit, count_limit)
+        init_result = process_sparql_results(output)
         json_ld = {
             "@context": {
                 "entity": "http://example.org/entity",
@@ -28,18 +21,17 @@ def visualise_service_json_ld(rdf_class, limit, count_limit):
             },
             "@graph": []
         }
-
-        for elements in output['results']['bindings']:
+        for row in init_result:
             node = {
-                "@id": elements.get('entity', {}).get('value'),
-                "property": elements.get('property', {}).get('value'),
-                "value": elements.get('value', {}).get('value'),
+                "@id": row["entity"],
+                "property": row["property"],
+                "value": row["value"],
             }
-            if "bnodeProperty" in elements and "bnodeValue" in elements:
-                node["bnodeProperty"] = elements['bnodeProperty']['value']
-                node["bnodeValue"] = elements['bnodeValue']['value']
+            if "bnodeProperty" in row and "bnodeValue" in row:
+                node["bnodeProperty"] = row["bnodeProperty"]
+                node["bnodeValue"] = row["bnodeValue"]
             json_ld["@graph"].append(node)
-
         return jsonify(json_ld)
+
     except Exception as e:
-        return jsonify({"error": f"An error occurred {e}"}), 500
+        return jsonify({"error": f"An error occurred: {e}"}), 500
