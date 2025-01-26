@@ -1,5 +1,5 @@
 from flask import Blueprint, request, abort
-from services.viusalize.visualize_json_service import visualise_service_json_ld
+from services.visualise.visualize_json_service import visualise_service_json_ld
 
 visualisation_json_ld = Blueprint('visualisation_json_ld', __name__)
 

@@ -1,5 +1,5 @@
 from flask import Blueprint, request, abort
-from services.viusalize.visualize_html_service import visualise_html_service
+from services.visualise.visualize_html_service import visualise_html_service
 
 visualisation_html = Blueprint('visualisation_html', __name__)
 
