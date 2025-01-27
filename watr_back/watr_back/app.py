@@ -4,11 +4,13 @@ from flask import Flask
 from flask_cors import CORS
 
 from watr_back.controllers.alignment.alignment_controller import alignment
+from watr_back.controllers.alignment.alignment_stats_controller import alignmentStats
 from watr_back.controllers.alignment.alignment_table_controller import alignmentTable
 from watr_back.controllers.classification.classification_controller import classification
 from watr_back.controllers.classification.classification_graph_controller import classificationGraph
 from watr_back.controllers.classification.classification_stats_controller import classificationStats
 from watr_back.controllers.classification.properties_controller import properties
+from watr_back.controllers.download_stats_controller import downloadStats
 from watr_back.handlers.error_handlers import error_handlers
 from watr_back.middlewares.content_type_middleware import content_type_middleware
 
@@ -31,7 +33,10 @@ app.register_blueprint(classificationStats, url_prefix='/api')
 
 app.register_blueprint(alignment, url_prefix='/api')
 app.register_blueprint(alignmentTable, url_prefix='/api')
+app.register_blueprint(alignmentStats, url_prefix='/api')
 
+
+app.register_blueprint(downloadStats, url_prefix='/api')
 
 @app.route('/')
 def hello_world():  # put application's code here

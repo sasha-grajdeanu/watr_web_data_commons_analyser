@@ -11,6 +11,8 @@ const Classification = () => {
     const [propertyOptions, setPropertyOptions] = useState([]);
     const [graphMLData, setGraphMLData] = useState("");
     const graphContainer = useRef(null);
+    const [graphFile, setGraphFile] = useState("");
+    const [uniqueGraphFile, setUniqueGraphFile] = useState("");
 
     const classOptions = [
         "AdministrativeArea", "Airport", "Answer", "Book", "City", "ClaimReview",
@@ -120,7 +122,9 @@ const Classification = () => {
 
             const data = await response.json();
             setResults(data.data);
-            setMoreStats(data.stats);
+            setMoreStats(data.unique_data);
+            setGraphFile(data.graph_file);
+            setUniqueGraphFile(data.unique_graph_file);
 
             const graphmlResponse = await fetch("http://localhost:5000/api/classify/graph", {
                 method: "POST",
@@ -144,6 +148,24 @@ const Classification = () => {
             console.error("Error fetching classification data:", error);
         }
     };
+
+    const handleDownload = async (fileName) => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/download-stats?graph_file=${encodeURIComponent(fileName)}`);
+            if (!response.ok) {
+                throw new Error("Failed to download file");
+            }
+    
+            const blob = await response.blob();
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = 'graph_data.ttl';  
+            link.click();  
+        } catch (error) {
+            console.error("Error downloading file:", error);
+        }
+    };
+    
 
     
     return (
@@ -184,15 +206,26 @@ const Classification = () => {
 
             <div className="results-area">
                 <h2>Statistics</h2>
-                {moreStats["unique_subjects:"] && (
-                    <div className="stats-summary">
-                        <p><strong>Unique Subjects Count: </strong>{Object.keys(moreStats["unique_subjects:"]).length}</p>
-                            {Object.entries(moreStats["unique_subjects:"]).map(([subject, count], index) => (
-                                    <p id="stats-summary-p" key={index}>
-                                        {subject}: {count}
-                                    </p>
-                            ))}    
+                {moreStats.length > 0 ? (
+                <div>
+                    <div className="download-buttons">
+                        <p>Download stats:</p>
+                        <button onClick={() => handleDownload(graphFile)}>Download File 1</button>
+                        <button onClick={() => handleDownload(uniqueGraphFile)}>Download File 2</button>
                     </div>
+                    <div className="stats-summary">
+                        <p><strong>Unique Objects Count:</strong> {moreStats.length}</p>
+                        {
+                            moreStats.map((item, index) => (
+                                <p id="stats-summary-p" key={index}>
+                                    {item.uniqueSubject} : {item.numberOfOccurrences}
+                                </p>
+                            ))
+                        }
+                    </div>
+                </div>
+                ) : (
+                    <p>No stats to display;</p>
                 )}
                 
                 {results.length > 0 ? (

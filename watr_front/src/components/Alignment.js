@@ -76,31 +76,35 @@ const Alignment = () => {
             <div className="results-area">
                 <h2>Alignment Results</h2>
                 {
-                    results.length > 0 ? (
-                        <table className="results-table"> 
-                            <thead>
-                                <tr>
-                                    <th>Original Entity</th>
-                                    <th>Aligned Entity</th>
-                                    <th>Measure</th>
-                                    <th>Relation</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    results.map((item, index) => (
-                                        <tr key={index}>
-                                            <td>{item.originalEntity}</td>
-                                            <td>{item.alignedEntity}</td>
-                                            <td>{item.measure}</td>
-                                            <td>{item.relation}</td>
-                                        </tr>
-                                    ))
-                                }
-                            </tbody>
-                        </table>
+                    !isLoading ? (
+                        results.length > 0 ? (
+                            <table className="results-table"> 
+                                <thead>
+                                    <tr>
+                                        <th>Original Entity</th>
+                                        <th>Aligned Entity</th>
+                                        <th>Measure</th>
+                                        <th>Relation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        results.map((item, index) => (
+                                            <tr key={index}>
+                                                <td>{item.originalEntity}</td>
+                                                <td>{item.alignedEntity}</td>
+                                                <td>{item.measure}</td>
+                                                <td>{item.relation}</td>
+                                            </tr>
+                                        ))
+                                    }
+                                </tbody>
+                            </table>
+                        ) : (
+                            <p>No results to display.</p>
+                        )
                     ) : (
-                        <p>No results to display.</p>
+                        <p>Loading...</p>
                     )
                 }
 

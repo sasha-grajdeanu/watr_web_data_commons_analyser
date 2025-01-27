@@ -1,4 +1,4 @@
-from flask import Blueprint, request, abort, jsonify
+from flask import Blueprint, request, abort
 
 from watr_back.services.alignment.alignment_service import align as service_align
 

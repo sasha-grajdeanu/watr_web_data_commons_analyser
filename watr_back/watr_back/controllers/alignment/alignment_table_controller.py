@@ -11,6 +11,4 @@ alignmentTable = Blueprint('alignmentTable', __name__)
 def align_table():
     align_data = controller_align()
     results = service_get_alignment_table(align_data)
-    print("*"*80)
-    print(results)
     return jsonify({"results": results})
