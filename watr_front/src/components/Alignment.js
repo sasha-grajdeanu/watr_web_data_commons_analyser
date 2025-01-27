@@ -6,18 +6,21 @@ const Alignment = () => {
     const [selectedTarget, setSelectedTarget] = useState("");
     const [results, setResults] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [stats, setStats] = useState("");
+    const [graphFile, setGraphFile] = useState("");
 
     const sourceOptions = [
         "schema.org", "DBPedia"
     ];
 
     const handleClassify = async () => {
+        setIsLoading(true);
+        
         if(!selectedTarget){
             alert("Please select an ontology for aligning.");
             return;
         }
 
-        setIsLoading(true);
 
         try{
             const response = await fetch("http://localhost:5000/api/align/table",
@@ -38,6 +41,24 @@ const Alignment = () => {
 
             const data = await response.json();
             setResults(data.results);
+
+            const statsResponse = await fetch("http://localhost:5000/api/align/stats", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    target: selectedTarget
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("API call failed");
+            }
+
+            const statsData = await statsResponse.json();
+            setStats(statsData.stats);
+            setGraphFile(statsData.graph_file);
         }
         catch (error){
             console.error("Error fetching alignment data:", error);
@@ -48,7 +69,22 @@ const Alignment = () => {
 
     };
 
+    const handleDownload = async (fileName) => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/download-stats?graph_file=${encodeURIComponent(fileName)}`);
+            if (!response.ok) {
+                throw new Error("Failed to download file");
+            }
     
+            const blob = await response.blob();
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = 'graph_data.ttl';  
+            link.click();  
+        } catch (error) {
+            console.error("Error downloading file:", error);
+        }
+    };
     
     return (
         <div className="alignment-page">
@@ -74,6 +110,20 @@ const Alignment = () => {
             </div>
             
             <div className="results-area">
+                <h2>Statistics</h2>
+                    {!isLoading ? (
+                    <div>
+                        <div className="download-buttons">
+                            <p>Download stats:</p>
+                            <button onClick={() => handleDownload(graphFile)}>Download File 1</button>
+                        </div>
+                        <div className="stats-summary">
+                            <p><strong>Average Measure:</strong> {stats}</p>
+                        </div>
+                    </div>
+                    ) : (
+                        <p>No stats to display.</p>
+                    )}
                 <h2>Alignment Results</h2>
                 {
                     !isLoading ? (
