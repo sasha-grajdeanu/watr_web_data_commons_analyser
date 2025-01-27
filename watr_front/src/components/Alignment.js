@@ -9,6 +9,8 @@ const Alignment = () => {
     const [stats, setStats] = useState("");
     const [graphFile, setGraphFile] = useState("");
 
+    
+
     const sourceOptions = [
         "schema.org", "DBPedia"
     ];
@@ -111,7 +113,7 @@ const Alignment = () => {
             
             <div className="results-area">
                 <h2>Statistics</h2>
-                    {!isLoading ? (
+                    {stats ? (
                     <div>
                         <div className="download-buttons">
                             <p>Download stats:</p>
