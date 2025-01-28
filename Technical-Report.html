@@ -29,19 +29,40 @@
     <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
       <h2>Abstract</h2>
       <p>
-        scurta descriere a proiectului
+        The Web Data Commons Analyzer (WATR) is a web-based application designed to process 
+        and analyze metadata extracted from the Web Data Commons. Through this platform, users 
+        can perform complex tasks such as visualizing the structure and relationships within the data, 
+        classifying it according to predefined categories, comparing data, and aligning the data with 
+        existing ontologies. The system uses SPARQL queries to a Fuseki server to retrieve the data, and results 
+        are both available in HTML, JSON-LD and JSON formats. Various statistics for each operation are provided using the 
+        RDF Data Cube vocabulary.
       </p>
     </section>
 
     <section id="introduction" role="doc-introduction">
-      <!-- review? -->
       <h2>Introduction</h2>
-      <ul>
-        <li>scopul aplicatiei: ce face, pentru ce sau cine</li>
-        <li>contextul general al tehnologiilor folosite: rest, rdf, sparql, etc</li>
-        <li>de ce este relevant ce am facut noi</li>
-      </ul>
+      <p>
+        The Web Data Commons Analyzer (WATR) is a web-based application designed to process 
+        and analyze metadata extracted from the Web Data Commons. The platform enables users to perform 
+        four key operations on RDFa and HTML5 microdata: visualization, classification, comparison, and 
+        alignment. These operations allow users to gain insights into the structure of the data, classify 
+        it according to predefined categories, compare datasets, and align them with existing ontologies. 
+      </p>
+      <p>
+        The application is built using a modular architecture where each operation is represented on a 
+        separate page. The front-end is developed in React, providing an interactive interface, while the 
+        back-end is implemented with Flask. The system leverages Apache Jena Fuseki as a SPARQL endpoint 
+        to store and retrieve RDF data. The data is collected from Web Data Commons and stored in a dataset 
+        named <code>/watr-dataset</code>. In addition to the basic operations, the alignment operation utilizes 
+        AgreementMakerLight(AML) for ontology alignment.
+      </p>
+      <p>
+        This report provides an in-depth look at the system architecture, the data structures used, the API 
+        implementation, and how external data sources are integrated. Furthermore, it discusses the technical 
+        details behind each operation and the challenges encountered during development.
+      </p>
     </section>
+    
 
     <section id="data-structures">
       <h2>Internal Data Structures</h2>
@@ -50,6 +71,24 @@
         <li>baza de date utilizata</li>
         <li>cum sunt accesate aceste date, modele de date, etc</li>
       </ul>
+
+      <p>
+        The application processes data in RDF format, speciffically RDFa and HTML5 microdata 
+        collected from the Web Data Commons. These datasets are stored in a Apache Jena Fuseki server, a robust 
+        RDF storage system that allows for efficient querying and manipulation of RDF data. The datasets are stored in the 
+        <code>/watr-dataset</code> dataset in Apache Jena Fuseki.
+      </p>
+        
+      <p>
+        The RDF data is represented in the <code>N-Quads</code> format, which is well-suited for storing data 
+        with multiple graph structures. The application performs operations on these datasets by querying the Fuseki server using SPARQL, enabling the usage of the operations": 
+        visualization, classification, comparison, and alignment.
+      </p>
+        
+      <p>
+        Each operation (visualization, classification, comparison, alignment) has specific SPAQRL query patterns, designed to process 
+          and retrieve relevant results.
+      </p>
     </section>
 
     <section id="api">
@@ -59,6 +98,58 @@
         <li>endpoint-urile disponibile, cum sa acceseaza, ce date se transmit/primesc</li>
         <li>exemple de cereri</li>
       </ul>
+
+      <p>
+        The applicaiton exposes a RESTful API implemented in Flask. The API allows users to 
+        interact with the system and perform the four key operations: visualization, classification, comparison, 
+        and alignment. Each operation is associated with a set of endpoints that handle user input, 
+        execute SPAQRL queries, and return the results.
+      </p>
+
+      <p>
+        Enpoints exposed by the application:
+        <ol>
+          <li>
+            Vizualization Operation:
+            <ul>
+
+            </ul>
+          </li>
+          
+          <li>
+            Classification Operation:
+            <ul>
+                <li><code>/api/classify</code></li>
+                <li><code>/api/classify/stats</code></li>
+                <li><code>/api/classify/graph</code></li>
+            </ul>
+          </li>
+
+          <li>
+            Comparison Operation:
+            <ul>
+
+            </ul>
+          </li>
+
+          <li>
+            Alignment Operation:
+            <ul>
+                <li><code>/api/align</code></li>
+                <li><code>/api/align/stats</code></li>
+                <li><code>/api/align/table</code></li>
+            </ul>
+          </li>
+
+          <li>
+            Other endpoints:
+            <ul>
+
+            </ul>
+          </li>
+        </ol>
+      </p>
+
     </section>
 
     <section id="rdf-models">
@@ -93,6 +184,10 @@
       <p>
         link la demo
       <p>
+      <p>
+        A demonstration of the WATR application is available at the following link:
+        <a>WATR Demo</a>
+      </p>
     </section>
 
     <section id="conclusions">

@@ -127,6 +127,8 @@ To run this project, you will need to add the following environment variables to
 
 `FUSEKI_URL="http://localhost:3030/watr-dataset/sparql"`
 
+> **⚠️ Note:** It is important to create a dataset named "/watr-dataset" in Fuseki to work.
+
 `AML_PATH=C:\\AML_v3.2\\AgreementMakerLight.jar` (Windows)    
 `AML_PATH=/home/user/AML_v3.2/AgreementMakerLight.jar` (Linux/maxOS)
 
@@ -139,7 +141,7 @@ To run this project, you will need to add the following environment variables to
 <!-- Prerequisites -->
 ### :bangbang: Prerequisites
 
-- Install Alignment Maker Light (AML): [Download AML v3.2](https://github.com/AgreementMakerLight/AML-Project/releases/download/v3.2/AML_v3.2.zip)
+- Install AgreementMakerLight (AML): [Download AML v3.2](https://github.com/AgreementMakerLight/AML-Project/releases/download/v3.2/AML_v3.2.zip)
   - After downloading, unzip the file in a directory of your choice (e.g., `C:\` for Windows or `/home/user/` for Linux/macOS). Ensure that you update the path in your `.env` file accordingly.
 - Install Apache Jena Fuseki server: [Download Fuseki v5.3.0](https://dlcdn.apache.org/jena/binaries/apache-jena-fuseki-5.3.0.zip)
   - Extract the Fuseki server in a directory such as `C:\` (Windows) or `/home/user/` (Linux/macOS).
