@@ -164,6 +164,17 @@ def model_statistics_with_qb(statistics, dataset_uri="http://example.org/dataset
 def return_statistics(rdf_class, limit, count_limit):
     init_result = execute_sparql_query(rdf_class, limit, count_limit)
     res = compute_statistics(init_result)
+    print(res)
+    return res
+
+
+def download_statistics(rdf_class, limit, count_limit):
+    """
+    Controller for handling requests to visualise statistics.
+    """
+    # Validate and extract query parameters
+    init_result = execute_sparql_query(rdf_class, limit, count_limit)
+    res = compute_statistics(init_result)
     res = model_statistics_with_qb(res)
     print(res)
     return res
