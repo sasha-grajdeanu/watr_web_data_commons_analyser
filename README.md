@@ -125,9 +125,13 @@
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`API_KEY`
+`FUSEKI_URL="http://localhost:3030/watr-dataset/sparql"`
 
-`ANOTHER_API_KEY`
+`AML_PATH=C:\\AML_v3.2\\AgreementMakerLight.jar` (Windows)    
+`AML_PATH=/home/user/AML_v3.2/AgreementMakerLight.jar` (Linux/maxOS)
+
+> **⚠️ Note:** If you installed AML in different location, make sure to update the path accordingly in the `.env` file.
+
 
 <!-- Getting Started -->
 ## 	:toolbox: Getting Started
@@ -135,8 +139,10 @@ To run this project, you will need to add the following environment variables to
 <!-- Prerequisites -->
 ### :bangbang: Prerequisites
 
-- Install Alignment Maker Light (AML): https://github.com/AgreementMakerLight/AML-Project/releases/download/v3.2/AML_v3.2.zip
-- Install Apache Jena Fuseki server: https://dlcdn.apache.org/jena/binaries/apache-jena-fuseki-5.3.0.zip
+- Install Alignment Maker Light (AML): [Download AML v3.2](https://github.com/AgreementMakerLight/AML-Project/releases/download/v3.2/AML_v3.2.zip)
+  - After downloading, unzip the file in a directory of your choice (e.g., `C:\` for Windows or `/home/user/` for Linux/macOS). Ensure that you update the path in your `.env` file accordingly.
+- Install Apache Jena Fuseki server: [Download Fuseki v5.3.0](https://dlcdn.apache.org/jena/binaries/apache-jena-fuseki-5.3.0.zip)
+  - Extract the Fuseki server in a directory such as `C:\` (Windows) or `/home/user/` (Linux/macOS).
 
 
 <!-- Installation -->
@@ -210,41 +216,13 @@ function App() {
 }
 ```
 
-<!-- Roadmap -->
-## :compass: Roadmap
-
-* [x] Todo 1
-* [ ] Todo 2
-
 
 <!-- Contributing -->
 ## :wave: Contributing
 
-<a href="https://github.com/Louis3797/awesome-readme-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Louis3797/awesome-readme-template" />
+<a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sasha-grajdeanu/watr_web_data_commons_analyser" />
 </a>
-
-
-Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
-
-
-<!-- Code of Conduct -->
-### :scroll: Code of Conduct
-
-Please read the [Code of Conduct](https://github.com/Louis3797/awesome-readme-template/blob/master/CODE_OF_CONDUCT.md)
-
-<!-- FAQ -->
-## :grey_question: FAQ
-
-- Question 1
-
-  + Answer 1
-
-- Question 2
-
-  + Answer 2
 
 
 <!-- License -->
@@ -260,13 +238,3 @@ Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_
 
 Project Link: [https://github.com/Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template)
 
-
-<!-- Acknowledgments -->
-## :gem: Acknowledgements
-
-Use this section to mention useful resources and libraries that you have used in your projects.
-
- - [Shields.io](https://shields.io/)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#travel--places)
- - [Readme Template](https://github.com/othneildrew/Best-README-Template)
