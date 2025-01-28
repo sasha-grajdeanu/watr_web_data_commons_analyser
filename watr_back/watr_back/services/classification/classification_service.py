@@ -1,9 +1,11 @@
+import os
+
 from SPARQLWrapper import SPARQLWrapper, JSON
 from flask import abort
 
 from watr_back.sparql_queries.classification_queries import CLASSIFY_QUERY
 
-sparql = SPARQLWrapper("http://localhost:3030/watr-dataset/sparql")
+sparql = SPARQLWrapper(os.getenv("FUSEKI_URL"))
 
 
 def classify(rdf_class, rdf_property):

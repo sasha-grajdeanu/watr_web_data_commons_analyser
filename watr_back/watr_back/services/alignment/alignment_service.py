@@ -1,4 +1,5 @@
 import json
+import os
 import subprocess
 import tempfile
 import xml.etree.ElementTree as ET
@@ -8,7 +9,7 @@ from SPARQLWrapper import SPARQLWrapper, TURTLE
 
 from watr_back.sparql_queries.alignment_queries import ALIGNMENT_QUERY
 
-sparql = SPARQLWrapper("http://localhost:3030/watr-dataset/sparql")
+sparql = SPARQLWrapper(os.getenv("FUSEKI_URL"))
 
 NAMESPACES = {
     'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
@@ -35,7 +36,7 @@ def align(target_ontology):
     try:
         # comanda AML pentru aliniere
         aml_command = [
-            "java", "-jar", "C:\\AML_v3.2\\AgreementMakerLight.jar",
+            "java", "-jar", os.getenv("AML_PATH"),
             "-s", temp_file.name,
             "-t", ontology_path,
             "-o", output_file.name,

@@ -1,9 +1,11 @@
+import os
+
 from SPARQLWrapper import SPARQLWrapper, JSON
 from flask import jsonify
 
 from watr_back.sparql_queries.properties_queries import GET_DISTINCT_PROPERTIES
 
-sparql = SPARQLWrapper("http://localhost:3030/watr-dataset/sparql")
+sparql = SPARQLWrapper(os.getenv("FUSEKI_URL"))
 
 def get_properties(rdf_class):
     sparql_query = GET_DISTINCT_PROPERTIES.format(rdf_class=rdf_class)
