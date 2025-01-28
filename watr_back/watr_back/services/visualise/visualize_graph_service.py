@@ -11,6 +11,7 @@ def visualise_graph_service(rdf_class, limit, count_limit):
     """
     try:
         output = execute_sparql_query(rdf_class, limit, count_limit)
+        print(output)
         init_result = process_sparql_results(output)
         init_graph = create_init_graph(init_result)
         final_graph = write_graph_format(init_graph)

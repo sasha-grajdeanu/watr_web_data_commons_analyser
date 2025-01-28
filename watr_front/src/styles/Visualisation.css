@@ -1,4 +1,4 @@
-.classification-page {
+.visualisation-page {
     padding: 20px;
     font-family: 'Montserrat', serif;
     max-width: 900px;
@@ -89,4 +89,20 @@
 
 #stats-summary-p{
     margin: 0.5rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
 }

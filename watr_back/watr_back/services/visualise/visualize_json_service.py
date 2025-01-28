@@ -1,3 +1,5 @@
+import uuid
+
 from flask import jsonify
 
 from auxiliary.visualise_auxiliary.execute_visualise_query import execute_sparql_query
@@ -23,7 +25,8 @@ def visualise_service_json_ld(rdf_class, limit, count_limit):
         }
         for row in init_result:
             node = {
-                "@id": row["entity"],
+                "@id": f"urn:uuid:{uuid.uuid4()}",
+                "entity" : row["entity"],
                 "property": row["property"],
                 "value": row["value"],
             }

@@ -10,7 +10,7 @@ def visualise_html_service(rdf_class, limit, count_limit):
     """
     try:
         output = execute_sparql_query(rdf_class, limit, count_limit)
-        # init_result = process_sparql_results(output)
+        init_result = process_sparql_results(output)
 
         html_content = """
         <html lang="en">
