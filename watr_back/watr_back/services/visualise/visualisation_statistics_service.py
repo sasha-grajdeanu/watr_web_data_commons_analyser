@@ -61,18 +61,18 @@ def compute_statistics(query_results):
 
     return statistics
 
-def model_statistics_with_qb(statistics, dataset_uri="http://example.org/dataset/statistics"):
+def model_statistics_with_qb(statistics, dataset_uri="http://localhost:5000/watr/dataset/statistics"):
     """
     Model the statistics using the RDF Data Cube Vocabulary (QB) and return the result in JSON-LD format.
 
     :param statistics: The output of compute_statistics.
-    :param dataset_uri: The URI for the dataset (default: "http://example.org/dataset/statistics").
+    :param dataset_uri: The URI for the dataset (default: "http://localhost:5000/watr/dataset/statistics").
     :return: A JSON-LD representation of the RDF graph.
     """
     # Define namespaces
     QB = Namespace("http://purl.org/linked-data/cube#")
     SCHEMA = Namespace("http://schema.org/")
-    EXAMPLE = Namespace("http://example.org/")
+    WATR = Namespace("http://localhost:5000/watr/")
 
     # Initialize the RDF graph
     graph = Graph()
@@ -80,7 +80,7 @@ def model_statistics_with_qb(statistics, dataset_uri="http://example.org/dataset
     # Bind namespaces
     graph.bind("qb", QB)
     graph.bind("schema", SCHEMA)
-    graph.bind("example", EXAMPLE)
+    graph.bind("example", WATR)
 
     # Define dataset
     dataset = URIRef(dataset_uri)
