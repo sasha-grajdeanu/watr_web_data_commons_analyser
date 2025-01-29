@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
@@ -34,7 +34,7 @@
         can perform complex tasks such as visualizing the structure and relationships within the data, 
         classifying it according to predefined categories, comparing data, and aligning the data with 
         existing ontologies. The system uses SPARQL queries to a Fuseki server to retrieve the data, and results 
-        are both available in HTML, JSON-LD and JSON formats. Various statistics for each operation are provided using the 
+        are available in HTML, JSON-LD and JSON formats. Various statistics for each operation are provided using the
         RDF Data Cube vocabulary.
       </p>
     </section>
@@ -42,20 +42,30 @@
     <section id="introduction" role="doc-introduction">
       <h2>Introduction</h2>
       <p>
-        The Web Data Commons Analyzer (WATR) is a web-based application designed to process 
-        and analyze metadata extracted from the Web Data Commons. The platform enables users to perform 
-        four key operations on RDFa and HTML5 microdata: visualization, classification, comparison, and 
-        alignment. These operations allow users to gain insights into the structure of the data, classify 
-        it according to predefined categories, compare datasets, and align them with existing ontologies. 
+        With the increasing amount of metadata embedded in web pages, effective processing and analysis tools
+        are essential for extracting meaningful insights. The Web Data Commons Analyzer (WATR) is a web-based
+        application designed to process and analyze metadata extracted from the Web Data Commons. The platform enables
+        users to perform four key operations on RDFa and HTML5 microdata: visualization, classification, comparison, and
+        alignment. These operations allow users to gain insights into the structure of the data, classify
+        it according to predefined categories, compare datasets, and align them with existing ontologies.
       </p>
+
       <p>
-        The application is built using a modular architecture where each operation is represented on a 
-        separate page. The front-end is developed in React, providing an interactive interface, while the 
-        back-end is implemented with Flask. The system leverages Apache Jena Fuseki as a SPARQL endpoint 
-        to store and retrieve RDF data. The data is collected from Web Data Commons and stored in a dataset 
-        named <code>/watr-dataset</code>. In addition to the basic operations, the alignment operation utilizes 
-        AgreementMakerLight(AML) for ontology alignment.
+        The system is structured into distinct modules, each dedicated to a specific task:
       </p>
+
+      <ul>
+          <li>Visualization, for exploring metadata structures and relationships.</li>
+          <li>Classification, for categorizing metadata based on subject and predicate</li>
+          <li>Comparison, for </li>
+          <li>Alignment, for mapping metadata to existing ontologies, using AgreementMakerLight (AML)</li>
+        </ul>
+
+      <p>
+        The backend is implemented in Flask, serving data from Apache Jena Fuseki SPARQL endpoint, while the frontend is build
+        using React for an interactive user experience.
+      </p>
+
       <p>
         This report provides an in-depth look at the system architecture, the data structures used, the API 
         implementation, and how external data sources are integrated. Furthermore, it discusses the technical 
@@ -73,22 +83,59 @@
       </ul>
 
       <p>
-        The application processes data in RDF format, speciffically RDFa and HTML5 microdata 
-        collected from the Web Data Commons. These datasets are stored in a Apache Jena Fuseki server, a robust 
+        The application processes data in RDF format, specifically RDFa and HTML5 microdata
+        collected from the Web Data Commons. This data is stored in an Apache Jena Fuseki server, a robust
         RDF storage system that allows for efficient querying and manipulation of RDF data. The datasets are stored in the 
         <code>/watr-dataset</code> dataset in Apache Jena Fuseki.
       </p>
-        
+
+      <h3>Data Models and Structure</h3>
       <p>
-        The RDF data is represented in the <code>N-Quads</code> format, which is well-suited for storing data 
-        with multiple graph structures. The application performs operations on these datasets by querying the Fuseki server using SPARQL, enabling the usage of the operations": 
-        visualization, classification, comparison, and alignment.
+        WATR utilizes several key data models to handle and represent metadata:
       </p>
-        
+
+      <ol>
+        <li>RDF Data Models<br>
+          The core data used by the application follows the Resource Description
+          Framework (RDF), a specification that encodes data in a graph structure consisting of
+          subject-predicate-object triples. This allows for the representation of relationships between
+          entities. The data is provided in N-Quads format, which is a serialization of RDF that supports
+          the inclusion of multiple graphs in a single file.
+        </li>
+        <li>Preprocessed RDF Data<br>
+          The metadata is extracted and preprocessed by the Web Data Commons team from RDFa and HTML5 microdata
+          embedded pages. This metadata is then made available in N-Quads format (files with the .nq extension).
+          The WATR application will consume this data for its analysis.
+        </li>
+      </ol>
+
+      <h3>Database and Data Access</h3>
       <p>
-        Each operation (visualization, classification, comparison, alignment) has specific SPAQRL query patterns, designed to process 
-          and retrieve relevant results.
+        The RDF datasets are stored in an Apache Jena Fuseki server, which serves as the
+        primary (and only) RDF database of the application. The database is structured into a dataset named
+        /watr-dataset, where all the metadata from the Web Data Commons is stored.
       </p>
+
+      <p>
+        Data access is achieved using SPARQL queries, the query language designed for
+        querying RDF datasets. Each operation (visualization, classification, comparison, and alignment)
+        utilizes specific SPARQL query patterns that are made specifically to retrieve
+        relevant results from the dataset. These queries interact directly with the Fuseki server, enabling
+        dynamic and real-time processing of metadata.
+      </p>
+
+      <h3>Data Flow and Access Patterns</h3>
+      <p>
+        The application fetches RDF data from the Fuseki server based on user requests. SPARQL queries
+        are constructed based on the type of the operation:
+      </p>
+      <ul>
+        <li>Visualization </li>
+        <li>Classification queries categorize the metadata based on selected subject-predicate relationships.</li>
+        <li>Comparison </li>
+        <li>Alignment queries extracts the necessary metadata and structures in RDF format to be further processed by the backend.</li>
+      </ul>
+
     </section>
 
     <section id="api">
