@@ -76,11 +76,6 @@
 
     <section id="data-structures">
       <h2>Internal Data Structures</h2>
-      <ul>
-        <li>explicam care sunt modelele de date folosite, cum sunt structurate</li>
-        <li>baza de date utilizata</li>
-        <li>cum sunt accesate aceste date, modele de date, etc</li>
-      </ul>
 
       <p>
         The application processes data in RDF format, specifically RDFa and HTML5 microdata
@@ -147,28 +142,30 @@
       </ul>
 
       <p>
-        The applicaiton exposes a RESTful API implemented in Flask. The API allows users to 
+        The application exposes a RESTful API implemented in Flask. The API allows users to
         interact with the system and perform the four key operations: visualization, classification, comparison, 
         and alignment. Each operation is associated with a set of endpoints that handle user input, 
-        execute SPAQRL queries, and return the results.
+        execute SPARQL queries, and return the results.
       </p>
 
-      <p>
-        Enpoints exposed by the application:
-        <ol>
+      <p>Below is an overview of the endpoints exposed by the application:</p>
+      <ol>
           <li>
-            Vizualization Operation:
+            Visualization Operation:
             <ul>
 
             </ul>
           </li>
-          
+
           <li>
             Classification Operation:
             <ul>
-                <li><code>/api/classify</code></li>
-                <li><code>/api/classify/stats</code></li>
-                <li><code>/api/classify/graph</code></li>
+                <li><code>/api/classify</code> - Receives a class and a property from the user and returns, based on the
+                  'Accept' header, the results in JSON, JSON-LD, or HTML.</li>
+                <li><code>/api/classify/stats</code> - Uses the result from <code>/api/classify</code> and creates a graph to
+                  easily visualize the results.</li>
+                <li><code>/api/classify/graph</code> - Uses the result from <code>/api/classify</code> and creates
+                  statistics using RDF Data Cube vocabulary. It also creates two temporary files with the results in JSON-LD format.</li>
             </ul>
           </li>
 
@@ -182,20 +179,47 @@
           <li>
             Alignment Operation:
             <ul>
-                <li><code>/api/align</code></li>
-                <li><code>/api/align/stats</code></li>
-                <li><code>/api/align/table</code></li>
+                <li><code>/api/align</code> - Receives from the user an ontology name, and returns a temporary file with the
+                  results of the alignment process.</li>
+                <li><code>/api/align/stats</code> - Receives the results from <code>/api/align</code> and creates
+                  statistics using RDF Data Cube vocabulary. It also creates a temporary file with the result in JSON-LD format.</li>
+                <li><code>/api/align/table</code> - Receives teh results from <code>/api/align</code> and creates a table to easily
+                  visualize the results.</li>
             </ul>
           </li>
 
           <li>
             Other endpoints:
             <ul>
-
+                <li><code>/api/properties</code> - Receives the class from the user and returns all the unique properties the
+                class has in Fuseki server.</li>
+                <li><code>/api/download-stats</code> - Receives a path and makes it downloadable.</li>
             </ul>
           </li>
-        </ol>
+      </ol>
+
+      <p>
+        Below are some example requests for each operation:
       </p>
+
+      <pre>
+        <code>
+          # Examples for Visualization
+        </code>
+
+        <code>
+          # Examples for Classification
+        </code>
+
+        <code>
+          # Examples for Comparison
+        </code>
+
+        <code>
+          # Examples for Alignment
+        </code>
+
+      </pre>
 
     </section>
 
