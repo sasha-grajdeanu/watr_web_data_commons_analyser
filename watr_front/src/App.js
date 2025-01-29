@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Classification from './components/Classification';
 import Visualize from './components/Visualize';
+import Compare from './components/Compare';
 
 
 const Home = () => <div className='body'><h1>Welcome to the Dashboard</h1></div>
 // const Visualize = () => <div className="body"><h1>Visualize Data</h1></div>;
-const Compare = () => <div className="body"><h1>Comparison Page</h1></div>;
+// const Compare = () => <div className="body"><h1>Comparison Page</h1></div>;
 const Align = () => <div className="body"><h1>Alignment Page</h1></div>;
 
 
