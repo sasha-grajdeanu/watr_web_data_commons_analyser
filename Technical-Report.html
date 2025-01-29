@@ -135,11 +135,6 @@
 
     <section id="api">
       <h2>API Implementation</h2>
-      <ul>
-        <li>descrierea API-ului REST implementat</li>
-        <li>endpoint-urile disponibile, cum sa acceseaza, ce date se transmit/primesc</li>
-        <li>exemple de cereri</li>
-      </ul>
 
       <p>
         The application exposes a RESTful API implemented in Flask. The API allows users to
@@ -208,7 +203,27 @@
         </code>
 
         <code>
-          # Examples for Classification
+          # Example of GET request to the main classification endpoint
+          GET /api/classify?class=AdministrativeArea&property=schema:address
+          Accept: */*
+          Response:
+          [
+              {
+                  "blankNode": "https://archiipedia.com/#PostalAddress",
+                  "initial_predicate": "http://schema.org/address",
+                  "initial_subject": "https://archiipedia.com/#AdministrativeArea",
+                  "level1_object": "http://schema.org/PostalAddress",
+                  "level1_predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+              },
+              {
+                  "blankNode": "https://archiipedia.com/#PostalAddress",
+                  "initial_predicate": "http://schema.org/address",
+                  "initial_subject": "https://archiipedia.com/#AdministrativeArea",
+                  "level1_object": "india",
+                  "level1_predicate": "http://schema.org/addressCountry"
+              }
+            ...
+          ]
         </code>
 
         <code>
@@ -216,7 +231,61 @@
         </code>
 
         <code>
-          # Examples for Alignment
+          # Example of GET request to the main alignment endpoint
+          GET api/align?target=schema.org
+          Accept: */*
+          Response:
+          C:\Users\ENBYSE~1\AppData\Local\Temp\tmpe_ck29uf.nt
+
+          # Example of GET request to the results table generated for alignment operation
+          GET api/align/table?target=schema.org
+          Accept: */*
+          Response:
+          "results": [
+                        {
+                            "alignedEntity": "https://schema.org/Mountain",
+                            "measure": "0.99",
+                            "originalEntity": "http://schema.org/Mountain",
+                            "relation": "="
+                        },
+                        {
+                            "alignedEntity": "https://schema.org/JobPosting",
+                            "measure": "0.99",
+                            "originalEntity": "http://schema.org/JobPosting",
+                            "relation": "="
+                        },
+                        {
+                            "alignedEntity": "https://schema.org/State",
+                            "measure": "0.99",
+                            "originalEntity": "http://schema.org/State",
+                            "relation": "="
+                        },
+                        {
+                            "alignedEntity": "https://schema.org/Brand",
+                            "measure": "0.99",
+                            "originalEntity": "http://schema.org/Brand",
+                            "relation": "="
+                        }
+                        ...
+                      ]
+        </code>
+
+        <code>
+          # Example of GET request to the properties endpoint
+          GET /api/properties?class=AdministrativeArea
+          Accept: */*
+          Response:
+          [
+              "rdf:type",
+              "schema:address",
+              "schema:containsPlace",
+              "schema:geo",
+              "schema:name",
+              "schema:url",
+              "schema:hasMap",
+              "schema:mainEntityOfPage",
+              "schema:sameAs"
+          ]
         </code>
 
       </pre>
