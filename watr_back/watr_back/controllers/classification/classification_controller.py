@@ -6,9 +6,9 @@ from watr_back.services.classification.classification_service import convert_res
 
 classification = Blueprint('classification', __name__)
 
-@classification.route('/classify', methods=['POST'])
+@classification.route('/classify', methods=['GET'])
 def classify():
-    data = request.json
+    data = request.args
     rdf_class = data.get('class')
     rdf_property =data.get('property')
 

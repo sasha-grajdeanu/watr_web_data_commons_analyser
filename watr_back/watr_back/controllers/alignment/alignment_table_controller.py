@@ -7,7 +7,7 @@ from watr_back.services.alignment.alignment_table_service import \
 
 alignmentTable = Blueprint('alignmentTable', __name__)
 
-@alignmentTable.route('/align/table', methods=['POST'])
+@alignmentTable.route('/align/table', methods=['GET'])
 def align_table():
     align_data = controller_align()
     results = service_get_alignment_table(align_data)

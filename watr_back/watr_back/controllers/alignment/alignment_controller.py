@@ -8,10 +8,9 @@ from watr_back.services.alignment.alignment_service import convert_results_to_js
 
 alignment = Blueprint('alignment', __name__)
 
-@alignment.route('/align', methods=['POST'])
+@alignment.route('/align', methods=['GET'])
 def align():
-    data = request.json
-    target_ontology = data.get('target')
+    target_ontology = request.args.get('target')
 
     if not target_ontology or not isinstance(target_ontology, str):
         abort(400, description="Invalid or missing 'target' parameter")

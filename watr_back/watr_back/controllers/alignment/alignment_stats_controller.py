@@ -6,7 +6,7 @@ from watr_back.services.alignment.alignment_stats_service import \
 
 alignmentStats = Blueprint('alignmentStats', __name__)
 
-@alignmentStats.route('align/stats', methods=['POST'])
+@alignmentStats.route('align/stats', methods=['GET'])
 def alignment_stats():
     align_data = controller_align()
     results = service_get_alignment_stats(align_data)

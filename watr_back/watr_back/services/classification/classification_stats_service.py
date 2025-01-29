@@ -1,6 +1,6 @@
 import tempfile
 
-from flask import abort
+from flask import abort, jsonify
 from rdflib import Graph, Namespace, URIRef, Literal, BNode, RDFS
 from rdflib.namespace import RDF, XSD
 from requests import delete
@@ -56,10 +56,10 @@ def get_classification_stats(classify_data):
         json = simplify_json_ld(json_ld)
         unique_json = simplify_json_ld(unique_json_ld)
 
-        return {"data": json,
+        return jsonify({"data": json,
                 "unique_data": unique_json,
                 "graph_file": graph_path,
-                "unique_graph_file": unique_graph_path}, 200
+                "unique_graph_file": unique_graph_path}), 200
 
     except Exception as e:
         return abort(500, f"An error occurred: {e}")
