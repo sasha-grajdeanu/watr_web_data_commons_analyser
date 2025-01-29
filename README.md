@@ -52,8 +52,8 @@
 - [Getting Started](#toolbox-getting-started)
   * [Prerequisites](#bangbang-prerequisites)
   * [Installation](#gear-installation)
-  * [Running Tests](#test_tube-running-tests)
   * [Run Locally](#running-run-locally)
+  * [Running Tests](#test_tube-running-tests)
   * [Deployment](#triangular_flag_on_post-deployment)
 - [Usage](#eyes-usage)
 - [Contributing](#wave-contributing)
@@ -80,7 +80,6 @@
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
     <li><a href="https://reactjs.org/">React.js</a></li>
   </ul>
 </details>
@@ -89,14 +88,20 @@
   <summary>Server</summary>
   <ul>
     <li><a href="https://flask.palletsprojects.com/">Flask</a></li>
-    <li><a href="https://github.com/AgreementMakerLight/AML-Project">Agreement Maker Light (AML)</a> </li>
   </ul>
 </details>
 
 <details>
-<summary>Database</summary>
+<summary>Database/Triple Store</summary>
   <ul>
     <li><a href="https://jena.apache.org/documentation/fuseki2/">Apache Jena Fuseki</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Ontology Matching</summary>
+  <ul>
+    <li><a href="https://github.com/AgreementMakerLight/AML-Project">Agreement Maker Light (AML)</a> </li>
   </ul>
 </details>
 
@@ -141,30 +146,16 @@ To run this project, you will need to add the following environment variables to
 <!-- Prerequisites -->
 ### :bangbang: Prerequisites
 
-- Install AgreementMakerLight (AML): [Download AML v3.2](https://github.com/AgreementMakerLight/AML-Project/releases/download/v3.2/AML_v3.2.zip)
-  - After downloading, unzip the file in a directory of your choice (e.g., `C:\` for Windows or `/home/user/` for Linux/macOS). Ensure that you update the path in your `.env` file accordingly.
-- Install Apache Jena Fuseki server: [Download Fuseki v5.3.0](https://dlcdn.apache.org/jena/binaries/apache-jena-fuseki-5.3.0.zip)
-  - Extract the Fuseki server in a directory such as `C:\` (Windows) or `/home/user/` (Linux/macOS).
-
 
 <!-- Installation -->
 ### :gear: Installation
 
-Install my-project with npm
+Install the necessary tools for the project:
+1. [Node.js](https://nodejs.org/) (required)
+2. [Python](https://www.python.org/) (required)
+3. [Apache Jena Fuseki](https://dlcdn.apache.org/jena/binaries/apache-jena-fuseki-5.3.0.zip) (required)
+4. [AgreementMakerLight](https://github.com/AgreementMakerLight/AML-Project/releases/download/v3.2/AML_v3.2.zip) (required)
 
-```bash
-  yarn install my-project
-  cd my-project
-```
-   
-<!-- Running Tests -->
-### :test_tube: Running Tests
-
-To run tests, run the following command
-
-```bash
-  yarn test test
-```
 
 <!-- Run Locally -->
 ### :running: Run Locally
@@ -178,21 +169,40 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd watr_web_data_commons_analyser
 ```
 
 Install dependencies
 
-```bash
-  yarn install
-```
+- pe back o sa fie nevoie de un fisier requirements.txt
+- pe front (???)
 
 Start the server
 
 ```bash
-  yarn start
+# Start the frontend
+cd watr_front ; npm start
+
+# Start the backend
+cd watr_back/watr_back ; python app.py
+
+# Start the Fuseki server
+cd /path/to/fuseki ; fuseki-server --update
 ```
-> **⚠️ Note:** For the backend API to work, you need to have Apache Jena Fuseki running on `http://localhost:3030`
+
+> **⚠️ Note:** For the backend API to work, you need to have Apache Jena Fuseki running on `http://localhost:3030` 
+> with a dataset named `watr-dataset`
+
+
+<!-- Running Tests -->
+### :test_tube: Running Tests
+
+To run tests, run the following command
+
+```bash
+  # yarn test test
+```
+
 
 <!-- Deployment -->
 ### :triangular_flag_on_post: Deployment
@@ -200,7 +210,7 @@ Start the server
 To deploy this project run
 
 ```bash
-  yarn deploy
+  # yarn deploy
 ```
 
 
