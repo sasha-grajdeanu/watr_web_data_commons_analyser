@@ -1,13 +1,10 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import Classification from './components/Classification';
-import Alignment from './components/Alignment';
-
-
-const Home = () => <div className='body'><h1>Welcome to the Dashboard</h1></div>
-const Visualize = () => <div className="body"><h1>Visualize Data</h1></div>;
-const Compare = () => <div className="body"><h1>Comparison Page</h1></div>;
+import Align from './components/Alignment';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Visualize from './components/Visualize';
+import Compare from './components/Compare';
 
 
 function App() {
@@ -20,7 +17,7 @@ function App() {
                     <Route path="/visualize" element={<Visualize />} />
                     <Route path="/classification" element={<Classification />} />
                     <Route path="/compare" element={<Compare />} />
-                    <Route path="/alignment" element={<Alignment />} />
+                    <Route path="/align" element={<Align />} />
                 </Routes>
             </div>
         </Router>
