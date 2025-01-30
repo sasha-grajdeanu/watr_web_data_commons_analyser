@@ -105,15 +105,11 @@ const Classification = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/api/classify/stats", {
-                method: "POST",
+            const response = await fetch(`http://localhost:5000/api/classify/stats?class=${selectedClass}&property=${selectedProperty}`, {
+                method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    class: selectedClass,
-                    property: selectedProperty,
-                }),
+                },  
             });
 
             if (!response.ok) {
@@ -126,15 +122,12 @@ const Classification = () => {
             setGraphFile(data.graph_file);
             setUniqueGraphFile(data.unique_graph_file);
 
-            const graphmlResponse = await fetch("http://localhost:5000/api/classify/graph", {
-                method: "POST",
+            const graphmlResponse = await fetch(`http://localhost:5000/api/classify/graph?class=${selectedClass}&property=${selectedProperty}`, {
+                method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    class: selectedClass,
-                    property: selectedProperty,
-                }),
+               
             });
 
             if (!graphmlResponse.ok) {
