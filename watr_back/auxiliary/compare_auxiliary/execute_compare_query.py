@@ -4,7 +4,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 from sparql_queries.comparation_queries import COMPARATION_QUERY
 
-sparql = SPARQLWrapper(os.environ['SPARQL_ENDPOINT'])
+sparql = SPARQLWrapper(os.getenv('SPARQL_ENDPOINT'))
 
 
 def execute_compare_sparql_query(class_one, class_two):

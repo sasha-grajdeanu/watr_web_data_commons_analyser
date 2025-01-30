@@ -9,7 +9,7 @@ from SPARQLWrapper import SPARQLWrapper, TURTLE
 
 from sparql_queries.alignment_queries import ALIGNMENT_QUERY
 
-sparql = SPARQLWrapper(os.environ['SPARQL_ENDPOINT'])
+sparql = SPARQLWrapper(os.getenv('SPARQL_ENDPOINT'))
 
 NAMESPACES = {
     'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',

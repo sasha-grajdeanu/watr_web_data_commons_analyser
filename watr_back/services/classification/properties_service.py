@@ -5,7 +5,7 @@ from flask import jsonify
 
 from sparql_queries.properties_queries import GET_DISTINCT_PROPERTIES
 
-sparql = SPARQLWrapper(os.environ['SPARQL_ENDPOINT'])
+sparql = SPARQLWrapper(os.getenv('SPARQL_ENDPOINT'))
 
 
 def get_properties(rdf_class):

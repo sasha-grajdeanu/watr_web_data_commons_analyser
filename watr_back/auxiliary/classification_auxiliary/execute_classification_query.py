@@ -4,7 +4,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 from sparql_queries.classification_queries import CLASSIFY_QUERY
 
-sparql = SPARQLWrapper(os.environ['SPARQL_ENDPOINT'])
+sparql = SPARQLWrapper(os.getenv('SPARQL_ENDPOINT'))
 
 
 def execute_classification_query(rdf_class, rdf_property):
