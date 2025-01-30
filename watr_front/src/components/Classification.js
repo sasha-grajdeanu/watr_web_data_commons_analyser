@@ -203,11 +203,11 @@ const Classification = () => {
                 <div>
                     <div className="download-buttons">
                         <p>Download stats:</p>
-                        <button onClick={() => handleDownload(graphFile)}>Download File 1</button>
-                        <button onClick={() => handleDownload(uniqueGraphFile)}>Download File 2</button>
+                        <button onClick={() => handleDownload(graphFile)}>Download Levels Distribution Statistics</button>
+                        <button onClick={() => handleDownload(uniqueGraphFile)}>Download Unique Subjects Distribution Statistics</button>
                     </div>
                     <div className="stats-summary">
-                        <p><strong>Unique Objects Count:</strong> {moreStats.length}</p>
+                        <p><strong>Unique Subjects Count:</strong> {moreStats.length}</p>
                         {
                             moreStats.map((item, index) => (
                                 <p id="stats-summary-p" key={index}>

@@ -25,15 +25,13 @@ const Alignment = () => {
 
 
         try{
-            const response = await fetch("http://localhost:5000/api/align/table",
+            const response = await fetch(`http://localhost:5000/api/align/table?target=${selectedTarget}`,
                 {
-                    method: "POST",
+                    method: "GET",
                     headers:{
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({
-                        target: selectedTarget
-                    })
+                    
                 }
             );
 
@@ -44,14 +42,12 @@ const Alignment = () => {
             const data = await response.json();
             setResults(data.results);
 
-            const statsResponse = await fetch("http://localhost:5000/api/align/stats", {
-                method: "POST",
+            const statsResponse = await fetch(`http://localhost:5000/api/align/stats?target=${selectedTarget}`, {
+                method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    target: selectedTarget
-                }),
+                
             });
 
             if (!response.ok) {
@@ -117,7 +113,7 @@ const Alignment = () => {
                     <div>
                         <div className="download-buttons">
                             <p>Download stats:</p>
-                            <button onClick={() => handleDownload(graphFile)}>Download File 1</button>
+                            <button onClick={() => handleDownload(graphFile)}>Download Statistics</button>
                         </div>
                         <div className="stats-summary">
                             <p><strong>Average Measure:</strong> {stats}</p>
