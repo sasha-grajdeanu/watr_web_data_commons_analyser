@@ -1,6 +1,6 @@
 from flask import Blueprint, request, abort
 
-from watr_back.services.classification.properties_service import get_properties as service_get_properties
+from services.classification.properties_service import get_properties as service_get_properties
 
 properties = Blueprint('properties', __name__)
 

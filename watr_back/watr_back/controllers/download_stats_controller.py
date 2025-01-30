@@ -1,6 +1,6 @@
 from flask import Blueprint, request, abort
 
-from watr_back.services.download_stats_service import download_stats as service_get_graph_file
+from services.download_stats_service import download_stats as service_get_graph_file
 
 
 downloadStats = Blueprint('download-stats', __name__)

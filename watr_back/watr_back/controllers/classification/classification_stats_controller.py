@@ -1,7 +1,7 @@
 from flask import Blueprint
 
-from watr_back.controllers.classification.classification_controller import classify as controller_classify
-from watr_back.services.classification.classification_stats_service import \
+from controllers.classification.classification_controller import classify as controller_classify
+from services.classification.classification_stats_service import \
     get_classification_stats as service_get_classification_stats
 
 classificationStats = Blueprint('classificationStats', __name__)

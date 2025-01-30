@@ -29,6 +29,7 @@ const Classification = () => {
 
     useEffect(() => {
         if (selectedClass) {
+            console.log("Fetching properties for class: ", selectedClass);
             fetchProperties(selectedClass);
         }
     }, [selectedClass]);

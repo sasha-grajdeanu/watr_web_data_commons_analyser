@@ -7,9 +7,10 @@ import xml.etree.ElementTree as ET
 import rdflib
 from SPARQLWrapper import SPARQLWrapper, TURTLE
 
-from watr_back.sparql_queries.alignment_queries import ALIGNMENT_QUERY
+from enviromment.enviromment import SPARQL_ENDPOINT
+from sparql_queries.alignment_queries import ALIGNMENT_QUERY
 
-sparql = SPARQLWrapper(os.getenv("FUSEKI_URL"))
+sparql = SPARQLWrapper(SPARQL_ENDPOINT)
 
 NAMESPACES = {
     'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
@@ -36,7 +37,7 @@ def align(target_ontology):
     try:
         # comanda AML pentru aliniere
         aml_command = [
-            "java", "-jar", os.getenv("AML_PATH"),
+            "java", "-jar", "C:\\AML_v3.2\\AgreementMakerLight.jar",
             "-s", temp_file.name,
             "-t", ontology_path,
             "-o", output_file.name,

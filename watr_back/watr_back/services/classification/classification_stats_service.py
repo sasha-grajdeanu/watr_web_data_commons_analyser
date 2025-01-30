@@ -3,7 +3,6 @@ import tempfile
 from flask import abort, jsonify
 from rdflib import Graph, Namespace, URIRef, Literal, BNode, RDFS
 from rdflib.namespace import RDF, XSD
-from requests import delete
 
 RDF = Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
 QB = Namespace("http://purl.org/linked-data/cube#")

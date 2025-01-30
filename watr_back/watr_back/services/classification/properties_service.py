@@ -3,9 +3,10 @@ import os
 from SPARQLWrapper import SPARQLWrapper, JSON
 from flask import jsonify
 
-from watr_back.sparql_queries.properties_queries import GET_DISTINCT_PROPERTIES
+from enviromment.enviromment import SPARQL_ENDPOINT
+from sparql_queries.properties_queries import GET_DISTINCT_PROPERTIES
 
-sparql = SPARQLWrapper(os.getenv("FUSEKI_URL"))
+sparql = SPARQLWrapper(SPARQL_ENDPOINT)
 
 def get_properties(rdf_class):
     sparql_query = GET_DISTINCT_PROPERTIES.format(rdf_class=rdf_class)

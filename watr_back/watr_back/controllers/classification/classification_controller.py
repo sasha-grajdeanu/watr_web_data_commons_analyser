@@ -1,8 +1,8 @@
 from flask import Blueprint, abort, request
 
-from watr_back.services.classification.classification_service import classify as service_classify
-from watr_back.services.classification.classification_service import convert_results_to_html as html_converter
-from watr_back.services.classification.classification_service import convert_results_to_jsonld as jsonld_converter
+from services.classification.classification_service import classify as service_classify
+from services.classification.classification_service import convert_results_to_html as html_converter
+from services.classification.classification_service import convert_results_to_jsonld as jsonld_converter
 
 classification = Blueprint('classification', __name__)
 

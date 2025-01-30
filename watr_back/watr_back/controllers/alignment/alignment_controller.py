@@ -1,8 +1,8 @@
 from flask import Blueprint, request, abort
 
-from watr_back.services.alignment.alignment_service import align as service_align
-from watr_back.services.alignment.alignment_service import convert_results_to_html as html_converter
-from watr_back.services.alignment.alignment_service import convert_results_to_jsonld as jsonld_converter
+from services.alignment.alignment_service import align as service_align
+from services.alignment.alignment_service import convert_results_to_html as html_converter
+from services.alignment.alignment_service import convert_results_to_jsonld as jsonld_converter
 
 
 

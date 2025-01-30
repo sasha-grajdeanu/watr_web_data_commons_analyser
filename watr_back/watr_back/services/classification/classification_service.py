@@ -3,9 +3,10 @@ import os
 from SPARQLWrapper import SPARQLWrapper, JSON
 from flask import abort
 
-from watr_back.sparql_queries.classification_queries import CLASSIFY_QUERY
+from enviromment.enviromment import SPARQL_ENDPOINT
+from sparql_queries.classification_queries import CLASSIFY_QUERY
 
-sparql = SPARQLWrapper(os.getenv("FUSEKI_URL"))
+sparql = SPARQLWrapper(SPARQL_ENDPOINT)
 
 
 def classify(rdf_class, rdf_property):
