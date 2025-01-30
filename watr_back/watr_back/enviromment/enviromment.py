@@ -1,1 +1,0 @@
-SPARQL_ENDPOINT = "http://localhost:3030/watr-dataset/sparql"
