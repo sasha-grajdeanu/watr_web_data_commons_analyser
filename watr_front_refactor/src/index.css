@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-watr-100: #1a4078;
+    --color-watr-200: #686ea7;
+    --color-watr-300: #aea8d6;
+    --color-watr-400: #ebdded;
+    --color-watr-500: #f3f3f3;
+    --font-montserrat: 'Montserrat', monospace;
+    --font-exo: 'Exo 2', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+}
