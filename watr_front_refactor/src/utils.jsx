@@ -50,3 +50,6 @@ export const classOptions = [
     "TVEpisode",
     "TelevisionStation",
   ];
+
+
+export const uriRequest = "http://localhost:5000/api/";
