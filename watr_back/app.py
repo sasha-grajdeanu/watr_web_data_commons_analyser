@@ -4,8 +4,11 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
 
-from controllers.alignment.alignment_controller import alignment
+from controllers.alignment.alignment_brute_data_controller import alignment
+from controllers.alignment.alignment_html_controller import alignment_html
+from controllers.alignment.alignment_json_ld_controller import alignment_json_ld
 from controllers.alignment.alignment_stats_controller import alignmentStats
+from controllers.alignment.alignment_stats_graph_controller import alignmentStatsGraph
 from controllers.alignment.alignment_table_controller import alignmentTable
 from controllers.classification.classification_data_controller import classification
 from controllers.classification.classification_graph_controller import classificationGraph
@@ -55,9 +58,13 @@ app.register_blueprint(classificationStatsGraph, url_prefix='/api/classify')
 app.register_blueprint(classification_json_ld, url_prefix='/api/classify')
 app.register_blueprint(classification_html, url_prefix='/api/classify')
 
-app.register_blueprint(alignment, url_prefix='/api')
-app.register_blueprint(alignmentTable, url_prefix='/api')
-app.register_blueprint(alignmentStats, url_prefix='/api')
+app.register_blueprint(alignment, url_prefix='/api/align')
+app.register_blueprint(alignment_html, url_prefix='/api/align')
+app.register_blueprint(alignment_json_ld, url_prefix='/api/align')
+app.register_blueprint(alignmentTable, url_prefix='/api/align')
+app.register_blueprint(alignmentStats, url_prefix='/api/align')
+app.register_blueprint(alignmentStatsGraph, url_prefix='/api/align')
+
 
 app.register_blueprint(downloadStats, url_prefix='/api')
 

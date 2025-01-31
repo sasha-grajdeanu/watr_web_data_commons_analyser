@@ -1,12 +1,11 @@
 from flask import Blueprint, request, abort
 
-from services.alignment.alignment_stats_service import \
-    alignment_stats_service
+from services.alignment.alignment_stats_graph_service import alignment_stats_graph_service
 
-alignmentStats = Blueprint('alignmentStats', __name__)
+alignmentStatsGraph = Blueprint('alignmentStatsGraph', __name__)
 
 
-@alignmentStats.route('/statistics', methods=['GET'])
+@alignmentStatsGraph.route('/statistics/graph', methods=['GET'])
 def alignment_stats():
     """
     Controller function to create statistics for alignment in
@@ -17,6 +16,6 @@ def alignment_stats():
     if not target_ontology or not isinstance(target_ontology, str):
         abort(400, description="Invalid or missing 'target' parameter")
 
-    result_path = alignment_stats_service(target_ontology)
+    result_path = alignment_stats_graph_service(target_ontology)
 
     return result_path

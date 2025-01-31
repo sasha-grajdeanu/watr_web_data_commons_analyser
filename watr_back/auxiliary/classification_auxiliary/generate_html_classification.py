@@ -12,7 +12,7 @@ def generate_html_classification(results):
                 <title>Classification Results</title>
             </head>
             <body>
-                <h1>Classification Results</h1>
+                <h2>Classification Results</h2>
                 <table>
                     <thead>
                         <tr>

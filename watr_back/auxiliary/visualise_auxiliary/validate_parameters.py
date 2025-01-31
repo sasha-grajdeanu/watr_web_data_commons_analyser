@@ -9,6 +9,7 @@ def validate_rdf_class(rdf_class):
         abort(400, description="The 'class' parameter is required and must be a string.")
     return rdf_class
 
+
 def validate_limit_and_count_limit(limit_param, count_limit_param):
     """
     Validates the 'limit' and 'count_limit' query parameters.

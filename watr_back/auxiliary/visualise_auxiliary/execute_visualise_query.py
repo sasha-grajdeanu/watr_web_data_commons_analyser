@@ -1,9 +1,11 @@
 import os
 
 from SPARQLWrapper import SPARQLWrapper, JSON
+
 from sparql_queries.visualise_queries import VISUALISE_QUERY
 
 sparql = SPARQLWrapper(os.getenv('SPARQL_ENDPOINT'))
+
 
 def execute_sparql_query(rdf_class, limit, count_limit):
     """
