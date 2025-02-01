@@ -1,0 +1,1619 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Swagger WATR - OpenAPI 3.0",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.11"
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Visualization",
+      "description": "Endpoints for visualisation operation."
+    },
+    {
+      "name": "Classification",
+      "description": "Endpoints for classification operation."
+    },
+    {
+      "name": "Comparison",
+      "description": "Endpoints for comparison operation."
+    },
+    {
+      "name": "Alignment",
+      "description": "Endpoints for alignment operation."
+    },
+    {
+      "name": "Download",
+      "description": "Endpoint for downloading (used in classification and alignment)"
+    }
+  ],
+  "paths": {
+    "/visualise/data": {
+      "get": {
+        "tags": [
+          "Visualization"
+        ],
+        "summary": "Visualise data based on provided parameters",
+        "description": "Visualise data in various formats (JSON, HTML, JSON-LD)",
+        "operationId": "visualiseData",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Choose to limit the number of items returned",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "count_limit",
+            "in": "query",
+            "description": "Count limit for data to be visualised",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "entity": {
+                        "type": "string"
+                      },
+                      "property": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/ld+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/visualise/html": {
+      "get": {
+        "tags": [
+          "Visualization"
+        ],
+        "summary": "Visualise data in HTML format",
+        "description": "Visualises the data filtered by the provided RDF class, with an optional limit and count limit, returning the data in an HTML format",
+        "operationId": "visualiseHTML",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Choose to limit the number of items returned",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "count_limit",
+            "in": "query",
+            "description": "Count limit for data to be visualised",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/visualise/json_ld": {
+      "get": {
+        "tags": [
+          "Visualization"
+        ],
+        "summary": "Visualise data in JSON-LD format",
+        "description": "Visualises the data filtered by the provided RDF class, with an optional limit and count limit, returning the data in an JSON-LD format",
+        "operationId": "visualiseJSONLD",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Choose to limit the number of items returned",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "count_limit",
+            "in": "query",
+            "description": "Count limit for data to be visualised",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "type": "string"
+                    },
+                    "@graph": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "entity": {
+                            "type": "string"
+                          },
+                          "property": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "@type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/visualise/graph": {
+      "get": {
+        "tags": [
+          "Visualization"
+        ],
+        "summary": "Visualise data as a graph",
+        "description": "Visualises the data filtered by the provided RDF class, with an optional limit and count limit, returning the data as a GraphML file",
+        "operationId": "visualiseGraph",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Choose to limit the number of items returned",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "count_limit",
+            "in": "query",
+            "description": "Count limit for data to be visualised",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/visualise/statistics": {
+      "get": {
+        "tags": [
+          "Visualization"
+        ],
+        "summary": "Create statistics for visualisation operation",
+        "description": "Creates statistics for visualisation, such as the properties types and their distribution, types of entities within class, how many unique entities, and the value types distribution",
+        "operationId": "visualiseStats",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Choose to limit the number of items returned",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "count_limit",
+            "in": "query",
+            "description": "Count limit for data to be visualised",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "properties_type": {
+                      "type": "object"
+                    },
+                    "type_entity": {
+                      "type": "object"
+                    },
+                    "unique_entities": {
+                      "type": "integer"
+                    },
+                    "value_type": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/visualise/download_statistics": {
+      "get": {
+        "tags": [
+          "Visualization"
+        ],
+        "summary": "Download visualisation statistics in JSON-LD format",
+        "description": "This endpoint allows you to download visualisation statistics filtered by RDF class. You can also limit the number of returned items and specify a count limit.",
+        "operationId": "visualiseStatsDownload",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Choose to limit the number of items returned",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "count_limit",
+            "in": "query",
+            "description": "Count limit for data to be visualised",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/classify/properties": {
+      "get": {
+        "tags": [
+          "Classification"
+        ],
+        "summary": "Get the unique properties of a class",
+        "description": "Having a RDF class, this endpoint returns the unique properties of that class.",
+        "operationId": "classifyProperties",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/classify/data": {
+      "get": {
+        "tags": [
+          "Classification"
+        ],
+        "summary": "Classify data based on provided parameters",
+        "description": "Classify the data filtered by the provided RDF class and property, returning the data in various formats (JSON, HTML, JSON-LD)",
+        "operationId": "classifyData",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "property",
+            "in": "query",
+            "description": "The property to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "initial_subject": {
+                        "type": "string"
+                      },
+                      "initial_predicate": {
+                        "type": "string"
+                      },
+                      "blankNode": {
+                        "type": "string"
+                      },
+                      "level1_predicate": {
+                        "type": "string"
+                      },
+                      "level1_object": {
+                        "type": "string"
+                      },
+                      "level2_predicate": {
+                        "type": "string"
+                      },
+                      "level2_object": {
+                        "type": "string"
+                      },
+                      "level3_predicate": {
+                        "type": "string"
+                      },
+                      "level3_object": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/ld+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/classify/html": {
+      "get": {
+        "tags": [
+          "Classification"
+        ],
+        "summary": "Classify data and return results in HTML format",
+        "description": "Classify the data filtered by the provided RDF class and property, returning the data in HTML format",
+        "operationId": "classifyHTML",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "property",
+            "in": "query",
+            "description": "The property to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/classify/json_ld": {
+      "get": {
+        "tags": [
+          "Classification"
+        ],
+        "summary": "Classify data and return results in JSON-LD format",
+        "description": "Classify the data filtered by the provided RDF class and property, returning the data in JSON-LD format.",
+        "operationId": "classifyJSONLD",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "property",
+            "in": "query",
+            "description": "The property to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/classify/graph": {
+      "get": {
+        "tags": [
+          "Classification"
+        ],
+        "summary": "Classify data based on provided parameters and create a graph visualisation",
+        "description": "Classify the data filtered by the provided RDF class and property, returning the data as a GraphML file",
+        "operationId": "classifyData",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "property",
+            "in": "query",
+            "description": "The property to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/classify/statistics": {
+      "get": {
+        "tags": [
+          "Classification"
+        ],
+        "summary": "Create statistics for classification operation",
+        "description": "Creates statistics for classification, such as the depth of a subject-predicate pair, and the distribution of unique subjects.",
+        "operationId": "classifyData",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "property",
+            "in": "query",
+            "description": "The property to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "observations": {
+                      "type": "array",
+                      "properties": {
+                        "initialSubject": {
+                          "type": "string"
+                        },
+                        "initialPredicate": {
+                          "type": "string"
+                        },
+                        "numberOfLevels": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "unique_subjects": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/classify/statistics/graph": {
+      "get": {
+        "tags": [
+          "Classification"
+        ],
+        "summary": "Saves statistics in temporary files for further downloading",
+        "description": "Saves the statistics of the classification operation in temporary files, using RDF Data Cube Vocabulary, for further downloading",
+        "operationId": "classifyStatsGraph",
+        "parameters": [
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The RDF class to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "property",
+            "in": "query",
+            "description": "The property to filter data by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "graph_file": {
+                      "type": "string"
+                    },
+                    "unique_graph_file": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/compare/data": {
+      "get": {
+        "tags": [
+          "Comparison"
+        ],
+        "summary": "Compare data based on provided parameters",
+        "description": "Compare the data provided by two RDF classes, returning the result of the operation in various formats (JSON, HTML, JSON-LD)",
+        "operationId": "compareData",
+        "parameters": [
+          {
+            "name": "class_one",
+            "in": "query",
+            "description": "The first RDF class",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "class_two",
+            "in": "query",
+            "description": "The second RDF class",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "class1Subject": {
+                        "type": "string"
+                      },
+                      "class2Subject": {
+                        "type": "string"
+                      },
+                      "property": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/ld+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/compare/html": {
+      "get": {
+        "tags": [
+          "Comparison"
+        ],
+        "summary": "Compare data based on provided parameters",
+        "description": "Compare the data provided by two RDF classes, returning the result of the operation in HTML format",
+        "operationId": "compareHTML",
+        "parameters": [
+          {
+            "name": "class_one",
+            "in": "query",
+            "description": "The first RDF class",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "class_two",
+            "in": "query",
+            "description": "The second RDF class",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/compare/json_ld": {
+      "get": {
+        "tags": [
+          "Comparison"
+        ],
+        "summary": "Compare data based on provided parameters",
+        "description": "Compare the data provided by two RDF classes, returning the result of the operation in JSON-LD format",
+        "operationId": "compareJSONLD",
+        "parameters": [
+          {
+            "name": "class_one",
+            "in": "query",
+            "description": "The first RDF class",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "class_two",
+            "in": "query",
+            "description": "The second RDF class",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "type": "object"
+                    },
+                    "@graph": {
+                      "type": "array"
+                    },
+                    "@type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/compare/statistics": {
+      "get": {
+        "tags": [
+          "Comparison"
+        ],
+        "summary": "Creates statistics for comparison operation",
+        "description": "Creates statistics for comparison operation, such as the properties of each class, which is the last/most used property, how many properties, which are the unique properties (that don't appear in the other class), or which are the common properties",
+        "operationId": "compareStats",
+        "parameters": [
+          {
+            "name": "class_one",
+            "in": "query",
+            "description": "The first RDF class",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "class_two",
+            "in": "query",
+            "description": "The second RDF class",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "class_one": {
+                      "type": "object",
+                      "properties": {
+                        "last_used": {
+                          "type": "string"
+                        },
+                        "most_used": {
+                          "type": "string"
+                        },
+                        "properties": {
+                          "type": "array"
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        },
+                        "unique_properties": {
+                          "type": "array"
+                        }
+                      }
+                    },
+                    "class_two": {
+                      "type": "object",
+                      "properties": {
+                        "last_used": {
+                          "type": "string"
+                        },
+                        "most_used": {
+                          "type": "string"
+                        },
+                        "properties": {
+                          "type": "array"
+                        },
+                        "total_count": {
+                          "type": "integer"
+                        },
+                        "unique_properties": {
+                          "type": "array"
+                        }
+                      }
+                    },
+                    "common_properties": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/compare/download_statistics": {
+      "get": {
+        "tags": [
+          "Comparison"
+        ],
+        "summary": "Download comparison statistics in JSON-LD format",
+        "description": "This endpoint allows you to download comparison statistics.",
+        "operationId": "compareStatsDownload",
+        "parameters": [
+          {
+            "name": "class_one",
+            "in": "query",
+            "description": "The first RDF class",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "class_two",
+            "in": "query",
+            "description": "The second RDF class",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/align/data": {
+      "get": {
+        "tags": [
+          "Alignment"
+        ],
+        "summary": "Align data based on a provided parameter",
+        "description": "Align the data to an ontology provided, returning the result of the operation in various formats (JSON, HTML, JSON-LD)",
+        "operationId": "alignData",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "description": "The ontology target",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/ld+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/align/html": {
+      "get": {
+        "tags": [
+          "Alignment"
+        ],
+        "summary": "Align data based on a provided parameter",
+        "description": "Align the data to an ontology provided, returning the result of the operation in HTML format",
+        "operationId": "alignHTML",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "description": "The ontology target",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/align/json_ld": {
+      "get": {
+        "tags": [
+          "Alignment"
+        ],
+        "summary": "Align data based on a provided parameter",
+        "description": "Align the data to an ontology provided, returning the result of the operation in JSON-LD format",
+        "operationId": "alignJSONLD",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "description": "The ontology target",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@context": {
+                      "type": "object",
+                      "properties": {
+                        "alignment": {
+                          "type": "string"
+                        },
+                        "rdf": {
+                          "type": "string"
+                        },
+                        "schema": {
+                          "type": "string"
+                        },
+                        "xsd": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "@graph": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@type": {
+                            "type": "string"
+                          },
+                          "targetOntologySubject": {
+                            "type": "object",
+                            "properties": {
+                              "@value": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "WATROntologySubj": {
+                            "type": "object",
+                            "properties": {
+                              "@value": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "measure": {
+                            "type": "object",
+                            "properties": {
+                              "@type": {
+                                "type": "string"
+                              },
+                              "@value": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "relation": {
+                            "type": "object",
+                            "properties": {
+                              "@value": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "@type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/align/table": {
+      "get": {
+        "tags": [
+          "Alignment"
+        ],
+        "summary": "Align data based on a provided parameter",
+        "description": "Align the data to an ontology provided, returning the result of the operation in JSON format, to further create a table",
+        "operationId": "alignTable",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "description": "The ontology target",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "alignedEntity": {
+                        "type": "string"
+                      },
+                      "measure": {
+                        "type": "string"
+                      },
+                      "originalEntity": {
+                        "type": "string"
+                      },
+                      "relation": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/align/statistics": {
+      "get": {
+        "tags": [
+          "Alignment"
+        ],
+        "summary": "Create statistics for alignment operation",
+        "description": "Create statistics for alignment operation, namely the average measure of the alignment",
+        "operationId": "alignStatistics",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "description": "The ontology target",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "average_measure": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/align/statistics/graph": {
+      "get": {
+        "tags": [
+          "Alignment"
+        ],
+        "summary": "Creates statistics in RDF Data Cube vocabulary",
+        "description": "Creates statistics in RDF Data Cube vocabulary for alignment operation, and saves the results in a temporary file for further downloading",
+        "operationId": "alignStatsGraph",
+        "parameters": [
+          {
+            "name": "target",
+            "in": "query",
+            "description": "The ontology target",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/download-stats": {
+      "get": {
+        "tags": [
+          "Download"
+        ],
+        "summary": "Sends the file as an attachment.",
+        "description": "Sends the file as an attachment, where the file name is sent as parameter; it is used in Classification and Alignment operations",
+        "operationId": "download",
+        "parameters": [
+          {
+            "name": "graph_file",
+            "in": "query",
+            "description": "The file that needed to be downloaded",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/turtle": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "The requested format is not supported"
+          },
+          "400": {
+            "description": "Bad request. Missing or invalid parameters."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  }
+}

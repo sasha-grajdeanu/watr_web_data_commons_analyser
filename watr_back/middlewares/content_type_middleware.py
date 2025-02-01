@@ -21,6 +21,8 @@ def content_type_middleware(app):
                 request.accept_mimetype = 'text/html'
             elif 'application/ld+json' in accept_header:
                 request.accept_mimetype = 'application/ld+json'
+            elif 'application/json' in accept_header:
+                request.accept_mimetype = 'application/json'
             else:
                 app.logger.warning(f"415 Unsupported Content-Type: {accept_header}")
                 abort(415, description=f"Accept header is {accept_header}")

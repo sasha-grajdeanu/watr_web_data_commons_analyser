@@ -3,6 +3,8 @@ import logging
 from flask import Flask
 from flask_cors import CORS
 
+from flask_swagger_ui import get_swaggerui_blueprint
+
 from controllers.alignment.alignment_data_controller import alignment
 from controllers.alignment.alignment_html_controller import alignment_html
 from controllers.alignment.alignment_json_ld_controller import alignment_json_ld
@@ -37,6 +39,20 @@ CORS(app)
 
 content_type_middleware(app)
 error_handlers(app)
+
+SWAGGER_URL = '/api/docs'
+API_URL = '/static/swagger.json'
+
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,  # Swagger UI static files will be mapped to '{SWAGGER_URL}/dist/'
+    API_URL,
+    config={  # Swagger UI config overrides
+        'app_name': "Test application"
+    }
+)
+
+app.register_blueprint(swaggerui_blueprint)
+
 
 app.register_blueprint(visualisation_data, url_prefix='/api/visualise')
 app.register_blueprint(visualisation_html, url_prefix='/api/visualise')
