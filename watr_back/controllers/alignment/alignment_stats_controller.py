@@ -17,6 +17,6 @@ def alignment_stats():
     if not target_ontology or not isinstance(target_ontology, str):
         abort(400, description="Invalid or missing 'target' parameter")
 
-    result_path = alignment_stats_service(target_ontology)
+    result = alignment_stats_service(target_ontology)
 
-    return result_path
+    return result

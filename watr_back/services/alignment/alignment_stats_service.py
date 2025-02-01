@@ -27,4 +27,4 @@ def alignment_stats_service(target_ontology):
 
     average_measure = total_measure / total_cells if total_cells > 0 else 0.0
 
-    return average_measure
+    return {"average_measure": average_measure}
