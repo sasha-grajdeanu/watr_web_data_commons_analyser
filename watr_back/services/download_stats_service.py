@@ -1,7 +1,7 @@
 from flask import send_file, abort
 
 
-def download_stats(file_path):
+def download_stats_service(file_path):
     """
     Service function which handles downloading of files
     """

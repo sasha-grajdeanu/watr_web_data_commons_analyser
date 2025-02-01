@@ -6,7 +6,7 @@ classificationStatsGraph = Blueprint('classificationStatsGraph', __name__)
 
 
 @classificationStatsGraph.route('/statistics/graph', methods=['GET'])
-def classify_stats():
+def classification_statistics_graph_controller():
     """
     Controller function for creating statistics for classification.
     """

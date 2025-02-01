@@ -42,7 +42,7 @@ def process_alignment_operation(my_file, target_ontology_path):
     return target_temp_file
 
 
-def get_path(target_ontology):
+def get_ontology_path(target_ontology):
     """
     Get the path to our target ontology
     """

@@ -5,10 +5,6 @@ def content_type_middleware(app):
     """
     Middleware function that sets the corresponding 'accept_mimetype' on the request.
     It runs before each request.
-
-    :param app: Flask application instance
-    :return: None; it modifies the request object based on the 'Accept' header,
-            or return 415 response if media type is unsupported
     """
 
     @app.before_request  # it will run before each request

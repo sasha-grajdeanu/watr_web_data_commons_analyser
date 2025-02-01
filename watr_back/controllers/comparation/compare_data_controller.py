@@ -1,6 +1,6 @@
 from flask import request, Blueprint, abort
 
-from services.comparation.compare_brute_data_service import compare_brute_data_service
+from services.comparation.compare_data_service import compare_data_service
 from services.comparation.compare_html_service import compare_html_service
 from services.comparation.compare_json_ld_service import compare_json_ld_service
 
@@ -8,7 +8,7 @@ compare_data = Blueprint('compare_data', __name__)
 
 
 @compare_data.route('/data', methods=['GET'])
-def compare_brute_data_controller():
+def compare_data_controller():
     """
     Controller function to comp two classes of data.
     """
@@ -19,7 +19,7 @@ def compare_brute_data_controller():
     if not class_one or not class_two:
         abort(400, description="Both 'class_one' and 'class_two' parameters are required.")
 
-    results = compare_brute_data_service(class_one, class_two)
+    results = compare_data_service(class_one, class_two)
 
     accepted_types = ['application/json', 'text/html', 'application/ld+json']
     best_match = request.accept_mimetypes.best_match(accepted_types)

@@ -1,6 +1,6 @@
 from flask import Blueprint, abort, request
 
-from services.classification.classification_brute_data_service import classify as service_classify
+from services.classification.classification_data_service import classification_data_service as service_classify
 from services.classification.classification_html_service import classification_html_service
 from services.classification.classification_json_ld_service import classification_json_ld_service
 
@@ -8,7 +8,7 @@ classification = Blueprint('classification', __name__)
 
 
 @classification.route('/data', methods=['GET'])
-def classify_brute_data_controller():
+def classification_data_controller():
     """
     Controller function to classify based on class and property.
     """

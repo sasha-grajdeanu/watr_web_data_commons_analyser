@@ -1,7 +1,7 @@
 from flask import Response
 
-from auxiliary.visualise_auxiliary.execute_visualise_query import execute_sparql_query
-from auxiliary.visualise_auxiliary.process_sparql_results import process_sparql_results
+from auxiliary.visualise_auxiliary.execute_visualise_query import execute_visualise_query
+from auxiliary.visualise_auxiliary.process_visualise_results import process_visualise_results
 
 
 def visualise_html_service(rdf_class, limit, count_limit):
@@ -9,8 +9,8 @@ def visualise_html_service(rdf_class, limit, count_limit):
     Returns the SPARQL query results as an HTML table.
     """
     try:
-        output = execute_sparql_query(rdf_class, limit, count_limit)
-        init_result = process_sparql_results(output)
+        output = execute_visualise_query(rdf_class, limit, count_limit)
+        init_result = process_visualise_results(output)
 
         html_content = """
         <html lang="en">

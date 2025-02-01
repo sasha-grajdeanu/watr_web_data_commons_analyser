@@ -6,7 +6,7 @@ classificationStats = Blueprint('classificationStats', __name__)
 
 
 @classificationStats.route('/statistics', methods=['GET'])
-def classify_stats():
+def classification_stats_controller():
     """
     Controller function for creating statistics for classification.
     """

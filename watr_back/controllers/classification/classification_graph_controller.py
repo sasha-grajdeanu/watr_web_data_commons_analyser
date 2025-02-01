@@ -1,12 +1,12 @@
 from flask import Blueprint, request, abort
 
-from services.classification.classification_graph_service import generate_graph_data as service_classify_graph
+from services.classification.classification_graph_service import classification_graph_service as service_classify_graph
 
 classificationGraph = Blueprint('classificationGraph', __name__)
 
 
 @classificationGraph.route('/graph', methods=['GET'])
-def classify():
+def classification_graph_controller():
     """
     Controller function to create a graph visualization of the classification.
     """

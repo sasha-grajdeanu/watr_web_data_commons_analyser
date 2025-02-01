@@ -1,16 +1,16 @@
 from flask import jsonify
 
-from auxiliary.visualise_auxiliary.execute_visualise_query import execute_sparql_query
-from auxiliary.visualise_auxiliary.process_sparql_results import process_sparql_results
+from auxiliary.visualise_auxiliary.execute_visualise_query import execute_visualise_query
+from auxiliary.visualise_auxiliary.process_visualise_results import process_visualise_results
 
 
-def visualise_service_json_ld(rdf_class, limit, count_limit):
+def visualise_json_ld_service(rdf_class, limit, count_limit):
     """
     Returns the SPARQL query results as JSON-LD.
     """
     try:
-        output = execute_sparql_query(rdf_class, limit, count_limit)
-        init_result = process_sparql_results(output)
+        output = execute_visualise_query(rdf_class, limit, count_limit)
+        init_result = process_visualise_results(output)
         json_ld = {
             "@context": "http://schema.org",
             '@type': 'Visualisation_results',
@@ -18,7 +18,7 @@ def visualise_service_json_ld(rdf_class, limit, count_limit):
         }
         for row in init_result:
             node = {
-                "entity" : row["entity"],
+                "entity": row["entity"],
                 "property": row["property"],
                 "value": row["value"],
             }

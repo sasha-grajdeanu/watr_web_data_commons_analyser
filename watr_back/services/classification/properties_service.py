@@ -8,7 +8,7 @@ from sparql_queries.properties_queries import GET_DISTINCT_PROPERTIES
 sparql = SPARQLWrapper(os.getenv('SPARQL_ENDPOINT'))
 
 
-def get_properties(rdf_class):
+def properties_service(rdf_class):
     """
     Function that returns the unique properties of a subject
     """

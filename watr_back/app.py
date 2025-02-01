@@ -1,14 +1,13 @@
 import logging
 
-from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
 
-from controllers.alignment.alignment_brute_data_controller import alignment
+from controllers.alignment.alignment_data_controller import alignment
 from controllers.alignment.alignment_html_controller import alignment_html
 from controllers.alignment.alignment_json_ld_controller import alignment_json_ld
-from controllers.alignment.alignment_stats_controller import alignmentStats
-from controllers.alignment.alignment_stats_graph_controller import alignmentStatsGraph
+from controllers.alignment.alignment_statistics_controller import alignmentStats
+from controllers.alignment.alignment_statistics_graph_controller import alignmentStatsGraph
 from controllers.alignment.alignment_table_controller import alignmentTable
 from controllers.classification.classification_data_controller import classification
 from controllers.classification.classification_graph_controller import classificationGraph
@@ -24,6 +23,7 @@ from controllers.comparation.compare_json_ld_controller import compare_json_ld
 from controllers.comparation.compare_statistics_controller import compare_statistics
 from controllers.download_stats_controller import downloadStats
 from controllers.visualisation.visualise__graph_controller import visualisation_graph
+from controllers.visualisation.visualise_data_controller import visualisation_data
 from controllers.visualisation.visualise_download_statistics import download_visualisation_statistics
 from controllers.visualisation.visualise_statistics_controller import visualisation_statistics
 from controllers.visualisation.visualize_html_controller import visualisation_html
@@ -38,25 +38,26 @@ CORS(app)
 content_type_middleware(app)
 error_handlers(app)
 
-app.register_blueprint(visualisation_graph, url_prefix='/api/visualise')
-app.register_blueprint(visualisation_json_ld, url_prefix='/api/visualise')
+app.register_blueprint(visualisation_data, url_prefix='/api/visualise')
 app.register_blueprint(visualisation_html, url_prefix='/api/visualise')
+app.register_blueprint(visualisation_json_ld, url_prefix='/api/visualise')
+app.register_blueprint(visualisation_graph, url_prefix='/api/visualise')
 app.register_blueprint(visualisation_statistics, url_prefix='/api/visualise')
 app.register_blueprint(download_visualisation_statistics, url_prefix='/api/visualise')
 
 app.register_blueprint(compare_data, url_prefix='/api/compare')
-app.register_blueprint(compare_json_ld, url_prefix='/api/compare')
 app.register_blueprint(compare_html, url_prefix='/api/compare')
+app.register_blueprint(compare_json_ld, url_prefix='/api/compare')
 app.register_blueprint(compare_statistics, url_prefix='/api/compare')
 app.register_blueprint(compare_download_statistics, url_prefix='/api/compare')
 
 app.register_blueprint(properties, url_prefix='/api/classify')
 app.register_blueprint(classification, url_prefix='/api/classify')
+app.register_blueprint(classification_html, url_prefix='/api/classify')
+app.register_blueprint(classification_json_ld, url_prefix='/api/classify')
 app.register_blueprint(classificationGraph, url_prefix='/api/classify')
 app.register_blueprint(classificationStats, url_prefix='/api/classify')
 app.register_blueprint(classificationStatsGraph, url_prefix='/api/classify')
-app.register_blueprint(classification_json_ld, url_prefix='/api/classify')
-app.register_blueprint(classification_html, url_prefix='/api/classify')
 
 app.register_blueprint(alignment, url_prefix='/api/align')
 app.register_blueprint(alignment_html, url_prefix='/api/align')
@@ -65,11 +66,10 @@ app.register_blueprint(alignmentTable, url_prefix='/api/align')
 app.register_blueprint(alignmentStats, url_prefix='/api/align')
 app.register_blueprint(alignmentStatsGraph, url_prefix='/api/align')
 
-
 app.register_blueprint(downloadStats, url_prefix='/api')
 
 
-@app.route('/')
+@app.route('/api')
 def hello_world():  # put application's code here
     return 'Hello World!'
 

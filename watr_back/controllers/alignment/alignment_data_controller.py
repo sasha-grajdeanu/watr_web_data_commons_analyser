@@ -2,13 +2,13 @@ from flask import Blueprint, request, abort
 
 from auxiliary.alignment_auxiliary.generate_html_alignment import generate_html_alignment
 from auxiliary.alignment_auxiliary.generate_json_ld_alignment import generate_json_ld_alignment
-from services.alignment.alignment_brute_data_service import align as service_align
+from services.alignment.alignment_data_service import alignment_data_service as service_align
 
 alignment = Blueprint('alignment', __name__)
 
 
 @alignment.route('/data', methods=['GET'])
-def alignment_brute_data_controller():
+def alignment_data_controller():
     """
     Controller function to align based on a chosen ontology
     """

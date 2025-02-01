@@ -1,4 +1,4 @@
-def create_init_graph(init_result):
+def create_graph_base(init_result):
     edges = set()
     for entries in init_result:
         entity = entries.get('entity')

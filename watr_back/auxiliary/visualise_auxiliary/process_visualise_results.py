@@ -1,4 +1,4 @@
-def process_sparql_results(output):
+def process_visualise_results(output):
     """
     Helper function to process SPARQL results into a list of rows.
     """

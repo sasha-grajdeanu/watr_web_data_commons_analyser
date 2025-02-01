@@ -118,6 +118,6 @@ def create_path_stats(graph):
         with open(temp_file.name, "wb") as f:
             graph.serialize(f, format='turtle')
     except Exception as e:
-        print(f"Error: {e}")
+        abort(500, f"Error: {e}")
 
     return temp_file.name

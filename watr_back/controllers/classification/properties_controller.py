@@ -1,12 +1,12 @@
 from flask import Blueprint, request, abort
 
-from services.classification.properties_service import get_properties as service_get_properties
+from services.classification.properties_service import properties_service as service_get_properties
 
 properties = Blueprint('properties', __name__)
 
 
 @properties.route('/properties', methods=['GET'])
-def get_properties():
+def properties_controller():
     """
     Controller function to get properties for classification.
     """

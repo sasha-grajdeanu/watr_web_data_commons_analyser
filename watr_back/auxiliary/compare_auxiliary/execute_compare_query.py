@@ -7,7 +7,7 @@ from sparql_queries.comparation_queries import COMPARATION_QUERY
 sparql = SPARQLWrapper(os.getenv('SPARQL_ENDPOINT'))
 
 
-def execute_compare_sparql_query(class_one, class_two):
+def execute_compare_query(class_one, class_two):
     """
     Helper function to execute the SPARQL query and return the results.
     """

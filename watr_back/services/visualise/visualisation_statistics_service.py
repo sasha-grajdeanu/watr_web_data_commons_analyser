@@ -1,10 +1,25 @@
-from collections import defaultdict
-
-from flask import jsonify
-
-from auxiliary.visualise_auxiliary.execute_visualise_query import execute_sparql_query
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import RDF, RDFS, XSD
+
+from auxiliary.visualise_auxiliary.execute_visualise_query import execute_visualise_query
+
+
+def download_statistics(rdf_class, limit, count_limit):
+    """
+    Controller for handling requests to visualise statistics.
+    """
+    # Validate and extract query parameters
+    init_result = execute_visualise_query(rdf_class, limit, count_limit)
+    res = compute_statistics(init_result)
+    res = model_statistics_with_qb(res)
+    return res
+
+
+def return_statistics(rdf_class, limit, count_limit):
+    init_result = execute_visualise_query(rdf_class, limit, count_limit)
+    res = compute_statistics(init_result)
+    return res
+
 
 def compute_statistics(query_results):
     """
@@ -36,21 +51,18 @@ def compute_statistics(query_results):
         else:
             type_entity[entity['type']] += 1
     # Prepare the statistics
-    print(type_entity)
     properties_type = dict()
     for property in properties_list:
         if property not in properties_type:
             properties_type[property] = 1
         else:
             properties_type[property] += 1
-    print(properties_type)
     value_type = dict()
     for value in values:
         if value['type'] not in value_type:
             value_type[value['type']] = 1
         else:
             value_type[value['type']] += 1
-    print(value_type)
 
     statistics = {
         'unique_entities': len(unique_entities),
@@ -60,6 +72,7 @@ def compute_statistics(query_results):
     }
 
     return statistics
+
 
 def model_statistics_with_qb(statistics, dataset_uri="http://localhost:5000/watr/dataset/statistics"):
     """
@@ -140,7 +153,8 @@ def model_statistics_with_qb(statistics, dataset_uri="http://localhost:5000/watr
         graph.add((observation_uri, RDF.type, QB.Observation))
         graph.add((observation_uri, QB.dataSet, dataset))
         graph.add((observation_uri, entity_type_dim, Literal(entity_type)))
-        graph.add((observation_uri, property_type_dim, Literal("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")))  # Default property
+        graph.add((observation_uri, property_type_dim,
+                   Literal("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")))  # Default property
         graph.add((observation_uri, value_type_dim, Literal("uri")))  # Default value type
         graph.add((observation_uri, count_measure, Literal(count, datatype=XSD.integer)))
         observation_id += 1
@@ -159,22 +173,3 @@ def model_statistics_with_qb(statistics, dataset_uri="http://localhost:5000/watr
     # Serialize the graph to JSON-LD
     json_ld = graph.serialize(format="json-ld", indent=None)
     return json_ld
-
-
-def return_statistics(rdf_class, limit, count_limit):
-    init_result = execute_sparql_query(rdf_class, limit, count_limit)
-    res = compute_statistics(init_result)
-    print(res)
-    return res
-
-
-def download_statistics(rdf_class, limit, count_limit):
-    """
-    Controller for handling requests to visualise statistics.
-    """
-    # Validate and extract query parameters
-    init_result = execute_sparql_query(rdf_class, limit, count_limit)
-    res = compute_statistics(init_result)
-    res = model_statistics_with_qb(res)
-    print(res)
-    return res

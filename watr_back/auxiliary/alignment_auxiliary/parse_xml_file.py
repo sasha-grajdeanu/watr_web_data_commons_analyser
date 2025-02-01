@@ -1,12 +1,14 @@
 import xml.etree.ElementTree as ET
 
+from flask import abort
+
 NAMESPACES = {
     'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
     'alignment': 'http://knowledgeweb.semanticweb.org/heterogeneity/alignment'
 }
 
 
-def parse_file(result_path):
+def parse_xml_file(result_path):
     """
     Function that parse the result file.
     """
@@ -33,10 +35,8 @@ def parse_file(result_path):
                     'relation': relation
                 })
     except ET.ParseError as e:
-        print(f"The provided file is not XML: {e}")
-        return []
+        abort(500, f"The provided file is not XML: {e}")
     except Exception as e:
-        print(f"Error occurred: {e}")
-        return []
+        abort(500, f"Error occurred: {e}")
 
     return alignment_data

@@ -8,7 +8,7 @@ from auxiliary.classification_auxiliary.execute_classification_query import exec
 from auxiliary.classification_auxiliary.process_classification_output import process_classification_output
 
 
-def generate_graph_data(rdf_class, rdf_property):
+def classification_graph_service(rdf_class, rdf_property):
     """
     Service function that returns a graph visualization of the results of classification
     """

@@ -7,7 +7,7 @@ from sparql_queries.visualise_queries import VISUALISE_QUERY
 sparql = SPARQLWrapper(os.getenv('SPARQL_ENDPOINT'))
 
 
-def execute_sparql_query(rdf_class, limit, count_limit):
+def execute_visualise_query(rdf_class, limit, count_limit):
     """
     Helper function to execute the SPARQL query and return the results.
     """

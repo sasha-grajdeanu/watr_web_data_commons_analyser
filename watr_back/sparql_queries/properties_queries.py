@@ -1,4 +1,4 @@
-GET_DISTINCT_PROPERTIES="""
+GET_DISTINCT_PROPERTIES = """
 PREFIX schema: <http://schema.org/>
  SELECT DISTINCT ?property
     WHERE {{

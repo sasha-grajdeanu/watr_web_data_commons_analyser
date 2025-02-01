@@ -17,7 +17,6 @@ def compare_download_statistics_service(class_one, class_two):
     """
     try:
         statistics = compare_statistics_service(class_one, class_two)
-        print(statistics)
         g = Graph()
         g.bind("qb", QB)
         g.bind("rdfs", RDFS)

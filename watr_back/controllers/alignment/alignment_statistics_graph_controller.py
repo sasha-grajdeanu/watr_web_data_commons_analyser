@@ -6,7 +6,7 @@ alignmentStatsGraph = Blueprint('alignmentStatsGraph', __name__)
 
 
 @alignmentStatsGraph.route('/statistics/graph', methods=['GET'])
-def alignment_stats():
+def alignment_statistics_graph_controller():
     """
     Controller function to create statistics for alignment in
     RDF Data Cube vocabulary.

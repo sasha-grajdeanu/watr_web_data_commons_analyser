@@ -1,4 +1,6 @@
-from auxiliary.alignment_auxiliary.parse_xml_file import parse_file
+from flask import abort
+
+from auxiliary.alignment_auxiliary.parse_xml_file import parse_xml_file
 
 
 def generate_json_ld_alignment(result_path, target_ontology):
@@ -6,7 +8,7 @@ def generate_json_ld_alignment(result_path, target_ontology):
     Function that creates the JSON-LD response for alignment
     """
     try:
-        alignment_data = parse_file(result_path)
+        alignment_data = parse_xml_file(result_path)
 
         jsonld = {
             "@context": {
@@ -40,5 +42,4 @@ def generate_json_ld_alignment(result_path, target_ontology):
 
         return jsonld
     except Exception as e:
-        print(f"Error occurred while converting to JSON-LD: {e}")
-        return {}
+        abort(500, description=f"Error occurred while converting to JSON-LD: {str(e)}")

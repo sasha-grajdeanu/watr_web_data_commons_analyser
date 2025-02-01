@@ -1,4 +1,4 @@
-def process_compare_sparql_results(output, class_one, class_two):
+def process_compare_output(output, class_one, class_two):
     """
     Helper function to process SPARQL results for comparison into a list of rows.
     """
