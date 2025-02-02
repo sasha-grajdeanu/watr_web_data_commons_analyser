@@ -9,8 +9,6 @@ const Alignment = () => {
     const [stats, setStats] = useState(0.0);
     const [graphFile, setGraphFile] = useState("");
 
-    
-
     const sourceOptions = [
         "schema.org", "DBPedia"
     ];
@@ -169,7 +167,6 @@ const Alignment = () => {
                 }
 
             </div>
-
         </div>
     );
 };

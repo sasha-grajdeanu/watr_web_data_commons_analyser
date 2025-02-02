@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Visualize from './components/Visualize';
 import Compare from './components/Compare';
 import Alignment from './components/Alignment';
+import Visualisation from './components/Visualisation';
 
 const Home = () => <div className='body'><h1>Welcome to the Dashboard</h1></div>
 
@@ -16,7 +17,7 @@ function App() {
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/visualize" element={<Visualize />} />
+                    <Route path="/visualize" element={<Visualisation />} />
                     <Route path="/classification" element={<Classification />} />
                     <Route path="/compare" element={<Compare />} />
                     <Route path="/alignment" element={<Alignment/>} />
