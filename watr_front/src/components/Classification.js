@@ -119,7 +119,7 @@ const Classification = () => {
 
             const data = await response.json();
             setResults(data.observations);
-            setMoreStats(data.unique_subjects);
+            setMoreStats(data);
             
             const statsResponse = await fetch(`http://localhost:5000/api/classify/statistics/graph?class=${selectedClass}&property=${selectedProperty}`, {
                 method: "GET",
@@ -213,7 +213,7 @@ const Classification = () => {
 
             <div className="results-area">
                 <h2>Statistics</h2>
-                {moreStats ? (
+                {moreStats.unique_subjects ? (
                     <div>
                         <div className="download-buttons">
                             <p>Download stats:</p>
@@ -221,12 +221,32 @@ const Classification = () => {
                             <button onClick={() => handleDownload(uniqueGraphFile)}>Download Unique Subjects Distribution Statistics</button>
                         </div>
                         <div className="stats-summary">
-                            <p><strong>Unique Subjects Count:</strong> {Object.keys(moreStats).length}</p>
-                            {Object.entries(moreStats).map(([subject, count], index) => (
+                            <p><strong>Unique Subjects Distribution:</strong> {Object.keys(moreStats.unique_subjects).length}</p>
+                            {Object.entries(moreStats.unique_subjects).map(([subject, count], index) => (
                                 <p key={index}>
                                     {subject}: {count}
                                 </p>
                             ))}
+                            <p><strong>Level distribution:</strong></p>
+                            {
+                                Object.entries(moreStats.level_distribution).map(([subject, count], index) => (
+                                    <p key={index}>
+                                        {subject} : {count}
+                                    </p>
+                                )
+                            )}
+                            <p><strong>Average depth: </strong>
+                            {
+                                moreStats.depth_average
+                            }</p>
+                            <p><strong>Max level: </strong>
+                            {
+                                moreStats.max_level
+                            }</p>
+                            <p><strong>Min level: </strong>
+                            {
+                                moreStats.min_level
+                            }</p>
                         </div>
 
                     </div>
@@ -234,28 +254,6 @@ const Classification = () => {
                     <p>No stats to display.</p>
                 )}
                 
-                {results.length > 0 ? (
-                    <table className="results-table">
-                        <thead>
-                            <tr>
-                                <th>Initial Subject</th>
-                                <th>Initial Predicate</th>
-                                <th>Number of Levels</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {results.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item.initialSubject}</td>
-                                    <td>{item.initialPredicate}</td>
-                                    <td>{item.numberOfLevels}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                ) : (
-                    <p>No results to display.</p>
-                )}
             </div>
 
             <div ref={graphContainer} className="graph-container"></div>
