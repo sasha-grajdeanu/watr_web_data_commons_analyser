@@ -6,35 +6,30 @@ import {
   Select,
   Field,
   Fieldset,
-  Input,
   Button,
-  Switch,
 } from "@headlessui/react";
 import ErrorsMessage from "../utils_components/Errors";
 import ImportButtons from "../utils_components/ImportButtons";
 import sadcat from "../assets/sadsadfatcat.jpg";
 import SwitchDisplay from "../utils_components/Switch";
 import Spinner from "../utils_components/Loading";
-import GraphMLViewer from "../utils_components/GraphComponent";
-import VisualisationCharts from "../utils_components/Visualize_charts";
-import ChartWithPagination from "../utils_components/Visualize_charts";
-import DataVisualization from "../utils_components/Visualize_charts";
+import TableWithPagination from "../utils_components/Table";
+import CompareStatistics from "../utils_components/CompareStatistics";
 
-export default function Visualize() {
-  const [selectedClass, setSelectedClass] = useState("");
-  const [haveLimit, setHaveLimit] = useState("false");
-  const [limit, setLimit] = useState("");
+export default function Compare() {
+  const [selectedClassOne, setSelectedClassOne] = useState("");
+  const [selectedClassTwo, setSelectedClassTwo] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [currentView, setCurrentView] = useState(true);
 
-  const [graphData, setGraphData] = useState("");
+  const [compareData, setCompareData] = useState("");
   const [statistics, setStatistics] = useState("");
   const [showStatistics, setShowStatistics] = useState(false);
 
   const [errors, setErrors] = useState({
-    selectedClass: "",
-    limit: "",
+    selectedClassOne: "",
+    selectedClassTwo: "",
   });
 
   const importAsHTML = async () => {
@@ -44,9 +39,7 @@ export default function Visualize() {
     }
 
     try {
-      const url = `${uriRequest}visualise/html?class=${selectedClass}&limit=${haveLimit}${
-      haveLimit === "true" ? `&count_limit=${limit}` : ""
-    }`;
+      const url = `${uriRequest}compare/html?class_one=${selectedClassOne}&class_two=${selectedClassTwo}`;
 
       const response = await fetch(url, { method: "GET" });
 
@@ -60,7 +53,7 @@ export default function Visualize() {
       const blob = new Blob([htmlData], { type: "text/html" });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Visualize_${selectedClass}_data.html`; // Name of the downloaded file
+      link.download = `Compare_${selectedClassOne}_${selectedClassTwo}_data.html`; // Name of the downloaded file
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -78,9 +71,7 @@ export default function Visualize() {
     }
 
     try {
-      const url = `${uriRequest}visualise/json_ld?class=${selectedClass}&limit=${haveLimit}${
-      haveLimit === "true" ? `&count_limit=${limit}` : ""
-    }`;
+      const url = `${uriRequest}compare/json_ld?class_one=${selectedClassOne}&class_two=${selectedClassTwo}`;
 
       const response = await fetch(url, { method: "GET" });
 
@@ -96,7 +87,7 @@ export default function Visualize() {
       });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Visualize_${selectedClass}_data.jsonld`; // Name of the downloaded file
+      link.download = `Compare_${selectedClassOne}_${selectedClassTwo}_data.jsonld`; // Name of the downloaded file
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -114,9 +105,7 @@ export default function Visualize() {
     }
 
     try {
-      const url = `${uriRequest}visualise/download_statistics?class=${selectedClass}&limit=${haveLimit}${
-      haveLimit === "true" ? `&count_limit=${limit}` : ""
-    }`;
+      const url = `${uriRequest}compare/download_statistics?class_one=${selectedClassOne}&class_two=${selectedClassTwo}`;
 
       const response = await fetch(url, { method: "GET" });
 
@@ -132,7 +121,7 @@ export default function Visualize() {
       });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Visualize_${selectedClass}_statistics.jsonld`; // Name of the downloaded file
+      link.download = `Compare_${selectedClassOne}_${selectedClassTwo}_statistics.jsonld`; // Name of the downloaded file
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -151,33 +140,31 @@ export default function Visualize() {
 
   const handleSubmit = () => {
     let newErrors = {};
-    if (!selectedClass) {
-      newErrors.selectedClass = "Please select a class";
+    if (!selectedClassOne) {
+      newErrors.selectedClassOne = "Please select a class";
     }
-    if (haveLimit === "true" && (!limit || limit <= 0)) {
-      newErrors.limit = "Please enter a valid limit.";
+    if (!selectedClassTwo) {
+        newErrors.selectedClassTwo = "Please select a class";
     }
-
+    if (selectedClassOne === selectedClassTwo) {
+        newErrors.selectedClassTwo = "Please select another class";
+    }
     setErrors(newErrors);
 
     return Object.keys(newErrors).length === 0;
   };
 
-  const fetchGraphData = async (selectedClass, haveLimit, limit) => {
-    const graphUrl = `${uriRequest}visualise/graph?class=${selectedClass}&limit=${haveLimit}${
-      haveLimit === "true" ? `&count_limit=${limit}` : ""
-    }`;
-    const response = await fetch(graphUrl, { method: "GET" });
+  const fetchData = async (selectedClassOne, selectedClassTwo) => {
+    const dataUrl = `${uriRequest}compare/data?class_one=${selectedClassOne}&class_two=${selectedClassTwo}`;
+    const response = await fetch(dataUrl, { method: "GET" });
     if (!response.ok) {
-      throw new Error("Graph API call failed");
+      throw new Error("Data API call failed");
     }
-    return response.text();
+    return response.json();
   };
 
-  const fetchStatisticsData = async (selectedClass, haveLimit, limit) => {
-    const statsUrl = `${uriRequest}visualise/statistics?class=${selectedClass}&limit=${haveLimit}${
-      haveLimit === "true" ? `&count_limit=${limit}` : ""
-    }`;
+  const fetchStatisticsData = async (selectedClassOne, selectedClassTwo) => {
+    const statsUrl = `${uriRequest}compare/statistics?class_one=${selectedClassOne}&class_two=${selectedClassTwo}`;
     const response = await fetch(statsUrl, { method: "GET" });
     if (!response.ok) {
       throw new Error("Statistics API call failed");
@@ -192,16 +179,17 @@ export default function Visualize() {
     try {
       setLoading(true);
       setShowStatistics(false);
-      const [graphData, statsData] = await Promise.all([
-        fetchGraphData(selectedClass, haveLimit, limit),
-        fetchStatisticsData(selectedClass, haveLimit, limit),
+      const [compareData, statsData] = await Promise.all([
+        fetchData(selectedClassOne, selectedClassTwo),
+        fetchStatisticsData(selectedClassOne, selectedClassTwo),
       ]);
 
-      setGraphData(graphData);
+      setCompareData(compareData);
       setStatistics(statsData);
       setLoading(false);
       setShowStatistics(true);
-      console.log("Graph data:", graphData);
+      console.log("data:", compareData);
+      console.log("stats:", statistics);
     } catch (error) {
       console.error("Error during visualization process:", error);
     }
@@ -211,20 +199,20 @@ export default function Visualize() {
 
   return (
     <div className="bg-radial from-violet-200 from-40% to-pink-200 min-h-[calc(100vh-64px)] w-full flex flex-col items-center">
-      <h1 className="text-3xl font-semibold p-3 mt-2">Visualisation</h1>
+      <h1 className="text-3xl font-semibold p-3 mt-2">Comparison</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full px-4 lg:my-auto mx:auto justify-center lg:h-128">
         <div className="flex flex-col w-full justify-around lg:justify-center col-span-1 bg-transparent lg:p-4 h-full">
           <Fieldset className="flex flex-col items-center justify-center rounded-md border-watr-100 p-4 bg-watr-300 shadow-2xl">
             <Legend className="font-medium text-xl">Input panel</Legend>
             <Field className="flex flex-col w-full p-1">
-              <Label htmlFor="class" className="py-1">
-                Select a class:
+              <Label htmlFor="classOne" className="py-1">
+                Select first class:
               </Label>
               <Select
-                id="class"
-                value={selectedClass}
+                id="classOne"
+                value={selectedClassOne}
                 className="w-full bg-watr-400 p-2 rounded-md font-montserrat"
-                onChange={(e) => setSelectedClass(e.target.value)}
+                onChange={(e) => setSelectedClassOne(e.target.value)}
               >
                 <option value="">Select a Class</option>
                 {classes.map((option, index) => (
@@ -233,47 +221,37 @@ export default function Visualize() {
                   </option>
                 ))}
               </Select>
-              {errors.selectedClass && (
-                <ErrorsMessage errorMessage={errors.selectedClass} />
+              {errors.selectedClassOne && (
+                <ErrorsMessage errorMessage={errors.selectedClassOne} />
               )}
             </Field>
-            <Field className="flex flex-col w-full px-1 pb-2">
-              <Label htmlFor="limit" className="py-1">
-                To have a limit:
+            <Field className="flex flex-col w-full p-1">
+              <Label htmlFor="classTwo" className="py-1">
+                Select second class:
               </Label>
               <Select
-                id="limit"
-                value={haveLimit}
-                className="w-full bg-watr-400 p-2 rounded-md"
-                onChange={(e) => setHaveLimit(e.target.value)}
+                id="classTwo"
+                value={selectedClassTwo}
+                className="w-full bg-watr-400 p-2 rounded-md font-montserrat"
+                onChange={(e) => setSelectedClassTwo(e.target.value)}
               >
-                <option value="false">No</option>
-                <option value="true">Yes</option>
+                <option value="">Select a Class</option>
+                {classes.map((option, index) => (
+                  <option key={index} value={option}>
+                    {option}
+                  </option>
+                ))}
               </Select>
+              {errors.selectedClassTwo && (
+                <ErrorsMessage errorMessage={errors.selectedClassTwo} />
+              )}
             </Field>
-            {haveLimit === "true" && (
-              <Field className="flex flex-col w-full px-1 pb-2">
-                <Label htmlFor="limit" className="py-1">
-                  Limit:
-                </Label>
-                <Input
-                  id="limit"
-                  type="number"
-                  value={limit}
-                  className="w-full bg-watr-400 p-2 rounded-md"
-                  onChange={(e) => setLimit(e.target.value)}
-                  min="1"
-                  placeholder="Enter a limit"
-                />
-                {errors.limit && <ErrorsMessage errorMessage={errors.limit} />}
-              </Field>
-            )}
             <Field className="flex flex-col w-full pt-2 px-1">
               <Button
                 onClick={handleVisualise}
                 className="rounded bg-watr-200 hover:bg-watr-100 text-xl py-2 duration-300 text-white w-full"
               >
-                Visualize
+                Compare
               </Button>
             </Field>
 
@@ -297,7 +275,7 @@ export default function Visualize() {
             <SwitchDisplay
               checked={currentView}
               onChange={setCurrentView}
-              name_one="Graph"
+              name_one="Table"
               name_two="Statistics"
             />
           </div>
@@ -309,15 +287,15 @@ export default function Visualize() {
           )}
           {showStatistics ? (
             !currentView ? (
-              <div className="flex flex-grow-1 flex-col items-center justify-around lg:h-full h-96 w-full">
+              <div className="flex flex-grow-1 flex-col items-center justify-between lg:h-full w-full">
                 {/* Your graph component goes here */}
-                {graphData && (
-          <GraphMLViewer graphMLData={graphData}/>)}
+                {compareData && (
+          <TableWithPagination data={compareData}/>)}
               </div>
             ) : (
-              <div className="flex flex-grow-1 flex-col items-center justify-around lg:h-full h-96 w-full">
+              <div className="flex flex-grow-1 flex-col items-center justify-around lg:h-full w-full">
                 {/* Your statistics component goes here */}
-                <DataVisualization data={statistics} />
+                <CompareStatistics statistics={statistics} />
               </div>
             )
           ) : (

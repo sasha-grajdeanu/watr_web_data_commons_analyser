@@ -1,29 +1,25 @@
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useEffect, useRef, useMemo, useState } from "react";
 import { Network, DataSet } from "vis-network/standalone/umd/vis-network.min.js";
 
 const shortenEdgeLabel = (label) => {
-    // Remove common prefixes like 'https://', 'http://', and 'www.'
-    label = label
-      .replace(/https?:\/\//g, "") // Remove 'http://' or 'https://'
-      .replace(/www\./g, ""); // Remove 'www.'
-  
-    // Define patterns to shorten specific terms
-    const patterns = [
-      { match: /schema\.org\//g, replace: "schema:" }, // schema.org/ → schema:
-      { match: /w3\.org\/1999\/02\/22-rdf-syntax-ns#/g, replace: "rdf:" }, // w3. → rdf:
-      { match: /owl\./g, replace: "owl:" }, // owl. → owl:
-      { match: /xmlns\.com\//g, replace: "xmlns:" }, // xmlns.com/ → xmlns:
-      // Add more patterns as needed
-    ];
-  
-    // Apply each pattern to the label
-    let shortenedLabel = label;
-    patterns.forEach((pattern) => {
-      shortenedLabel = shortenedLabel.replace(pattern.match, pattern.replace);
-    });
-  
-    return shortenedLabel;
-  };
+  label = label
+    .replace(/https?:\/\//g, "")
+    .replace(/www\./g, "");
+
+  const patterns = [
+    { match: /schema\.org\//g, replace: "schema:" },
+    { match: /w3\.org\/1999\/02\/22-rdf-syntax-ns#/g, replace: "rdf:" },
+    { match: /owl\./g, replace: "owl:" },
+    { match: /xmlns\.com\//g, replace: "xmlns:" },
+  ];
+
+  let shortenedLabel = label;
+  patterns.forEach((pattern) => {
+    shortenedLabel = shortenedLabel.replace(pattern.match, pattern.replace);
+  });
+
+  return shortenedLabel;
+};
 
 const parseGraphML = (graphMLData) => {
   const parser = new DOMParser();
@@ -50,7 +46,6 @@ const parseGraphML = (graphMLData) => {
     let label = "";
     if (dataElements.length > 0) {
       label = dataElements[0].textContent;
-      // Shorten the edge label
       label = shortenEdgeLabel(label);
     }
 
@@ -60,13 +55,11 @@ const parseGraphML = (graphMLData) => {
   return { nodes, edges };
 };
 
-const GraphMLViewer = React.memo(({ graphMLData }) => {
+const GraphMLViewer = ({ graphMLData }) => {
   const graphContainer = useRef(null);
+  const [network, setNetwork] = useState(null);
 
-  const { nodes, edges } = useMemo(
-    () => parseGraphML(graphMLData),
-    [graphMLData]
-  );
+  const { nodes, edges } = useMemo(() => parseGraphML(graphMLData), [graphMLData]);
 
   useEffect(() => {
     if (graphContainer.current) {
@@ -74,31 +67,78 @@ const GraphMLViewer = React.memo(({ graphMLData }) => {
         nodes: new DataSet(nodes),
         edges: new DataSet(edges),
       };
+
       const options = {
         physics: {
-          enabled: true, // Enable physics for initial layout
+          enabled: true,
           stabilization: {
             enabled: true,
-            iterations: 100, // Adjust the number of iterations
+            iterations: 500,
           },
         },
-        nodes: { shape: "dot", size: 10 },
+        nodes: {
+          shape: "dot",
+          size: 14,
+          color: {
+            background: "#1a4078",
+            border: "#1a4078",
+            highlight: {
+              background: "#686ea7",
+              border: "#aea8d6",
+            },
+            hover: {
+              background: "#686ea7",
+              border: "#aea8d6",
+            },
+          },
+        },
+        edges: {
+          arrows: {
+            to: { enabled: true, scaleFactor: 1 },
+          },
+        },
         layout: {
           improvedLayout: false,
         },
       };
 
-      new Network(graphContainer.current, data, options);
+      const networkInstance = new Network(graphContainer.current, data, options);
+      setNetwork(networkInstance);
+
+      // Center the graph after rendering
+      networkInstance.on("stabilizationIterationsDone", () => {
+        networkInstance.fit();
+      });
+
+      // Cleanup on unmount
+      return () => {
+        networkInstance.destroy();
+      };
     }
   }, [nodes, edges]);
+
+  // Handle resizing
+  useEffect(() => {
+    if (graphContainer.current && network) {
+      const resizeObserver = new ResizeObserver(() => {
+        network.setSize(`${graphContainer.current.clientWidth}px`, `${graphContainer.current.clientHeight}px`);
+        network.fit();
+      });
+
+      resizeObserver.observe(graphContainer.current);
+
+      return () => {
+        resizeObserver.disconnect();
+      };
+    }
+  }, [network]);
 
   return (
     <div
       ref={graphContainer}
-      className="graph-container"
-      style={{ height: "500px", width: "100%" }}
+      className="w-full h-full"
     ></div>
   );
-});
+};
 
 export default GraphMLViewer;
