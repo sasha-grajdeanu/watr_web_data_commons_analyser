@@ -31,12 +31,12 @@
       <h2>Abstract</h2>
       <p>
         The Web Data Commons Analyzer (WATR) is a web-based application designed to process 
-        and analyze metadata extracted from the Web Data Commons. Through this platform, users 
+        and analyze metadata extracted from the <a role="doc-biblioref">Web Data Commons</a>. Through this platform, users 
         can perform complex tasks such as visualizing the structure and relationships within the data, 
         classifying it according to predefined categories, comparing data, and aligning the data with 
-        existing ontologies. The system uses SPARQL queries to a Fuseki server to retrieve the data, and results 
-        are available in HTML, JSON-LD and JSON formats. Various statistics for each operation are provided using the
-        RDF Data Cube vocabulary.
+        existing ontologies. The system uses <a role="doc-biblioref">SPARQL</a> queries to a <a role="doc-biblioref">Apache Jena Fuseki</a> server to retrieve the data, and results 
+        are available in HTML, <a role="doc-biblioref">JSON-LD</a> and JSON formats. Various statistics for each operation are provided using the
+        <a role="doc-biblioref">RDF Data Cube vocabulary</a>.
       </p>
     </section>
     <section id="introduction" role="doc-introduction">
@@ -44,8 +44,8 @@
       <p>
         With the increasing amount of metadata embedded in web pages, effective processing and analysis tools
         are essential for extracting meaningful insights. The Web Data Commons Analyzer (WATR) is a web-based
-        application designed to process and analyze metadata extracted from the Web Data Commons. The platform enables
-        users to perform four key operations on RDFa and HTML5 microdata: visualization, classification, comparison, and
+        application designed to process and analyze metadata extracted from the <a role="doc-biblioref">Web Data Commons</a>. The platform enables
+        users to perform four key operations on <a role="doc-biblioref">RDFa</a> and <a role="doc-biblioref">HTML5</a>  microdata: visualization, classification, comparison, and
         alignment. These operations allow users to gain insights into the structure of the data, classify
         it according to predefined categories, compare datasets, and align them with existing ontologies.
       </p>
@@ -58,11 +58,11 @@
           <li>Visualization, for exploring metadata structures and relationships.</li>
           <li>Classification, for categorizing metadata based on subject and predicate</li>
           <li>Comparison, for </li>
-          <li>Alignment, for mapping metadata to existing ontologies, using AgreementMakerLight (AML)</li>
+          <li>Alignment, for mapping metadata to existing ontologies, using <a role="doc-biblioref">AgreementMakerLight (AML)</a></li>
         </ul>
 
       <p>
-        The backend is implemented in Flask, serving data from Apache Jena Fuseki SPARQL endpoint, while the frontend is build
+        The backend is implemented in <a role="doc-biblioref">Flask</a>, serving data from <a role="doc-biblioref">Apache Jena Fuseki</a>  SPARQL endpoint, while the frontend is build
         using React for an interactive user experience.
       </p>
 
@@ -77,10 +77,10 @@
       <h2>Internal Data Structures</h2>
 
       <p>
-        The application processes data in RDF format, specifically RDFa and HTML5 microdata
-        collected from the Web Data Commons. This data is stored in an Apache Jena Fuseki server, a robust
+        The application processes data in RDF format, specifically <a role="doc-biblioref">RDFa</a> and <a role="doc-biblioref">HTML5</a>  microdata
+        collected from the <a role="doc-biblioref">Web Data Commons</a>. This data is stored in an <a role="doc-biblioref">Apache Jena Fuseki</a> server, a robust
         RDF storage system that allows for efficient querying and manipulation of RDF data. The datasets are stored in the 
-        <code>/watr-dataset</code> dataset in Apache Jena Fuseki.
+        <code>/watr-dataset</code> dataset in <a role="doc-biblioref">Apache Jena Fuseki</a>.
       </p>
 
       <h3>Data Models and Structure</h3>
@@ -93,34 +93,34 @@
           The core data used by the application follows the Resource Description
           Framework (RDF), a specification that encodes data in a graph structure consisting of
           subject-predicate-object triples. This allows for the representation of relationships between
-          entities. The data is provided in N-Quads format, which is a serialization of RDF that supports
+          entities. The data is provided in <a role="doc-biblioref">N-Quads</a> format, which is a serialization of RDF that supports
           the inclusion of multiple graphs in a single file.
         </li>
         <li>Preprocessed RDF Data<br>
-          The metadata is extracted and preprocessed by the Web Data Commons team from RDFa and HTML5 microdata
-          embedded pages. This metadata is then made available in N-Quads format (files with the .nq extension).
+          The metadata is extracted and preprocessed by the <a role="doc-biblioref">Web Data Commons</a> team from <a role="doc-biblioref">RDFa</a> and <a role="doc-biblioref">HTML5</a>  microdata
+          embedded pages. This metadata is then made available in <a role="doc-biblioref">N-Quads</a> format (files with the .nq extension).
           The WATR application will consume this data for its analysis.
         </li>
       </ol>
 
       <h3>Database and Data Access</h3>
       <p>
-        The RDF datasets are stored in an Apache Jena Fuseki server, which serves as the
+        The RDF datasets are stored in an <a role="doc-biblioref">Apache Jena Fuseki</a> server, which serves as the
         primary (and only) RDF database of the application. The database is structured into a dataset named
-        /watr-dataset, where all the metadata from the Web Data Commons is stored.
+        /watr-dataset, where all the metadata from the <a role="doc-biblioref">Web Data Commons</a> is stored.
       </p>
 
       <p>
-        Data access is achieved using SPARQL queries, the query language designed for
+        Data access is achieved using <a role="doc-biblioref">SPARQL</a> queries, the query language designed for
         querying RDF datasets. Each operation (visualization, classification, comparison, and alignment)
-        utilizes specific SPARQL query patterns that are made specifically to retrieve
+        utilizes specific <a role="doc-biblioref">SPARQL</a> query patterns that are made specifically to retrieve
         relevant results from the dataset. These queries interact directly with the Fuseki server, enabling
         dynamic and real-time processing of metadata.
       </p>
 
       <h3>Data Flow and Access Patterns</h3>
       <p>
-        The application fetches RDF data from the Fuseki server based on user requests. SPARQL queries
+        The application fetches RDF data from the <a role="doc-biblioref">Apache Jena Fuseki</a> server based on user requests. <a role="doc-biblioref">SPARQL</a> queries
         are constructed based on the type of the operation:
       </p>
       <ul>
@@ -136,10 +136,10 @@
       <h2>API Implementation</h2>
 
       <p>
-        The application exposes a RESTful API implemented in Flask. The API allows users to
+        The application exposes a RESTful API implemented in <a role="doc-biblioref">Flask</a>. The API allows users to
         interact with the system and perform the four key operations: visualization, classification, comparison, 
         and alignment. Each operation is associated with a set of endpoints that handle user input, 
-        execute SPARQL queries, and return the results.
+        execute <a role="doc-biblioref">SPARQL</a> queries, and return the results.
       </p>
 
       <p>Below is an overview of the endpoints exposed by the application:</p>
@@ -155,11 +155,11 @@
             Classification Operation:
             <ul>
                 <li><code>/api/classify</code> - Receives a class and a property from the user and returns, based on the
-                  'Accept' header, the results in JSON, JSON-LD, or HTML.</li>
+                  'Accept' header, the results in JSON, <a role="doc-biblioref">JSON-LD</a>, or HTML.</li>
                 <li><code>/api/classify/stats</code> - Uses the result from <code>/api/classify</code> and creates a graph to
                   easily visualize the results.</li>
                 <li><code>/api/classify/graph</code> - Uses the result from <code>/api/classify</code> and creates
-                  statistics using RDF Data Cube vocabulary. It also creates two temporary files with the results in JSON-LD format.</li>
+                  statistics using <a role="doc-biblioref">RDF Data Cube vocabulary</a>. It also creates two temporary files with the results in <a role="doc-biblioref">JSON-LD</a> format.</li>
             </ul>
           </li>
 
@@ -176,7 +176,7 @@
                 <li><code>/api/align</code> - Receives from the user an ontology name, and returns a temporary file with the
                   results of the alignment process.</li>
                 <li><code>/api/align/stats</code> - Receives the results from <code>/api/align</code> and creates
-                  statistics using RDF Data Cube vocabulary. It also creates a temporary file with the result in JSON-LD format.</li>
+                  statistics using <a role="doc-biblioref">RDF Data Cube vocabulary</a>. It also creates a temporary file with the result in <a role="doc-biblioref">JSON-LD</a> format.</li>
                 <li><code>/api/align/table</code> - Receives teh results from <code>/api/align</code> and creates a table to easily
                   visualize the results.</li>
             </ul>
