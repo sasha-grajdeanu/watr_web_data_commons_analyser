@@ -4,6 +4,8 @@ import Home from './Home/Home'
 import Navbar from './Navbar/Navbar'
 import Visualize from './Visualize/Visualize'
 import Compare from './Compare/Compare'
+import Classify from './Classify/Classify'
+import Align from './Align/Align'
 
 function App() {
 
@@ -16,8 +18,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/visualize" element={<Visualize/>} />
             <Route path="/compare" element={<Compare/>} />
-            <Route path="/classify" element={<Home/>} />
-            <Route path="/align" element={<Home/>} />
+            <Route path="/classify" element={<Classify/>} />
+            <Route path="/align" element={<Align/>} />
           </Routes>
         </main>
       </div>
