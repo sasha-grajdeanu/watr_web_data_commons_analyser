@@ -30,7 +30,7 @@ def classification_statistics_graph_service(rdf_class, rdf_property):
             subject_uri = BNode(subject) if subject.startswith("b") else URIRef(subject)
             add_observation_to_graph(graph, subject_uri, predicate, level_no, index)
 
-        add_unique_subjects_to_graph(unique_graph, statistics["unique_subjects"])
+        add_unique_subjects_to_graph(unique_graph, statistics)
 
         graph_path = create_path_stats(graph)
         unique_graph_path = create_path_stats(unique_graph)
@@ -97,9 +97,9 @@ def add_observation_to_graph(graph, subject_uri, predicate, level_no, index):
     graph.add((observation_uri, WATR.numberOfLevels, level_no_literal))
 
 
-def add_unique_subjects_to_graph(graph, unique_subjects):
+def add_unique_subjects_to_graph(graph, statistics):
     index = 0
-    for subject, count in unique_subjects.items():
+    for subject, count in statistics["unique_subjects"].items():
         index += 1
         subject_uri = URIRef(subject) if not subject.startswith("b") else BNode(subject)
         count_literal = Literal(count, datatype=XSD.integer)
@@ -110,6 +110,22 @@ def add_unique_subjects_to_graph(graph, unique_subjects):
         graph.add((observation_uri, WATR.uniqueSubject, subject_uri))
         graph.add((observation_uri, WATR.numberOfOccurrences, count_literal))
 
+    statistics_uri = WATR.statisticsDataset
+    try:
+        graph.add((statistics_uri, RDF.type, QB.Dataset))
+        graph.add((statistics_uri, WATR.depthAverage, Literal(statistics["depth_average"], datatype=XSD.float)))
+        graph.add((statistics_uri, WATR.minLevel, Literal(statistics["min_level"], datatype=XSD.integer)))
+        graph.add((statistics_uri, WATR.maxLevel, Literal(statistics["max_level"], datatype=XSD.integer)))
+        graph.add((statistics_uri, WATR.levelDistribution0,
+                   Literal(statistics["level_distribution"].get("0_level", 0), datatype=XSD.integer)))
+        graph.add((statistics_uri, WATR.levelDistribution1,
+                   Literal(statistics["level_distribution"].get("1_level", 0), datatype=XSD.integer)))
+        graph.add((statistics_uri, WATR.levelDistribution2,
+                   Literal(statistics["level_distribution"].get("2_level", 0), datatype=XSD.integer)))
+        graph.add((statistics_uri, WATR.levelDistribution3,
+                   Literal(statistics["level_distribution"].get("3_level", 0), datatype=XSD.integer)))
+    except KeyError as e:
+        raise KeyError(f"Missing key in statistics: {e}")
 
 def create_path_stats(graph):
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".ttl")

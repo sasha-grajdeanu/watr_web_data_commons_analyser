@@ -14,8 +14,20 @@ def classification_statistics_service(rdf_class, rdf_property):
 
         statistics = {
             "observations": [],
-            "unique_subjects": {}
+            "unique_subjects": {},
+            "depth_average": 0.0,
+            "min_level": float('inf'),
+            "max_level": float('inf'),
+            "level_distribution":{
+                "0_level": 0,
+                "1_level": 0,
+                "2_level": 0,
+                "3_level": 0
+            }
         }
+
+        total_levels = 0
+        total_observations = 0
 
         for result in results:
             subject = result.get("initial_subject")
@@ -29,6 +41,17 @@ def classification_statistics_service(rdf_class, rdf_property):
                 else:
                     break
 
+            num_levels = len(levels)
+            total_levels += num_levels
+            total_observations += 1
+
+            statistics["min_level"] = min(statistics["min_level"], num_levels) if statistics["min_level"] != float('inf') else num_levels
+            statistics["max_level"] = max(statistics["max_level"], num_levels) if statistics["max_level"] != float('inf') else num_levels
+
+            level_key = f"{num_levels}_level"
+            if level_key in statistics["level_distribution"]:
+                statistics["level_distribution"][level_key] += 1
+
             statistics["observations"].append({
                 "initialSubject": subject,
                 "initialPredicate": predicate,
@@ -39,6 +62,8 @@ def classification_statistics_service(rdf_class, rdf_property):
                 statistics["unique_subjects"][subject] = 0
             statistics["unique_subjects"][subject] += 1
 
+        if total_observations > 0:
+            statistics["depth_average"] = total_levels / total_observations
         return statistics
 
     except Exception as e:
