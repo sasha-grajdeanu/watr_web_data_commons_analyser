@@ -147,47 +147,55 @@
           <li>
             Visualization Operation:
             <ul>
-
+              <li><code>/api/visualise/data</code> - Visualise data in various formats (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)</li>
+              <li><code>/api/visualise/html</code> - Visualises the data filtered by the provided RDF class, with an optional limit and count limit, returning the data in an HTML format</li>
+              <li><code>/api/visualise/json_ld</code> - Visualises the data filtered by the provided RDF class, with an optional limit and count limit, returning the data in an <a role="doc-biblioref">JSON-LD</a> format</li>
+              <li><code>/api/visualise/graph</code> - Visualises the data filtered by the provided RDF class, with an optional limit and count limit, returning the data as a <a role="doc-biblioref">GraphML</a> file</li>
+              <li><code>/api/visualise/statistics</code> - Creates statistics for visualisation, such as the properties types and their distribution, types of entities within class, how many unique entities, and the value types distribution</li>
+              <li><code>/api/visualise/download_statistics</code> - This endpoint allows you to download visualisation statistics filtered by RDF class. You can also limit the number of returned items and specify a count limit.</li>
             </ul>
           </li>
 
           <li>
             Classification Operation:
             <ul>
-                <li><code>/api/classify</code> - Receives a class and a property from the user and returns, based on the
-                  'Accept' header, the results in JSON, <a role="doc-biblioref">JSON-LD</a>, or HTML.</li>
-                <li><code>/api/classify/stats</code> - Uses the result from <code>/api/classify</code> and creates a graph to
-                  easily visualize the results.</li>
-                <li><code>/api/classify/graph</code> - Uses the result from <code>/api/classify</code> and creates
-                  statistics using <a role="doc-biblioref">RDF Data Cube vocabulary</a>. It also creates two temporary files with the results in <a role="doc-biblioref">JSON-LD</a> format.</li>
+                <li><code>/api/classify/properties</code> - Having a RDF class, this endpoint returns the unique properties of that class.</li>
+                <li><code>/api/classify/data</code> - Classify the data filtered by the provided RDF class and property, returning the data in various formats (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)</li>
+                <li><code>/api/classify/html</code> - Classify the data filtered by the provided RDF class and property, returning the data in HTML format</li>
+                <li><code>/api/classify/json_ld</code> - Classify the data filtered by the provided RDF class and property, returning the data in <a role="doc-biblioref">JSON-LD</a> format.</li>
+                <li><code>/api/classify/graph</code> - Classify the data filtered by the provided RDF class and property, returning the data as a <a role="doc-biblioref">GraphML</a> file</li>
+                <li><code>/api/classify/statistics</code> - Creates statistics for classification, such as the depth of a subject-predicate pair, and the distribution of unique subjects.</li>
+                <li><code>/api/classify/statistics/graph</code> - Saves the statistics of the classification operation in temporary files, using <a role="doc-biblioref">RDF Data Cube vocabulary</a>, for further downloading</li>
             </ul>
           </li>
 
           <li>
             Comparison Operation:
             <ul>
-
+              <li><code>/api/compare/data</code> - Compare the data provided by two RDF classes, returning the result of the operation in various formats (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)</li>
+              <li><code>/api/compare/html</code> - Compare the data provided by two RDF classes, returning the result of the operation in HTML format</li>
+              <li><code>/api/compare/json_ld</code> - Compare the data provided by two RDF classes, returning the result of the operation in <a role="doc-biblioref">JSON-LD</a> format</li>
+              <li><code>/api/compare/statistics</code> - Creates statistics for comparison operation, such as the properties of each class, which is the last/most used property, how many properties, which are the unique properties (that don't appear in the other class), or which are the common properties</li>
+              <li><code>/api/compare/download_statistics</code> - This endpoint allows you to download comparison statistics.</li>
             </ul>
           </li>
 
           <li>
             Alignment Operation:
             <ul>
-                <li><code>/api/align</code> - Receives from the user an ontology name, and returns a temporary file with the
-                  results of the alignment process.</li>
-                <li><code>/api/align/stats</code> - Receives the results from <code>/api/align</code> and creates
-                  statistics using <a role="doc-biblioref">RDF Data Cube vocabulary</a>. It also creates a temporary file with the result in <a role="doc-biblioref">JSON-LD</a> format.</li>
-                <li><code>/api/align/table</code> - Receives teh results from <code>/api/align</code> and creates a table to easily
-                  visualize the results.</li>
+              <li><code>/api/align/data</code> - Align the data to an ontology provided, returning the result of the operation in various formats (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)</li>
+              <li><code>/api/align/html</code> - Align the data to an ontology provided, returning the result of the operation in HTML format</li>
+              <li><code>/api/align/json_ld</code> - Align the data to an ontology provided, returning the result of the operation in <a role="doc-biblioref">JSON-LD</a> format</li>
+              <li><code>/api/align/table</code> - Align the data to an ontology provided, returning the result of the operation in JSON format, to further create a table</li>
+              <li><code>/api/align/statistics</code> - Create statistics for alignment operation, namely the average measure of the alignment</li>
+              <li><code>/api/align/statistics/graph</code> - Creates statistics in <a role="doc-biblioref">RDF Data Cube vocabulary</a> for alignment operation, and saves the results in a temporary file for further downloading</li>
             </ul>
           </li>
 
           <li>
             Other endpoints:
             <ul>
-                <li><code>/api/properties</code> - Receives the class from the user and returns all the unique properties the
-                class has in Fuseki server.</li>
-                <li><code>/api/download-stats</code> - Receives a path and makes it downloadable.</li>
+                <li><code>/api/download-stats</code> - Sends the file as an attachment, where the file name is sent as parameter; it is used in Classification and Alignment operations</li>
             </ul>
           </li>
       </ol>
@@ -196,98 +204,97 @@
         Below are some example requests for each operation:
       </p>
 
-      <pre>
-        <code>
-          # Examples for Visualization
-        </code>
-
-        <code>
-          # Example of GET request to the main classification endpoint
-          GET /api/classify?class=AdministrativeArea&property=schema:address
-          Accept: */*
-          Response:
-          [
-              {
-                  "blankNode": "https://archiipedia.com/#PostalAddress",
-                  "initial_predicate": "http://schema.org/address",
-                  "initial_subject": "https://archiipedia.com/#AdministrativeArea",
-                  "level1_object": "http://schema.org/PostalAddress",
-                  "level1_predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-              },
-              {
-                  "blankNode": "https://archiipedia.com/#PostalAddress",
-                  "initial_predicate": "http://schema.org/address",
-                  "initial_subject": "https://archiipedia.com/#AdministrativeArea",
-                  "level1_object": "india",
-                  "level1_predicate": "http://schema.org/addressCountry"
-              }
-            ...
-          ]
-        </code>
-
-        <code>
-          # Examples for Comparison
-        </code>
-
-        <code>
-          # Example of GET request to the main alignment endpoint
-          GET api/align?target=schema.org
-          Accept: */*
-          Response:
-          C:\Users\ENBYSE~1\AppData\Local\Temp\tmpe_ck29uf.nt
-
-          # Example of GET request to the results table generated for alignment operation
-          GET api/align/table?target=schema.org
-          Accept: */*
-          Response:
-          "results": [
-                        {
-                            "alignedEntity": "https://schema.org/Mountain",
-                            "measure": "0.99",
-                            "originalEntity": "http://schema.org/Mountain",
-                            "relation": "="
-                        },
-                        {
-                            "alignedEntity": "https://schema.org/JobPosting",
-                            "measure": "0.99",
-                            "originalEntity": "http://schema.org/JobPosting",
-                            "relation": "="
-                        },
-                        {
-                            "alignedEntity": "https://schema.org/State",
-                            "measure": "0.99",
-                            "originalEntity": "http://schema.org/State",
-                            "relation": "="
-                        },
-                        {
-                            "alignedEntity": "https://schema.org/Brand",
-                            "measure": "0.99",
-                            "originalEntity": "http://schema.org/Brand",
-                            "relation": "="
-                        }
-                        ...
-                      ]
-        </code>
-
-        <code>
-          # Example of GET request to the properties endpoint
-          GET /api/properties?class=AdministrativeArea
-          Accept: */*
-          Response:
-          [
-              "rdf:type",
-              "schema:address",
-              "schema:containsPlace",
-              "schema:geo",
-              "schema:name",
-              "schema:url",
-              "schema:hasMap",
-              "schema:mainEntityOfPage",
-              "schema:sameAs"
-          ]
-        </code>
-
-      </pre>
+      <figure typeof="schema:SoftwareSourceCode">
+        <pre>
+          <code>
+            # Examples for Visualization
+        
+  
+          
+            # Example of GET request to the main classification endpoint
+            GET /api/classify?class=AdministrativeArea&property=schema:address
+            Accept: */*
+            Response:
+            [
+                {
+                    "blankNode": "https://archiipedia.com/#PostalAddress",
+                    "initial_predicate": "http://schema.org/address",
+                    "initial_subject": "https://archiipedia.com/#AdministrativeArea",
+                    "level1_object": "http://schema.org/PostalAddress",
+                    "level1_predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+                },
+                {
+                    "blankNode": "https://archiipedia.com/#PostalAddress",
+                    "initial_predicate": "http://schema.org/address",
+                    "initial_subject": "https://archiipedia.com/#AdministrativeArea",
+                    "level1_object": "india",
+                    "level1_predicate": "http://schema.org/addressCountry"
+                }
+              ...
+            ]
+          
+            
+              # Example of GET request to the properties endpoint
+              GET /api/properties?class=AdministrativeArea
+              Accept: */*
+              Response:
+              [
+                  "rdf:type",
+                  "schema:address",
+                  "schema:containsPlace",
+                  "schema:geo",
+                  "schema:name",
+                  "schema:url",
+                  "schema:hasMap",
+                  "schema:mainEntityOfPage",
+                  "schema:sameAs"
+              ]
+  
+          
+            # Examples for Comparison
+          
+  
+         
+            # Example of GET request to the main alignment endpoint
+            GET api/align?target=schema.org
+            Accept: */*
+            Response:
+            C:\Users\ENBYSE~1\AppData\Local\Temp\tmpe_ck29uf.nt
+  
+            # Example of GET request to the results table generated for alignment operation
+            GET api/align/table?target=schema.org
+            Accept: */*
+            Response:
+            "results": [
+                          {
+                              "alignedEntity": "https://schema.org/Mountain",
+                              "measure": "0.99",
+                              "originalEntity": "http://schema.org/Mountain",
+                              "relation": "="
+                          },
+                          {
+                              "alignedEntity": "https://schema.org/JobPosting",
+                              "measure": "0.99",
+                              "originalEntity": "http://schema.org/JobPosting",
+                              "relation": "="
+                          },
+                          {
+                              "alignedEntity": "https://schema.org/State",
+                              "measure": "0.99",
+                              "originalEntity": "http://schema.org/State",
+                              "relation": "="
+                          },
+                          {
+                              "alignedEntity": "https://schema.org/Brand",
+                              "measure": "0.99",
+                              "originalEntity": "http://schema.org/Brand",
+                              "relation": "="
+                          }
+                          ...
+                        ]
+          </code>
+        </pre>
+      </figure>
 
     </section>
 
