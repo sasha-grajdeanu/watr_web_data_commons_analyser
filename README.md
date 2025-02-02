@@ -81,6 +81,7 @@
   <summary>Client</summary>
   <ul>
     <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://vite.dev/">Vite</a></li>
   </ul>
 </details>
 
@@ -130,7 +131,7 @@
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`FUSEKI_URL="http://localhost:3030/watr-dataset/sparql"`
+`SPARQL_ENDPOINT="http://localhost:3030/watr-dataset/sparql"`
 
 > **⚠️ Note:** It is important to create a dataset named "/watr-dataset" in Fuseki to work.
 
@@ -181,7 +182,7 @@ Start the server
 
 ```bash
 # Start the frontend
-cd watr_front ; npm start
+cd watr_front ; npm run dev
 
 # Start the backend
 cd watr_back/watr_back ; python app.py
