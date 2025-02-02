@@ -87,7 +87,7 @@ const Classification = () => {
 
     const fetchProperties = async (rdfClass) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/properties?class=${rdfClass}`);
+            const response = await fetch(`http://localhost:5000/api/classify/properties?class=${rdfClass}`);
             if (!response.ok) {
                 throw new Error("Failed to fetch properties");
             }
@@ -106,7 +106,7 @@ const Classification = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/api/classify/stats?class=${selectedClass}&property=${selectedProperty}`, {
+            const response = await fetch(`http://localhost:5000/api/classify/statistics?class=${selectedClass}&property=${selectedProperty}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -118,10 +118,23 @@ const Classification = () => {
             }
 
             const data = await response.json();
-            setResults(data.data);
-            setMoreStats(data.unique_data);
-            setGraphFile(data.graph_file);
-            setUniqueGraphFile(data.unique_graph_file);
+            setResults(data.observations);
+            setMoreStats(data);
+            
+            const statsResponse = await fetch(`http://localhost:5000/api/classify/statistics/graph?class=${selectedClass}&property=${selectedProperty}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if(!statsResponse){
+                throw new Error("API call failed");
+            }
+
+            const statsData = await statsResponse.json();
+            setGraphFile(statsData.graph_file);
+            setUniqueGraphFile(statsData.unique_graph_file);
 
             const graphmlResponse = await fetch(`http://localhost:5000/api/classify/graph?class=${selectedClass}&property=${selectedProperty}`, {
                 method: "GET",
@@ -200,50 +213,47 @@ const Classification = () => {
 
             <div className="results-area">
                 <h2>Statistics</h2>
-                {moreStats.length > 0 ? (
-                <div>
-                    <div className="download-buttons">
-                        <p>Download stats:</p>
-                        <button onClick={() => handleDownload(graphFile)}>Download Levels Distribution Statistics</button>
-                        <button onClick={() => handleDownload(uniqueGraphFile)}>Download Unique Subjects Distribution Statistics</button>
-                    </div>
-                    <div className="stats-summary">
-                        <p><strong>Unique Subjects Count:</strong> {moreStats.length}</p>
-                        {
-                            moreStats.map((item, index) => (
-                                <p id="stats-summary-p" key={index}>
-                                    {item.uniqueSubject} : {item.numberOfOccurrences}
+                {moreStats.unique_subjects ? (
+                    <div>
+                        <div className="download-buttons">
+                            <p>Download stats:</p>
+                            <button onClick={() => handleDownload(graphFile)}>Download Levels Distribution Statistics</button>
+                            <button onClick={() => handleDownload(uniqueGraphFile)}>Download Unique Subjects Distribution Statistics</button>
+                        </div>
+                        <div className="stats-summary">
+                            <p><strong>Unique Subjects Distribution:</strong> {Object.keys(moreStats.unique_subjects).length}</p>
+                            {Object.entries(moreStats.unique_subjects).map(([subject, count], index) => (
+                                <p key={index}>
+                                    {subject}: {count}
                                 </p>
-                            ))
-                        }
+                            ))}
+                            <p><strong>Level distribution:</strong></p>
+                            {
+                                Object.entries(moreStats.level_distribution).map(([subject, count], index) => (
+                                    <p key={index}>
+                                        {subject} : {count}
+                                    </p>
+                                )
+                            )}
+                            <p><strong>Average depth: </strong>
+                            {
+                                moreStats.depth_average
+                            }</p>
+                            <p><strong>Max level: </strong>
+                            {
+                                moreStats.max_level
+                            }</p>
+                            <p><strong>Min level: </strong>
+                            {
+                                moreStats.min_level
+                            }</p>
+                        </div>
+
                     </div>
-                </div>
                 ) : (
-                    <p>No stats to display;</p>
+                    <p>No stats to display.</p>
                 )}
                 
-                {results.length > 0 ? (
-                    <table className="results-table">
-                        <thead>
-                            <tr>
-                                <th>Initial Subject</th>
-                                <th>Initial Predicate</th>
-                                <th>Number of Levels</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {results.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item.initialSubject}</td>
-                                    <td>{item.initialPredicate}</td>
-                                    <td>{item.numberOfLevels}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                ) : (
-                    <p>No results to display.</p>
-                )}
             </div>
 
             <div ref={graphContainer} className="graph-container"></div>

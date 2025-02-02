@@ -4,9 +4,9 @@ import "chart.js/auto";
 
 const Alignment = () => {
     const [selectedTarget, setSelectedTarget] = useState("");
-    const [results, setResults] = useState("");
+    const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [stats, setStats] = useState("");
+    const [stats, setStats] = useState(0.0);
     const [graphFile, setGraphFile] = useState("");
 
     
@@ -40,9 +40,9 @@ const Alignment = () => {
             }
 
             const data = await response.json();
-            setResults(data.results);
+            setResults(data);
 
-            const statsResponse = await fetch(`http://localhost:5000/api/align/stats?target=${selectedTarget}`, {
+            const statsResponse = await fetch(`http://localhost:5000/api/align/statistics?target=${selectedTarget}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -50,13 +50,25 @@ const Alignment = () => {
                 
             });
 
-            if (!response.ok) {
+            if (!statsResponse.ok) {
                 throw new Error("API call failed");
             }
 
             const statsData = await statsResponse.json();
-            setStats(statsData.stats);
-            setGraphFile(statsData.graph_file);
+            setStats(statsData.average_measure);
+
+            const statsGraphResponse = await fetch(`http://127.0.0.1:5000/api/align/statistics/graph?target=${selectedTarget}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if (!statsGraphResponse.ok) {
+                throw new Error("API call failed");
+            }
+            const statsGraphData = await statsGraphResponse.text();
+            setGraphFile(statsGraphData);
         }
         catch (error){
             console.error("Error fetching alignment data:", error);
