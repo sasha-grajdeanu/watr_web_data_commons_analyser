@@ -85,5 +85,12 @@ let refs = {
     <cite property="schema:name"><a href="http://graphml.graphdrawing.org/">GraphML</a></cite>.
   </dd>
   `,
+
+  'DBPedia': `
+  <dd property="schema:citation" typeof="schema:WebPage"
+      resource="https://www.dbpedia.org/">
+    <cite property="schema:name"><a href="https://www.dbpedia.org/">DBPedia</a></cite>.
+  </dd>
+  `,
 };
 export default refs;
