@@ -59,9 +59,77 @@ export default function Align() {
     handleDownload(graphFile);
   };
 
+  const importAsHTML = async () => {
+    if (!showStatistics) {
+      alert("Please submit the forms!");
+      return;
+    }
+
+    try {
+      const url = `${uriRequest}align/html?target=${selectedOntology}`;
+
+      const response = await fetch(url, { method: "GET" });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch the HTML file.");
+      }
+
+      const htmlData = await response.text();
+
+      // Create a blob and trigger download
+      const blob = new Blob([htmlData], { type: "text/html" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `Align_${selectedOntology}_data.html`; // Name of the downloaded file
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error importing HTML:", error);
+      alert("Error", error);
+      return;
+    }
+  };
+
+  const importAsJSONLD = async () => {
+    if (!showStatistics) {
+      alert("Please submit the forms!");
+      return;
+    }
+
+    try {
+      const url = `${uriRequest}align/json_ld?target=${selectedOntology}`;
+
+      const response = await fetch(url, { method: "GET" });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch the JSON-LD file.");
+      }
+
+      const jsonLDData = await response.text();
+
+      // Create a blob and trigger download
+      const blob = new Blob([JSON.stringify(jsonLDData, null, 2)], {
+        type: "application/ld+json",
+      });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `Align_${selectedOntology}_data.jsonld`; // Name of the downloaded file
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error importing JSON-LD:", error);
+      alert("Error", error);
+      return;
+    }
+  };
+
 
   const importFunctionalities = [
-    { name: "Download stats", action: importLevels }
+    { name: "Download stats", action: importLevels },
+    { name: "Export as HTML", action: importAsHTML },
+    { name: "Export as JSON-LD", action: importAsJSONLD },
   ];
 
   const handleSubmit = () => {
@@ -89,13 +157,13 @@ export default function Align() {
       throw new Error("API call failed");
     }
     const data = await response.json();
-    setResults(data.results);
+    setResults(data);
     console.log(results);
   };
 
   const fetchStatisticsData = async (selectedTarget) => {
     const response = await fetch(
-      `http://localhost:5000/api/align/stats?target=${selectedTarget}`,
+      `http://localhost:5000/api/align/statistics?target=${selectedTarget}`,
       {
         method: "GET",
         headers: {
@@ -109,26 +177,55 @@ export default function Align() {
     }
 
     const statsData = await response.json();
-    setStats(statsData.stats);
-    setGraphFile(statsData.graph_file);
+    setStats(statsData);
+  };
+
+  const fetchStatisticsDataRDF = async (selectedTarget) => {
+    const response = await fetch(
+      `http://localhost:5000/api/align/statistics/graph?target=${selectedTarget}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("API call failed");
+    }
+
+    const statsData = await response.text();
+    console.log(statsData);
+    setGraphFile(statsData);
+    console.log(graphFile);
   };
 
   const handleVisualise = async () => {
     if (!handleSubmit()) {
       return;
     }
-
+  
     try {
       setLoading(true);
       setShowStatistics(false);
-      const graphData = await fetchData(selectedOntology);
-      const statistics = await fetchStatisticsData(selectedOntology);
+  
+      // Execute all API calls in parallel
+      const [graphData, statistics, graphFile] = await Promise.all([
+        fetchData(selectedOntology),
+        fetchStatisticsData(selectedOntology),
+        fetchStatisticsDataRDF(selectedOntology),
+      ]);
+  
       setLoading(false);
       setShowStatistics(true);
+      console.log(graphData);
     } catch (error) {
       console.error("Error during visualization process:", error);
+      setLoading(false); // Ensure loading state is reset in case of an error
     }
   };
+  
 
 
   return (
@@ -148,14 +245,14 @@ export default function Align() {
                 className="w-full bg-watr-400 p-2 rounded-md font-montserrat"
                 onChange={(e) => setSelectedOntology(e.target.value)}
               >
-                <option value="">Select an ontology</option>
+                <option className="w-full" value="">Select an ontology</option>
                 {sourceOptions.map((option, index) => (
-                  <option key={index} value={option}>
+                  <option className="w-full" key={index} value={option}>
                     {option}
                   </option>
                 ))}
               </Select>
-              {errors.selectedClass && (
+              {errors.selectedOntology && (
                 <ErrorsMessage errorMessage={errors.selectedOntology} />
               )}
             </Field>
@@ -176,20 +273,17 @@ export default function Align() {
           </Fieldset>
         </div>
         <div
-          className={`${
-            !showStatistics ? "hidden" : "flex"
-          } lg:flex flex-col items-center justify-center col-span-1 lg:col-span-2 bg-watr-300 p-4 rounded-md shadow-2xl`}
+          className={`lg:flex flex-col items-center justify-center col-span-1 lg:col-span-2 min-h-96 bg-watr-300 p-4 rounded-md shadow-2xl`}
         >
           {loading && (
-            <div className="w-full h-full flex flex-col items-center justify-center">
+            <div className="w-full md:h-full h-96 flex flex-col items-center justify-center">
               <Spinner size="lg" color="watr" />
             </div>
           )}
           {showStatistics ? (
             <div className="flex flex-grow-1 flex-col items-center justify-around lg:h-full w-full">
             {/* Your statistics component goes here */}
-            <p><strong>Average Measure:</strong> {stats}</p>
-            <AlignTableWithPagination data={results} />
+            <AlignTableWithPagination data={results} average={stats} />
           </div>
           ) : (
             <div

@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const AlignTableWithPagination = ({ data }) => {
+const AlignTableWithPagination = ({ data, average }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 7;
+  const itemsPerPage = 5;
 
   // Convert object data to an array
   const formattedData = Object.entries(data).map(([key, value]) => ({ id: key, ...value }));
@@ -35,24 +35,25 @@ const AlignTableWithPagination = ({ data }) => {
   );
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center">
+    <div className="w-full h-full flex flex-col justify-center items-center p-2">
+      <p className="text-xl mb-4 font-bold text-white">Average Measure: {average["average_measure"]}</p>
       <div className="overflow-x-auto w-full justify-center items-center flex-grow-1 h-full my-auto">
-        <table className="min-w-full h-full flex-grow-1 border border-gray-300 text-xs sm:text-md">
+        <table className="min-w-full h-full flex-grow-1 border-gray-300 text-md sm:text-md">
           <thead>
             <tr className="bg-watr-100 text-white">
-              <th className="border p-2">Aligned Entity</th>
-              <th className="border p-2">Original Entity</th>
-              <th className="max-sm:hidden border p-2">Relation</th>
-              <th className="border p-2">Measure</th>
+              <th className=" p-2">Aligned Entity</th>
+              <th className="p-2">Original Entity</th>
+              <th className="max-sm:hidden p-2">Relation</th>
+              <th className="p-2">Measure</th>
             </tr>
           </thead>
           <tbody>
             {currentItems.map((item) => (
-              <tr key={item.id} className="border bg-watr-200 text-white">
-                <td className="border border-white p-2 text-center">{shortenEdgeLabel(item.alignedEntity)}</td> 
-                <td className="border border-white p-2 text-center">{shortenEdgeLabel(item.originalEntity)}</td>
-                <td className="max-sm:hidden border p-2 text-center">{item.relation}</td>
-                <td className="border border-white p-2 text-center">{item.measure}</td>
+              <tr key={item.id} className=" bg-watr-400 text-watr-100">
+                <td className=" border-white p-2 text-center">{shortenEdgeLabel(item.alignedEntity)}</td> 
+                <td className=" border-white p-2 text-center">{shortenEdgeLabel(item.originalEntity)}</td>
+                <td className="max-sm:hidden  p-2 text-center">{item.relation}</td>
+                <td className=" border-white p-2 text-center">{item.measure}</td>
               </tr>
             ))}
           </tbody>

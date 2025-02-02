@@ -16,9 +16,7 @@ import sadcat from "../assets/sadsadfatcat.jpg";
 import SwitchDisplay from "../utils_components/Switch";
 import Spinner from "../utils_components/Loading";
 import GraphMLViewer from "../utils_components/GraphComponent";
-import VisualisationCharts from "../utils_components/Visualize_charts";
-import ChartWithPagination from "../utils_components/Visualize_charts";
-import DataVisualization from "../utils_components/Visualize_charts";
+import StatisticsCard from "../utils_components/ClassifyStatistics";
 
 export default function Classify() {
   const [selectedClass, setSelectedClass] = useState("");
@@ -40,10 +38,75 @@ export default function Classify() {
     selectedProperties: "",
   });
 
+  const importAsHTML = async () => {
+    if (!showStatistics) {
+      alert("Please submit the forms!");
+      return;
+    }
+
+    try {
+      const url = `${uriRequest}classify/html?class=${selectedClass}&property=${selectedProperties}`;
+
+      const response = await fetch(url, { method: "GET" });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch the HTML file.");
+      }
+
+      const htmlData = await response.text();
+
+      // Create a blob and trigger download
+      const blob = new Blob([htmlData], { type: "text/html" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `Classify_${selectedClass}_${selectedProperties}_data.html`; // Name of the downloaded file
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error importing HTML:", error);
+      alert("Error", error);
+      return;
+    }
+  };
+
+  const importAsJSONLD = async () => {
+    if (!showStatistics) {
+      alert("Please submit the forms!");
+      return;
+    }
+
+    try {
+      const url = `http://localhost:5000/api/classify/json_ld?class=${selectedClass}&property=${selectedProperties}`;
+
+      const response = await fetch(url, { method: "GET" });
+      if (!response.ok) {
+        throw new Error("Failed to fetch the JSON-LD file.");
+      }
+
+      const jsonLDData = await response.text();
+
+      // Create a blob and trigger download
+      const blob = new Blob([JSON.stringify(jsonLDData, null, 2)], {
+        type: "application/ld+json",
+      });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `Classify_${selectedClass}_${selectedProperties}_data.jsonld`; // Name of the downloaded file
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error importing JSON-LD:", error);
+      alert("Error", error);
+      return;
+    }
+  };
+
   const fetchProperties = async (rdfClass) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/properties?class=${rdfClass}`
+        `${uriRequest}/classify/properties?class=${rdfClass}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch properties");
@@ -90,6 +153,8 @@ export default function Classify() {
   const importFunctionalities = [
     { name: "Download Levels Distribution Statistics", action: importLevels },
     { name: "Download Unique Subjects Distribution Statistics", action: importSubjects },
+    { name: "Export as HTML", action: importAsHTML },
+    { name: "Export as JSON-LD", action: importAsJSONLD },
   ];
 
   const handleSubmit = () => {
@@ -127,7 +192,7 @@ export default function Classify() {
 
   const fetchStatisticsData = async (selectedClass, selectedProperties) => {
     const response = await fetch(
-      `http://localhost:5000/api/classify/stats?class=${selectedClass}&property=${selectedProperties}`,
+      `${uriRequest}classify/statistics?class=${selectedClass}&property=${selectedProperties}`,
       {
         method: "GET",
         headers: {
@@ -141,11 +206,30 @@ export default function Classify() {
     }
 
     const data = await response.json();
-    setResults(data.data);
+    setResults(data);
     setMoreStats(data.unique_data);
+    console.log("Data", data);
+  };
+
+  const fetchStatisticsDataFiles = async (selectedClass, selectedProperties) => {
+    const response = await fetch(
+      `${uriRequest}classify/statistics/graph?class=${selectedClass}&property=${selectedProperties}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("API call failed");
+    }
+
+    const data = await response.json();
     setGraphFile(data.graph_file);
     setUniqueGraphFile(data.unique_graph_file);
-    console.log(data);
+    console.log("Data", data);
   };
 
   const handleVisualise = async () => {
@@ -156,11 +240,14 @@ export default function Classify() {
     try {
       setLoading(true);
       setShowStatistics(false);
-      const graphData = await fetchGraphData(selectedClass, selectedProperties);
-      const statistics = await fetchStatisticsData(
-        selectedClass,
-        selectedProperties
-      );
+      const [graphData, statistics, statisticsFiles] = await Promise.all([
+        fetchGraphData(selectedClass, selectedProperties),
+        fetchStatisticsData(
+          selectedClass,
+          selectedProperties
+        ),
+        fetchStatisticsDataFiles(selectedClass, selectedProperties),
+      ]);
       setLoading(false);
       setShowStatistics(true);
     } catch (error) {
@@ -172,7 +259,7 @@ export default function Classify() {
 
   return (
     <div className="bg-radial from-violet-200 from-40% to-pink-200 min-h-[calc(100vh-64px)] w-full flex flex-col items-center">
-      <h1 className="text-3xl font-semibold p-3 mt-2">CLassification</h1>
+      <h1 className="text-3xl font-semibold p-3 mt-2">Classification</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full px-4 lg:my-auto mx:auto justify-center lg:h-128">
         <div className="flex flex-col w-full justify-around lg:justify-center col-span-1 bg-transparent lg:p-4 h-full">
           <Fieldset className="flex flex-col items-center justify-center rounded-md border-watr-100 p-4 bg-watr-300 shadow-2xl">
@@ -236,9 +323,7 @@ export default function Classify() {
           </Fieldset>
         </div>
         <div
-          className={`${
-            !showStatistics ? "hidden" : "flex"
-          } lg:flex flex-col items-center justify-center col-span-1 lg:col-span-2 bg-watr-300 p-4 rounded-md shadow-2xl`}
+          className={`lg:flex flex-col items-center justify-center col-span-1 lg:col-span-2 bg-watr-300 p-4 rounded-md shadow-2xl`}
         >
           <div
             className={`w-full justify-end mb-4 ${
@@ -253,7 +338,7 @@ export default function Classify() {
             />
           </div>
           {loading && (
-            <div className="w-full h-full flex flex-col items-center justify-center">
+            <div className="w-full lg:h-full h-96 flex flex-col items-center justify-center">
               <Spinner size="lg" color="watr" />
             </div>
           )}
@@ -264,9 +349,9 @@ export default function Classify() {
                 {graphData && <GraphMLViewer graphMLData={graphData} />}
               </div>
             ) : (
-              <div className="flex flex-grow-1 flex-col items-center justify-around lg:h-full h-96 w-full">
-                {/* Your statistics component goes here */}
-                {/* <DataVisualization data={statistics} /> */}
+              <div className="flex flex-grow-1 flex-col items-center justify-around lg:h-full w-full">
+                {console.log(results)}
+                <StatisticsCard data={results} />
               </div>
             )
           ) : (

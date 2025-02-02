@@ -34,12 +34,12 @@ const TableWithPagination = ({ data }) => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div className="overflow-x-auto w-full justify-center items-center flex-grow-1 h-full my-auto"> {/* Added horizontal scroll container */}
-        <table className="min-w-full h-full flex-grow-1 border border-gray-300 text-xs sm:text-lg">
+        <table className="min-w-full h-full flex-grow-1 text-xs sm:text-lg">
           <thead>
             <tr className="bg-watr-100 text-white">
               {Object.keys(data[0] || {}).map((key, index) => (
                 // Ensure 'Property' column is always first
-                <th key={key} className="border p-2">
+                <th key={key} className=" p-2">
                   {index === 0 ? shortenEdgeLabel('Property') : shortenEdgeLabel(key)}
                 </th>
               ))}
@@ -47,10 +47,10 @@ const TableWithPagination = ({ data }) => {
           </thead>
           <tbody>
             {currentItems.map((item, index) => (
-              <tr key={index} className="border bg-watr-200 text-white">
+              <tr key={index} className="bg-watr-400 text-watr-100">
                 {Object.entries(item).map(([key, value], i) => (
                   // Ensure the first column (property) is rendered first
-                  <td key={i} className="border border-white p-2 text-center">
+                  <td key={i} className=" border-white p-2 text-center">
                     {i === 0 ? shortenEdgeLabel('Property') : shortenEdgeLabel(value)}
                   </td>
                 ))}

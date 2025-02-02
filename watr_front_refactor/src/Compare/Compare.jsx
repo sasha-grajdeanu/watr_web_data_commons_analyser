@@ -263,9 +263,7 @@ export default function Compare() {
           </Fieldset>
         </div>
         <div
-          className={`${
-            !showStatistics ? "hidden" : "flex"
-          } lg:flex flex-col items-center justify-center col-span-1 lg:col-span-2 bg-watr-300 p-4 rounded-md shadow-2xl`}
+          className={`lg:flex flex-col items-center justify-center col-span-1 lg:col-span-2 bg-watr-300 p-4 rounded-md shadow-2xl`}
         >
           <div
             className={`w-full justify-end mb-4 ${

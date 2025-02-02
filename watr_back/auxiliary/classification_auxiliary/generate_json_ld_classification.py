@@ -23,11 +23,11 @@ def generate_json_ld_classification(init_result):
                 "@type": row['blankNode']['type'] if row['blankNode']['type'] == 'literal' else "uri"
             },
             "level1Predicate": {
-                "@id": row['level1_predicate']['value'],
+                "@id": row.get('level1_predicate', {}).get('value', ''),
                 "@type": "uri"
             },
             "level1Object": {
-                "@value": row['level1_object']['value'],
+                "@value": row.get('level1_object', {}).get('value', ''),
                 "@type": row.get('level1_object', {}).get('type', 'uri') if row.get('level1_object') else 'uri'
             },
 

@@ -144,9 +144,9 @@ export default function Visualize() {
   };
 
   const importFunctionalities = [
-    { name: "Import as HTML", action: importAsHTML },
-    { name: "Import as JSON-LD", action: importAsJSONLD },
-    { name: "Import statistics", action: importStatistics },
+    { name: "Export as HTML", action: importAsHTML },
+    { name: "Export as JSON-LD", action: importAsJSONLD },
+    { name: "Export statistics", action: importStatistics },
   ];
 
   const handleSubmit = () => {
@@ -285,9 +285,7 @@ export default function Visualize() {
           </Fieldset>
         </div>
         <div
-          className={`${
-            !showStatistics ? "hidden" : "flex"
-          } lg:flex flex-col items-center justify-center col-span-1 lg:col-span-2 bg-watr-300 p-4 rounded-md shadow-2xl`}
+          className={`lg:flex flex-col items-center justify-center col-span-1 lg:col-span-2 bg-watr-300 p-4 rounded-md shadow-2xl`}
         >
           <div
             className={`w-full justify-end mb-4 ${
