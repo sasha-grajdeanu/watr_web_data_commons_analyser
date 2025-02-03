@@ -23,6 +23,21 @@
     <img src="https://img.shields.io/github/issues/sasha-grajdeanu/watr_web_data_commons_analyser" alt="open issues" />
   </a>
 </p>
+
+<p>
+  <a href="https://www.uaic.ro/">
+    <img src="https://img.shields.io/badge/project-academic-blue" alt="uaic" />
+  </a>
+  <a href="https://www.info.uaic.ro/">
+    <img src="https://img.shields.io/badge/infoiasi-FII-green" alt="fii" />
+  </a>
+  <a href="https://profs.info.uaic.ro/sabin.buraga/teach/courses/wade/index.html">
+    <img src="https://img.shields.io/badge/wade-2024-orange" alt="wade" />
+  </a>
+  <a href="https://profs.info.uaic.ro/sabin.buraga/teach/courses/wade/">
+    <img src="https://img.shields.io/badge/web-semantic-purple" alt="web" />
+  </a>
+</p>
    
 <h4>
     <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/">View Demo</a>
