@@ -70,7 +70,7 @@
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="https://placehold.co/600x400?text=Your+Screenshot+here" alt="screenshot" />
+  <img src="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/blob/main/docs/scholarly-html-documentation/images/Compare.png" alt="screenshot" />
 </div>
 
 
