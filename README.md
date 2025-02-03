@@ -237,7 +237,7 @@ After submission, a panel will appear on the right side displaying a table with 
 ## :wave: Contributing
 
 <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=sasha-grajdeanu/watr_web_data_commons_analyser" />
+  <img src="https://contrib.rocks/image?repo=sasha-grajdeanu/watr_web_data_commons_analyser" alt="Contributing"/>
 </a>
 
 
