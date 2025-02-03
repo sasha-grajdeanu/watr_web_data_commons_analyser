@@ -318,7 +318,7 @@ export default function Visualize() {
               }`}
             >
               <img src={sadcat} alt="sad cat" className="w-78" />
-              <p>If you submit, i'll show you some informations.</p>
+              <p>If you submit, i'll show you some information.</p>
             </div>
           )}
         </div>

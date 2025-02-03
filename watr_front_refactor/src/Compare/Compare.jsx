@@ -130,9 +130,9 @@ export default function Compare() {
   };
 
   const importFunctionalities = [
-    { name: "Import as HTML", action: importAsHTML },
-    { name: "Import as JSON-LD", action: importAsJSONLD },
-    { name: "Import statistics", action: importStatistics },
+    { name: "Export as HTML", action: importAsHTML },
+    { name: "Export as JSON-LD", action: importAsJSONLD },
+    { name: "Export statistics", action: importStatistics },
   ];
 
   const handleSubmit = () => {
@@ -283,13 +283,11 @@ export default function Compare() {
           {showStatistics ? (
             !currentView ? (
               <div className="flex flex-grow-1 flex-col items-center justify-between lg:h-full w-full">
-                {/* Your graph component goes here */}
                 {compareData && (
           <TableWithPagination data={compareData}/>)}
               </div>
             ) : (
               <div className="flex flex-grow-1 flex-col items-center justify-around lg:h-full w-full">
-                {/* Your statistics component goes here */}
                 <CompareStatistics statistics={statistics} />
               </div>
             )
@@ -300,7 +298,7 @@ export default function Compare() {
               }`}
             >
               <img src={sadcat} alt="sad cat" className="w-78" />
-              <p>If you submit, i'll show you some informations.</p>
+              <p>If you submit, i'll show you some information.</p>
             </div>
           )}
         </div>

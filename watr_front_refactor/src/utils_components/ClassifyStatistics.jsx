@@ -71,7 +71,6 @@ const StatisticsCard = ({ data }) => {
         <div className="w-full h-60 sm:h-80 md:h-96 lg:h-[400px] flex justify-center">
           <Pie ref={chartRef} data={pieData} options={pieOptions} />
         </div>
-        {/* Custom Legend */}
         <div className="flex md:hidden flex-wrap justify-center mt-4">
           {customLegend.length > 0 &&
             customLegend.map((item, index) => (

@@ -343,7 +343,6 @@ export default function Classify() {
           {showStatistics ? (
             !currentView ? (
               <div className="flex flex-grow-1 flex-col items-center justify-around lg:h-full h-96 w-full">
-                {/* Your graph component goes here */}
                 {graphData && <GraphMLViewer graphMLData={graphData} />}
               </div>
             ) : (
@@ -359,7 +358,7 @@ export default function Classify() {
               }`}
             >
               <img src={sadcat} alt="sad cat" className="w-78" />
-              <p>If you submit, i'll show you some informations.</p>
+              <p>If you submit, i'll show you some information.</p>
             </div>
           )}
         </div>
