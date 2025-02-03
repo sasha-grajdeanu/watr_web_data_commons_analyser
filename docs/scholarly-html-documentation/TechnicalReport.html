@@ -20,10 +20,10 @@
         <dt>Authors</dt>
         <dd>Alexandru-Cristian Grăjdeanu &amp; Maria Nestor</dd>
 
-        <dt>License (OARE TREBUIE??)</dt>
+        <!-- <dt>License (OARE TREBUIE??)</dt>
         <dd>
           <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY</a>
-        </dd>
+        </dd> -->
       </dl>
     </div>
     <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
@@ -72,7 +72,7 @@
           Classification, for categorizing metadata based on subject and
           predicate
         </li>
-        <li>Comparison, for</li>
+        <li>Comparison, for comparing two classes from the dataset, showing the common and unique properties.</li>
         <li>
           Alignment, for mapping metadata to existing ontologies, using
           <a role="doc-biblioref">AgreementMakerLight (AML)</a>
@@ -166,12 +166,13 @@
         based on the type of the operation:
       </p>
       <ul>
-        <li>Visualization</li>
+        <li>Visualization queries returns data based on a selected RDF class.</li>
         <li>
           Classification queries categorize the metadata based on selected
           subject-predicate relationships.
         </li>
-        <li>Comparison</li>
+        <li>Comparison queries extract the union between metadata returned from 
+            two RDF classes and shows their common and unique properties.</li>
         <li>
           Alignment queries extracts the necessary metadata and structures in
           RDF format to be further processed by the backend.
@@ -717,7 +718,7 @@
       <subsection id="visualisation-guide">
         <h3>Visualisation</h3>
         <p>
-          This page is dedicated to viewing data provided by Web Data Common.
+          This page is dedicated to viewing data provided by <a role="doc-biblioref">Web Data Commons</a>.
           The user will fill out a form to select the class from which they want
           to view data, then choose whether they want to see all data related to
           the class or only a portion of it. If they select “true”, they must
@@ -731,16 +732,16 @@
           properties, and their usage frequency, etc.).
         </p>
         <p>
-          The user can download data files in various formats (HTML, JSON-LD) as
-          well as a file with the generated statistics, modeled using the RDF
-          Data Cube.
+          The user can download data files in various formats (HTML, <a role="doc-biblioref">JSON-LD</a>) as
+          well as a file with the generated statistics, modeled using the 
+          <a role="doc-biblioref">RDF Data Cube vocabulary</a>.
         </p>
       </subsection>
       <subsection id="comparison-guide">
         <h3>Comparison</h3>
         <p>
           This page is dedicated to comparing two classes from the dataset
-          provided by Web Data Common. The user will fill out a form to select
+          provided by <a role="doc-biblioref">Web Data Commons</a>. The user will fill out a form to select
           two different classes for comparison. If any field is left empty or
           the user selects the same class twice, they will be warned before
           submitting the form.
@@ -752,16 +753,15 @@
           properties for each class, the most used and least used properties).
         </p>
         <p>
-          The user can download data files in various formats (HTML, JSON-LD) as
-          well as a file with the generated statistics, modeled using the RDF
-          Data Cube.
+          The user can download data files in various formats (HTML, <a role="doc-biblioref">JSON-LD</a>) as
+          well as a file with the generated statistics, modeled using the <a role="doc-biblioref">RDF Data Cube vocabulary</a>.
         </p>
       </subsection>
       <subsection id="classification-guide">
         <h3>Classification</h3>
         <p>
-          This page allows the classification of data provided by Web Data
-          Common based on class and property. The user will fill out a form to
+          This page allows the classification of data provided by <a role="doc-biblioref">Web Data Commons</a> 
+          based on class and property. The user will fill out a form to
           select a class and a property for classification. If any field is left
           empty, the user will be warned before submitting the form.
         </p>
@@ -769,15 +769,15 @@
           After submission, a panel will appear on the right side, displaying a
           graph generated using the provided data, along with various statistics
           about the data. The user can download data files in various formats
-          (HTML, JSON-LD) as well as files with the generated statistics,
-          modeled using the RDF Data Cube.
+          (HTML, <a role="doc-biblioref">JSON-LD</a>) as well as files with the generated statistics,
+          modeled using the <a role="doc-biblioref">RDF Data Cube vocabulary</a>.
         </p>
       </subsection>
       <subsection id="alignment-guide">
         <h3>Alignment</h3>
         <p>
-          This page is dedicated to aligning the data provided by Web Data
-          Common to an existing ontology. The user will fill out a form to
+          This page is dedicated to aligning the data provided by <a role="doc-biblioref">Web Data Commons</a> 
+          to an existing ontology. The user will fill out a form to
           select the ontology based on which the alignment will be performed. If
           any field is left empty, the user will be warned before submitting the
           form.
@@ -785,9 +785,8 @@
         <p>
           After submission, a panel will appear on the right side displaying a
           table with the alignment results and an average of the aligned data.
-          The user can download data files in various formats (HTML, JSON-LD) as
-          well as a file with the generated statistics, modeled using the RDF
-          Data Cube.
+          The user can download data files in various formats (HTML, <a role="doc-biblioref">JSON-LD</a>) as
+          well as a file with the generated statistics, modeled using the <a role="doc-biblioref">RDF Data Cube vocabulary</a>.
         </p>
       </subsection>
     </section>
@@ -806,9 +805,45 @@
 
     <section id="conclusions">
       <h2>Conclusions and Future Perspectives</h2>
-      <p>provocari, realizari</p>
+      <h3>Challenges and Achievements</h3>
+      <p>
+        Thorought the development of this project, several challenges were encountered. 
+        One of the rpimary difficulties was the integgration of heterogeneour RDF datasets extracted 
+        from <a role="doc-biblioref">Web Data Commons</a>. The use of <a role="doc-biblioref">Apache Jena Fuseki</a> 
+        facilitaed efficient <a role="doc-biblioref">SPARQL</a> querying, but handling inconsistences required additional 
+        processing.
+      </p>
+      <p>
+        Another significant challenge was implementing ontology alignment, where <a role="doc-biblioref">AgreementMakerLight (AML)</a> 
+        was used to map RDF triples onto reference ontologies. This process helped improve 
+        semantic consistency across different datasets, allowing better data interoperability and 
+        integration.
+      </p>
+      <p> 
+        Despite these challenges, the project successfully achieved its objectives:
+      </p>
+      <ul>
+        <li>Developed a visualisation module for exporing RDF data interactively</li>
+        <li>Implemented classification and comparison functionalities to analyze structured data</li>
+        <li>Designed an ontology alignment mechanism for improving semantic interoperability</li>
+        <li>Provided export capabilities in multiple formats, enhancing data usability.</li>
+      </ul>
 
-      <p></p>
+      <h3>Future Perspectives</h3>
+      <p>
+        The current system provides a solid foundation for RDF-based data exploration and ontology alignment, 
+        but several improvements and extensions could be considered in future work:
+      </p>
+      <ul>
+        <li>Enhanced ontology aligmnent techniques</li>
+        <li>Support for real-time data updates, allowing dynamic <a role="doc-biblioref">SPARQL</a> querying on datasets</li>
+        <li>Extension for other Linked Open Data sources, such as Wikidata</li>
+        <li>Optimization of <a role="doc-biblioref">SPARQL</a> queries for improved performance</li>
+      </ul>
+      <p>
+        By addressing these aspects, the system could evolve into a more comprehensive knowledge exploration and 
+        semantic integration platform.
+      </p>
     </section>
   </body>
 </html>
