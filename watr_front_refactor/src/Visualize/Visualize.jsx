@@ -211,7 +211,7 @@ export default function Visualize() {
 
   return (
     <div className="bg-radial from-violet-200 from-40% to-pink-200 min-h-[calc(100vh-64px)] w-full flex flex-col justify-center items-center">
-      <h1 className="text-3xl font-semibold p-3 mt-2">Visualisation</h1>
+      <h1 className="text-3xl font-semibold p-3 mt-2">Visualization</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full px-4 my-4 mx:auto justify-center lg:h-full min-h-128">
         <div className="flex flex-col w-full justify-around lg:justify-center col-span-1 bg-transparent lg:p-4 h-full">
           <Fieldset className="flex flex-col items-center justify-center rounded-md border-watr-100 p-4 bg-watr-300 shadow-2xl">
