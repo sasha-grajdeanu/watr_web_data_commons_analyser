@@ -120,10 +120,10 @@
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Primary Color | ![#222831](https://via.placeholder.com/10/222831?text=+) #222831 |
-| Secondary Color | ![#393E46](https://via.placeholder.com/10/393E46?text=+) #393E46 |
-| Accent Color | ![#00ADB5](https://via.placeholder.com/10/00ADB5?text=+) #00ADB5 |
-| Text Color | ![#EEEEEE](https://via.placeholder.com/10/EEEEEE?text=+) #EEEEEE |
+| WATR-100 | ![#1a4078](https://via.placeholder.com/10/1a4078?text=+) #1a4078 |
+| WATR_200 | ![#686ea7](https://via.placeholder.com/10/686ea7?text=+) #686ea7 |
+| WATR-300 | ![#aea8d6](https://via.placeholder.com/10/aea8d6?text=+) #aea8d6 |
+| WATR-400 | ![#ebdded](https://via.placeholder.com/10/ebdded?text=+) #ebdded |
 
 
 <!-- Env Variables -->
