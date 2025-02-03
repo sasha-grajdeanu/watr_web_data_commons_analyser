@@ -40,9 +40,9 @@
 </p>
    
 <h4>
-    <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/">View Demo</a>
+    <a href="https://drive.google.com/file/d/1Y1f6QZjYy91_DMdcC9N7DFOZZCKTlkK3/view?usp=sharing">View Demo</a>
   <span> · </span>
-    <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser">Documentation</a>
+    <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/blob/main/docs/scholarly-html-documentation/TechnicalReport.html">Documentation</a>
   <span> · </span>
     <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/issues/">Report Bug</a>
   <span> · </span>
