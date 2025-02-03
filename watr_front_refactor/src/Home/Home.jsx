@@ -1,9 +1,9 @@
 export default function Home() {
     return (
       <div className="bg-radial from-violet-200 from-40% to-pink-200 min-h-[calc(100vh-64px)] flex md:flex-row flex-col items-center justify-center xl:px-32 px-14">
-        <div className="flex flex-col md:w-1/2 md:items-end items-center font-montserrat md:pr-8 pb-8">
-          <h1 className="xl:text-8xl text-6xl max-[480px]:text-7xl min-[480px]:text-9xl font-bold text-gray-800 mb-4">Hello!</h1>
-          <h1 className="xl:text-5xl text-4xl max-[520px]:text-5xl min-[520px]:text-6xl font-semibold">This is WATR.</h1>
+        <div className="flex flex-col md:w-1/2 md:items-end items-center font-montserrat md:pr-8 py-8">
+          <h1 className="xl:text-9xl text-6xl max-[480px]:text-7xl min-[480px]:text-9xl font-bold md:text-7xl text-gray-800 mb-4">Hello!</h1>
+          <h1 className="xl:text-6xl text-4xl max-[520px]:text-4xl min-[520px]:text-6xl md:text-4xl font-semibold">This is WATR.</h1>
         </div>
         {/* <div className="hidden md:block w-px bg-gray-400 h-48 mx-8"></div> */}
         <div className="md:w-1/2">

@@ -117,22 +117,6 @@ const GraphMLViewer = ({ graphMLData }) => {
     }
   }, [nodes, edges]);
 
-  // Handle resizing
-  useEffect(() => {
-    if (graphContainer.current && network) {
-      const resizeObserver = new ResizeObserver(() => {
-        network.setSize(`${graphContainer.current.clientWidth}px`, `${graphContainer.current.clientHeight}px`);
-        network.fit();
-      });
-
-      resizeObserver.observe(graphContainer.current);
-
-      return () => {
-        resizeObserver.disconnect();
-      };
-    }
-  }, [network]);
-
   return (
     <div
       ref={graphContainer}
