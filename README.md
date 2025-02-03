@@ -82,6 +82,7 @@
   <ul>
     <li><a href="https://reactjs.org/">React.js</a></li>
     <li><a href="https://vite.dev/">Vite</a></li>
+    <li><a href="https://tailwindcss.com/">TailwindCSS</a></li>
   </ul>
 </details>
 
