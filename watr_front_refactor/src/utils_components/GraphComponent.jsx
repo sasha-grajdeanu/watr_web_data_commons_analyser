@@ -110,8 +110,22 @@ const GraphMLViewer = ({ graphMLData }) => {
         networkInstance.fit();
       });
 
+      // Handle window resize events
+      const handleResize = () => {
+        if (graphContainer.current && networkInstance) {
+          networkInstance.setSize(
+            `${graphContainer.current.clientWidth}px`,
+            `${graphContainer.current.clientHeight}px`
+          );
+          networkInstance.fit();
+        }
+      };
+
+      window.addEventListener("resize", handleResize);
+
       // Cleanup on unmount
       return () => {
+        window.removeEventListener("resize", handleResize);
         networkInstance.destroy();
       };
     }
@@ -121,6 +135,7 @@ const GraphMLViewer = ({ graphMLData }) => {
     <div
       ref={graphContainer}
       className="w-full h-full"
+      style={{ width: "100%", height: "100%" }}
     ></div>
   );
 };
