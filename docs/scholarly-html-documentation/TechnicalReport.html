@@ -82,7 +82,7 @@
       <p>
         The backend is implemented in <a role="doc-biblioref">Flask</a>, serving
         data from <a role="doc-biblioref">Apache Jena Fuseki</a> SPARQL
-        endpoint, while the frontend is build using React for an interactive
+        endpoint, while the frontend is build using <a role="doc-biblioref">React</a> and <a role="doc-biblioref">TailwindCSS</a> for an interactive
         user experience.
       </p>
 
@@ -378,7 +378,7 @@
   
           
             # Example of GET request to the main classification endpoint
-            GET /api/classify?class=AdministrativeArea&property=schema:address
+            GET /api/classify/data?class=AdministrativeArea&property=schema:address
             Accept: */*
             Response:
             [
@@ -401,7 +401,7 @@
           
             
               # Example of GET request to the properties endpoint
-              GET /api/properties?class=AdministrativeArea
+              GET /api/classify/properties?class=AdministrativeArea
               Accept: */*
               Response:
               [
@@ -477,7 +477,7 @@
   
          
             # Example of GET request to the main alignment endpoint
-            GET api/align?target=schema.org
+            GET api/align/data?target=schema.org
             Accept: */*
             Response:
             C:\Users\ENBYSE~1\AppData\Local\Temp\tmpe_ck29uf.nt

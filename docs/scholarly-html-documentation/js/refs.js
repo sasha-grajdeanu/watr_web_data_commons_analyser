@@ -92,5 +92,17 @@ let refs = {
     <cite property="schema:name"><a href="https://www.dbpedia.org/">DBPedia</a></cite>.
   </dd>
   `,
+  'React': `
+  <dd property="schema:citation" typeof="schema:WebPage"
+      resource="https://react.dev/">
+    <cite property="schema:name"><a href="https://react.dev/">React</a></cite>.
+  </dd>
+  `,
+  'TailwindCSS': `
+  <dd property="schema:citation" typeof="schema:WebPage"
+      resource="https://tailwindcss.com/">
+    <cite property="schema:name"><a href="https://tailwindcss.com/">TailwindCSS</a></cite>.
+  </dd>
+  `,
 };
 export default refs;
