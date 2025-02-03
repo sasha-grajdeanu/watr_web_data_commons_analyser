@@ -207,8 +207,25 @@
       <figure typeof="schema:SoftwareSourceCode">
         <pre>
           <code>
-            # Examples for Visualization
-        
+            # Examples of GET request to statistics visualisation endpoint
+            GET api/visualise/statistics?class=AdministrativeArea&limit=true&count_limit=5
+            Accept: application/json
+            Response:
+            {
+              "properties_type": {
+                "http://schema.org/address": 1,
+                "http://schema.org/containsPlace": 1,
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type": 1
+              },
+              "type_entity": {
+                "uri": 1
+              },
+              "unique_entities": 1,
+              "value_type": {
+                "bnode": 1,
+                "uri": 2
+              }
+            }
   
           
             # Example of GET request to the main classification endpoint
@@ -251,8 +268,63 @@
               ]
   
           
-            # Examples for Comparison
-          
+            # Examples to GET request to the comparison statistics endpoint
+            GET api/compare/statistics?class_one=AdministrativeArea&class_two=City
+            Accept: application/json
+            Response: 
+            {
+              "AdministrativeArea": {
+                "least_used": "http://schema.org/address",
+                "most_used": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "properties": [
+                  "http://schema.org/address",
+                  "http://schema.org/containsPlace",
+                  "http://schema.org/name",
+                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                  "http://schema.org/hasMap",
+                  "http://schema.org/mainEntityOfPage",
+                  "http://schema.org/geo",
+                  "http://schema.org/url",
+                  "http://schema.org/sameAs"
+                ],
+                "total_count": 9,
+                "unique_properties": [
+                  "http://schema.org/containsPlace",
+                  "http://schema.org/geo"
+                ]
+              },
+              "City": {
+                "least_used": "http://schema.org/containedInPlace",
+                "most_used": "http://schema.org/name",
+                "properties": [
+                  "http://schema.org/containedInPlace",
+                  "http://schema.org/address",
+                  "http://schema.org/longitude",
+                  "http://schema.org/name",
+                  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                  "http://schema.org/hasMap",
+                  "http://schema.org/mainEntityOfPage",
+                  "http://schema.org/url",
+                  "http://schema.org/sameAs",
+                  "http://schema.org/latitude"
+                ],
+                "total_count": 10,
+                "unique_properties": [
+                  "http://schema.org/containedInPlace",
+                  "http://schema.org/longitude",
+                  "http://schema.org/latitude"
+                ]
+              },
+              "common_properties": [
+                "http://schema.org/address",
+                "http://schema.org/name",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                "http://schema.org/hasMap",
+                "http://schema.org/mainEntityOfPage",
+                "http://schema.org/url",
+                "http://schema.org/sameAs"
+              ]
+            }
   
          
             # Example of GET request to the main alignment endpoint
