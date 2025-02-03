@@ -22,9 +22,6 @@
   <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/issues/">
     <img src="https://img.shields.io/github/issues/sasha-grajdeanu/watr_web_data_commons_analyser" alt="open issues" />
   </a>
-  <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/sasha-grajdeanu/watr_web_data_commons_analyser.svg" alt="license" />
-  </a>
 </p>
    
 <h4>
