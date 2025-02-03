@@ -176,20 +176,26 @@ Go to the project directory
 
 Install dependencies
 
-- pe back o sa fie nevoie de un fisier requirements.txt
+- to install all libraries for back-end component, run
+  
+```bash
+pip install -r requirements.txt
+```
+
 - to install the front-end component, run:
-  ```bash
+  
+```bash
   npm install
-  ```
+```
 
 Start the server
 
 ```bash
 # Start the frontend
-cd watr_front ; npm run dev
+cd watr_front_refactor ; npm run dev
 
 # Start the backend
-cd watr_back/watr_back ; python app.py
+cd watr_back ; python app.py
 
 # Start the Fuseki server
 cd /path/to/fuseki ; fuseki-server --update
@@ -199,39 +205,39 @@ cd /path/to/fuseki ; fuseki-server --update
 > with a dataset named `watr-dataset`
 
 
-<!-- Running Tests -->
-### :test_tube: Running Tests
-
-To run tests, run the following command
-
-```bash
-  # yarn test test
-```
-
-
-<!-- Deployment -->
-### :triangular_flag_on_post: Deployment
-
-To deploy this project run
-
-```bash
-  # yarn deploy
-```
-
-
 <!-- Usage -->
 ## :eyes: Usage
 
-Use this space to tell a little more about your project and how it can be used. Show additional screenshots, code samples, demos or link to other resources.
+The Web Data Commons Analyzer (WATR) is a web-based application designed to process and analyze metadata extracted from the Web Data Commons. Through this platform, users can perform complex tasks such as visualizing the structure and relationships within the data, classifying it according to predefined categories, comparing data, and aligning the data with existing ontologies. The system uses SPARQL queries to a Apache Jena Fuseki server to retrieve the data, and results are available in HTML, JSON-LD and JSON formats. Various statistics for each operation are provided using the RDF Data Cube vocabulary. 
 
+When opening the web application, the user will see the home page, where information about the project is displayed.
 
-```javascript
-import Component from 'my-project'
+From the navigation bar, they can select the following pages:
+### Visualisation
 
-function App() {
-  return <Component />
-}
-```
+This page is dedicated to viewing data provided by Web Data Commons. The user will fill out a form to select the class from which they want to view data, then choose whether they want to see all data related to the class or only a portion of it. If they select “true”, they must specify the desired number of records. If any form field is left empty, the user will be warned before submission.
+
+After submitting the form, a panel will appear on the right side, displaying a graph generated using the selected class's data, along with various statistics about the data (number of unique entities, properties, and their usage frequency, etc.).
+
+The user can download data files in various formats (HTML, JSON-LD) as well as a file with the generated statistics, modeled using the RDF Data Cube vocabulary.
+### Comparison
+
+This page is dedicated to comparing two classes from the dataset provided by Web Data Commons. The user will fill out a form to select two different classes for comparison. If any field is left empty or the user selects the same class twice, they will be warned before submitting the form.
+
+After submission, a panel will appear on the right side displaying a table showing the properties used by each class, their frequency, and various statistics about the comparison (common properties, unique properties for each class, the most used and least used properties).
+
+The user can download data files in various formats (HTML, JSON-LD) as well as a file with the generated statistics, modeled using the RDF Data Cube vocabulary.
+### Classification
+
+This page allows the classification of data provided by Web Data Commons based on class and property. The user will fill out a form to select a class and a property for classification. If any field is left empty, the user will be warned before submitting the form.
+
+After submission, a panel will appear on the right side, displaying a graph generated using the provided data, along with various statistics about the data. The user can download data files in various formats (HTML, JSON-LD) as well as files with the generated statistics, modeled using the RDF Data Cube vocabulary.
+### Alignment
+
+This page is dedicated to aligning the data provided by Web Data Commons to an existing ontology. The user will fill out a form to select the ontology based on which the alignment will be performed. If any field is left empty, the user will be warned before submitting the form.
+
+After submission, a panel will appear on the right side displaying a table with the alignment results and an average of the aligned data. The user can download data files in various formats (HTML, JSON-LD) as well as a file with the generated statistics, modeled using the RDF Data Cube vocabulary.
+
 
 
 <!-- Contributing -->
