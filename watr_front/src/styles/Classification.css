@@ -1,0 +1,92 @@
+.classification-page {
+    padding: 20px;
+    font-family: 'Montserrat', serif;
+    max-width: 900px;
+    margin: auto;
+    background-color: white;
+}
+
+.input-panel {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #2E5077;
+    border-radius: 5px;
+    background-color: #79D7BE;
+}
+
+.input-panel label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.input-panel select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #2E5077;
+    border-radius: 4px;
+    background-color: #F6F4F0;
+}
+
+.input-panel button {
+    display: inline-block;
+    padding: 10px 15px;
+    color: black;
+    background-color: #4DA1A9;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.input-panel button:hover {
+    background-color: #2E5077;
+    color: #F6F4F0;
+}
+
+.results-area {
+    margin-top: 30px;
+}
+
+.chart-container {
+    margin: 20px 0;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.results-table th,
+.results-table td {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+}
+
+.results-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.graph-container{
+    height: 500px;
+    border: 1px solid black;
+    background-color: #F6F4F0;
+    margin-top: 20px;
+    margin-bottom: 20px 
+}
+
+.stats-summary{
+    background-color: #F6F4F0;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #2E5077;
+    margin: auto;
+}
+
+#stats-summary-p{
+    margin: 0.5rem;
+}

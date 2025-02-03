@@ -1,0 +1,3 @@
+*.pyc
+/watr_front_refactor/node_modules
+/watr_front_refactor/.vite
