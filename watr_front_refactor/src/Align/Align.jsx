@@ -48,7 +48,7 @@ export default function Align() {
       const blob = await response.blob();
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = "graph_data.ttl";
+      link.download = `Align_${selectedOntology}.ttl`;
       link.click();
     } catch (error) {
       console.error("Error downloading file:", error);
@@ -127,7 +127,7 @@ export default function Align() {
 
 
   const importFunctionalities = [
-    { name: "Download stats", action: importLevels },
+    { name: "Download statistics", action: importLevels },
     { name: "Export as HTML", action: importAsHTML },
     { name: "Export as JSON-LD", action: importAsJSONLD },
   ];
