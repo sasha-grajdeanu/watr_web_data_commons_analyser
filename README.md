@@ -177,7 +177,10 @@ Go to the project directory
 Install dependencies
 
 - pe back o sa fie nevoie de un fisier requirements.txt
-- pe front (???)
+- to install the front-end component, run:
+  ```bash
+  npm install
+  ```
 
 Start the server
 
