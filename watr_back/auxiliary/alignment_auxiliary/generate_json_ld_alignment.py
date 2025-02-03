@@ -4,9 +4,7 @@ from auxiliary.alignment_auxiliary.parse_xml_file import parse_xml_file
 
 
 def generate_json_ld_alignment(result_path, target_ontology):
-    """
-    Function that creates the JSON-LD response for alignment
-    """
+
     try:
         alignment_data = parse_xml_file(result_path)
 

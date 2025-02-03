@@ -5,9 +5,6 @@ from auxiliary.alignment_auxiliary.process_alignment_output import process_align
 
 
 def alignment_stats_service(target_ontology):
-    """
-    Function that processes alignment statistics.
-    """
     output = execute_alignment_query()
     temp_file = process_alignment_output(output)
     ontology_path = get_ontology_path(target_ontology)

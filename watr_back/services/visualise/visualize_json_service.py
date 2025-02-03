@@ -5,9 +5,6 @@ from auxiliary.visualise_auxiliary.process_visualise_results import process_visu
 
 
 def visualise_json_ld_service(rdf_class, limit, count_limit):
-    """
-    Returns the SPARQL query results as JSON-LD.
-    """
     try:
         output = execute_visualise_query(rdf_class, limit, count_limit)
         init_result = process_visualise_results(output)

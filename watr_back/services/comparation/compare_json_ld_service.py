@@ -5,9 +5,6 @@ from auxiliary.compare_auxiliary.generate_json_ld_compare import generate_json_l
 
 
 def compare_json_ld_service(class_one, class_two):
-    """
-    Service class that returns the JSON-LD response of the comparison
-    """
     try:
         output = execute_compare_query(class_one, class_two)
         init_result = output['results']['bindings']

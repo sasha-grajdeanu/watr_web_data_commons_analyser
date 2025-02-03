@@ -2,9 +2,7 @@ from auxiliary.alignment_auxiliary.parse_xml_file import parse_xml_file
 
 
 def generate_html_alignment(result_path, target_ontology):
-    """
-    Function that creates the HTML response for classification
-    """
+
     alignment_data = parse_xml_file(result_path)
     table_rows = ""
     for row in alignment_data:

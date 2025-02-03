@@ -8,9 +8,7 @@ sparql = SPARQLWrapper(os.getenv('SPARQL_ENDPOINT'))
 
 
 def execute_visualise_query(rdf_class, limit, count_limit):
-    """
-    Helper function to execute the SPARQL query and return the results.
-    """
+
     if limit:
         sparql_query = VISUALISE_QUERY.format(rdf_class=rdf_class) + f" LIMIT {count_limit}"
     else:

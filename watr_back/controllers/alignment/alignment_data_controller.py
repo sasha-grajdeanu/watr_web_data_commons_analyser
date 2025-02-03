@@ -9,9 +9,6 @@ alignment = Blueprint('alignment', __name__)
 
 @alignment.route('/data', methods=['GET'])
 def alignment_data_controller():
-    """
-    Controller function to align based on a chosen ontology
-    """
     target_ontology = request.args.get('target')
 
     if not target_ontology or not isinstance(target_ontology, str):

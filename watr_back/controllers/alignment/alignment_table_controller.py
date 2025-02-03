@@ -7,10 +7,6 @@ alignmentTable = Blueprint('alignmentTable', __name__)
 
 @alignmentTable.route('/table', methods=['GET'])
 def alignment_table_controller():
-    """
-    Controller function to align based on a chosen ontology
-    and returns a tabular form for easier visualisation
-    """
     target_ontology = request.args.get('target')
     if not target_ontology or not isinstance(target_ontology, str):
         abort(400, description="Invalid or missing 'target' parameter")

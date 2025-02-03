@@ -5,10 +5,6 @@ from auxiliary.alignment_auxiliary.process_alignment_output import process_align
 
 
 def alignment_html_service(target_ontology):
-    """
-    Service function that aligns the ontology to a chosen ontology and
-    returns the HTML file
-    """
     output = execute_alignment_query()
     temp_file = process_alignment_output(output)
     ontology_path = get_ontology_path(target_ontology)

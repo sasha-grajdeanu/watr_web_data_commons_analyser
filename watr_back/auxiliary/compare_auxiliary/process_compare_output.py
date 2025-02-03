@@ -1,7 +1,5 @@
 def process_compare_output(output, class_one, class_two):
-    """
-    Helper function to process SPARQL results for comparison into a list of rows.
-    """
+
     init_result = []
     for elements in output['results']['bindings']:
         row = {

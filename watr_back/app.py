@@ -44,9 +44,9 @@ SWAGGER_URL = '/api/docs'
 API_URL = '/static/swagger.json'
 
 swaggerui_blueprint = get_swaggerui_blueprint(
-    SWAGGER_URL,  # Swagger UI static files will be mapped to '{SWAGGER_URL}/dist/'
+    SWAGGER_URL,
     API_URL,
-    config={  # Swagger UI config overrides
+    config={
         'app_name': "Test application"
     }
 )
@@ -86,7 +86,7 @@ app.register_blueprint(downloadStats, url_prefix='/api')
 
 
 @app.route('/api')
-def hello_world():  # put application's code here
+def hello_world():
     return 'Hello World!'
 
 

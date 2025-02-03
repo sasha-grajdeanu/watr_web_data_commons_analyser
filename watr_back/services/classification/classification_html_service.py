@@ -3,9 +3,6 @@ from auxiliary.classification_auxiliary.generate_html_classification import gene
 
 
 def classification_html_service(rdf_class, rdf_property):
-    """
-    Service function that returns the HTML results for classification
-    """
     try:
         output = execute_classification_query(rdf_class, rdf_property)
         init_result = output['results']['bindings']

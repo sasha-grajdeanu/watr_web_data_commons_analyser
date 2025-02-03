@@ -6,10 +6,7 @@ from flask import abort
 
 
 def process_alignment_output(output):
-    """
-    Helper function to process SPARQL results for classification
-    and saves it in a temporary file.
-    """
+
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.ttl')
     try:
         with open(temp_file.name, "wb") as file:
@@ -21,9 +18,6 @@ def process_alignment_output(output):
 
 
 def process_alignment_operation(my_file, target_ontology_path):
-    """
-    Function that does the alignment operation
-    """
     target_temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".xml")
 
     try:

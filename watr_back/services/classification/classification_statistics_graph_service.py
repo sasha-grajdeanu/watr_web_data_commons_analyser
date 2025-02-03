@@ -11,9 +11,6 @@ WATR = Namespace("http://localhost/watr#")
 
 
 def classification_statistics_graph_service(rdf_class, rdf_property):
-    """
-    Function that creates RDF graphs for classification statistics.
-    """
     try:
         statistics = classification_statistics_service(rdf_class, rdf_property)
 

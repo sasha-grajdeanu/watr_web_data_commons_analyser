@@ -2,9 +2,7 @@ from flask import render_template_string
 
 
 def generate_html_compare(init_result, class_one, class_two):
-    """
-    Function that creates the HTML response for comparison.
-    """
+
     html_template = """
             <!DOCTYPE html>
             <html lang="en">

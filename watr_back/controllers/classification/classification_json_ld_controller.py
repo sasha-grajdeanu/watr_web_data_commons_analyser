@@ -7,9 +7,6 @@ classification_json_ld = Blueprint('classification_json_ld', __name__)
 
 @classification_json_ld.route('/json_ld', methods=['GET'])
 def classification_json_ld_controller():
-    """
-    Controller function to classify based on class and property.
-    """
     rdf_class = request.args.get('class')
     rdf_property = request.args.get('property')
 

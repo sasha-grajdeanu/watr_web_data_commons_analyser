@@ -7,10 +7,6 @@ classification_html = Blueprint('classification_html', __name__)
 
 @classification_html.route('/html', methods=['GET'])
 def classification_html_controller():
-    """
-    Controller function to classify based on class and property and
-    returns a tabular HTML page with the results.
-    """
     rdf_class = request.args.get('class')
     rdf_property = request.args.get('property')
 

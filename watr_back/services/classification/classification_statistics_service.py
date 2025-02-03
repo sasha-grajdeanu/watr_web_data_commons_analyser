@@ -5,9 +5,6 @@ from auxiliary.classification_auxiliary.process_classification_output import pro
 
 
 def classification_statistics_service(rdf_class, rdf_property):
-    """
-    Function that processes classification statistics.
-    """
     try:
         output = execute_classification_query(rdf_class, rdf_property)
         results = process_classification_output(output)

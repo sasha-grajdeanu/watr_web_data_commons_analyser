@@ -7,9 +7,6 @@ classificationGraph = Blueprint('classificationGraph', __name__)
 
 @classificationGraph.route('/graph', methods=['GET'])
 def classification_graph_controller():
-    """
-    Controller function to create a graph visualization of the classification.
-    """
     rdf_class = request.args.get('class')
     rdf_property = request.args.get('property')
 

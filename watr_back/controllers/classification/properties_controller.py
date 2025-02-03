@@ -7,9 +7,7 @@ properties = Blueprint('properties', __name__)
 
 @properties.route('/properties', methods=['GET'])
 def properties_controller():
-    """
-    Controller function to get properties for classification.
-    """
+
     rdf_class = request.args.get('class')
 
     if not rdf_class or not isinstance(rdf_class, str):

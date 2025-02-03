@@ -8,10 +8,6 @@ alignmentStats = Blueprint('alignmentStats', __name__)
 
 @alignmentStats.route('/statistics', methods=['GET'])
 def alignment_statistics_controller():
-    """
-    Controller function to create statistics for alignment in
-    RDF Data Cube vocabulary.
-    """
     target_ontology = request.args.get('target')
 
     if not target_ontology or not isinstance(target_ontology, str):

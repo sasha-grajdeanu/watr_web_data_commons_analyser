@@ -7,10 +7,7 @@ alignment_json_ld = Blueprint('alignment_json_ld', __name__)
 
 @alignment_json_ld.route('/json_ld', methods=['GET'])
 def alignment_json_ld_controller():
-    """
-    Controller function to align based on a chosen ontology and
-    returns results in JSON-LD format.
-    """
+
     target_ontology = request.args.get('target')
     if not target_ontology or not isinstance(target_ontology, str):
         abort(400, description="Invalid or missing 'target' parameter")

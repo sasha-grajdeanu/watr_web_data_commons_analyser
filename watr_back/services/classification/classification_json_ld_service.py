@@ -5,9 +5,6 @@ from auxiliary.classification_auxiliary.generate_json_ld_classification import g
 
 
 def classification_json_ld_service(rdf_class, rdf_property):
-    """
-    Service function that returns JSON-LD response of the classification
-    """
     try:
         output = execute_classification_query(rdf_class, rdf_property)
         init_result = output['results']['bindings']

@@ -1,7 +1,5 @@
 def generate_json_ld_compare(init_result, class_one, class_two):
-    """
-    Function that creates the JSON-LD response for comparison.
-    """
+
     json_ld = {
         "@context": {
             "@vocab": "http://schema.org/",

@@ -9,9 +9,6 @@ classification = Blueprint('classification', __name__)
 
 @classification.route('/data', methods=['GET'])
 def classification_data_controller():
-    """
-    Controller function to classify based on class and property.
-    """
     rdf_class = request.args.get('class')
     rdf_property = request.args.get('property')
 

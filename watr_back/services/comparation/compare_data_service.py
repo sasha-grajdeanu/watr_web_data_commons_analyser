@@ -5,9 +5,6 @@ from auxiliary.compare_auxiliary.process_compare_output import process_compare_o
 
 
 def compare_data_service(class_one, class_two):
-    """
-    Service function that returns the results of comparison
-    """
     try:
         output = execute_compare_query(class_one, class_two)
         result = process_compare_output(output, class_one, class_two)

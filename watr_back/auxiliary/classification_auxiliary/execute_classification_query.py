@@ -8,9 +8,7 @@ sparql = SPARQLWrapper(os.getenv('SPARQL_ENDPOINT'))
 
 
 def execute_classification_query(rdf_class, rdf_property):
-    """
-    Helper function to execute the SPARQL query and return results.
-    """
+
     sparql_query = CLASSIFY_QUERY.format(rdf_class=rdf_class, property=rdf_property)
     sparql.setQuery(sparql_query)
     sparql.setReturnFormat(JSON)

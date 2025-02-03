@@ -1,7 +1,5 @@
 def generate_json_ld_classification(init_result):
-    """
-    Function that creates the JSON-LD response for classification.
-    """
+
     jsonld = {
         "@context": "http://schema.org",
         "@type": "ClassificationResults",

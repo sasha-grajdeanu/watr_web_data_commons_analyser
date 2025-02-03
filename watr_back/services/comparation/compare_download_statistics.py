@@ -4,17 +4,14 @@ from rdflib.namespace import RDF, XSD
 
 from services.comparation.compare_statistics_service import compare_statistics_service
 
-QB = Namespace("http://purl.org/linked-data/cube#")  # RDF Data Cube vocabulary
+QB = Namespace("http://purl.org/linked-data/cube#")
 RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
-DCT = Namespace("http://purl.org/dc/terms/")  # Dublin Core Terms
-SCHEMA = Namespace("http://schema.org/")  # Schema.org vocabulary
-WATR = Namespace("http://localhost:5000/watr#")  # WATR vocabulary
+DCT = Namespace("http://purl.org/dc/terms/")
+SCHEMA = Namespace("http://schema.org/")
+WATR = Namespace("http://localhost:5000/watr#")
 
 
 def compare_download_statistics_service(class_one, class_two):
-    """
-    Function that creates statistics in RDF Data Cube vocabulary.
-    """
     try:
         statistics = compare_statistics_service(class_one, class_two)
         g = Graph()
@@ -24,7 +21,6 @@ def compare_download_statistics_service(class_one, class_two):
         g.bind("watr", WATR)
         g.bind("schema", SCHEMA)
 
-        # Create Dataset
         dataset = URIRef("http://localhost:5000/watr/dataset/compare_statistics")
         g.add((dataset, RDF.type, QB.DataSet))
 
@@ -37,9 +33,8 @@ def compare_download_statistics_service(class_one, class_two):
         g.add((class_dimension, RDF.type, QB.DimensionProperty))
         for class_name, stats in statistics.items():
             if class_name == "common_properties":
-                continue  # Skip common properties, as they are handled separately
+                continue
 
-            # Add observations for properties
             for prop in stats["properties"]:
                 observation = URIRef(f"http://localhost:5000/watr/observation/{class_name}_{prop.split('/')[-1]}")
                 g.add((observation, RDF.type, QB.Observation))
@@ -62,9 +57,8 @@ def compare_download_statistics_service(class_one, class_two):
                 g.add((observation_least_used, property_dimension, URIRef(stats["least_used"])))
                 g.add((observation_least_used, class_dimension, Literal(class_name)))
                 g.add(
-                    (observation_least_used, count_measure, Literal(1, datatype=XSD.integer)))  # Least used count is 1
+                    (observation_least_used, count_measure, Literal(1, datatype=XSD.integer)))
 
-                # Add observations for common properties
         for prop in statistics["common_properties"]:
             observation_common = URIRef(f"http://localhost:5000/watr/observation/common_{prop.split('/')[-1]}")
             g.add((observation_common, RDF.type, QB.Observation))
@@ -72,7 +66,7 @@ def compare_download_statistics_service(class_one, class_two):
             g.add((observation_common, property_dimension, URIRef(prop)))
             g.add((observation_common, class_dimension, Literal("common")))
             g.add((observation_common, count_measure,
-                   Literal(2, datatype=XSD.integer)))  # Common properties appear in both classes
+                   Literal(2, datatype=XSD.integer)))
 
         return g.serialize(format="json-ld", indent=None)
     except Exception as e:

@@ -9,9 +9,6 @@ sparql = SPARQLWrapper(os.getenv('SPARQL_ENDPOINT'))
 
 
 def properties_service(rdf_class):
-    """
-    Function that returns the unique properties of a subject
-    """
     sparql_query = GET_DISTINCT_PROPERTIES.format(rdf_class=rdf_class)
     sparql.setQuery(sparql_query)
     sparql.setReturnFormat(JSON)

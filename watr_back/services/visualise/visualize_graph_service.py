@@ -7,9 +7,6 @@ from auxiliary.visualise_auxiliary.write_graph_format import write_graph_format
 
 
 def visualise_graph_service(rdf_class, limit, count_limit):
-    """
-    Returns the SPARQL query results as a graph file.
-    """
     try:
         output = execute_visualise_query(rdf_class, limit, count_limit)
         init_result = process_visualise_results(output)

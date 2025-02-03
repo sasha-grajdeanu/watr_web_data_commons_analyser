@@ -13,9 +13,6 @@ WATR = Namespace("http://localhost/watr#")
 
 
 def alignment_stats_graph_service(target_ontology):
-    """
-    Function that creates RDF graphs for alignment statistics.
-    """
     average_measure = alignment_stats_service(target_ontology)
     relations = alignment_table_service(target_ontology)
 

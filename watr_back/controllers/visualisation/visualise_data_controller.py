@@ -10,9 +10,6 @@ visualisation_data = Blueprint('visualisation_data', __name__)
 
 @visualisation_data.route('/data', methods=['GET'])
 def visualise_brute_data_controller():
-    """
-    Controller function to visualise data.
-    """
     rdf_class = validate_rdf_class(request.args.get('class'))
     limit, count_limit = validate_limit_and_count_limit(request.args.get('limit'), request.args.get('count_limit'))
 

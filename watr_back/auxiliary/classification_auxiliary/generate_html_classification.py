@@ -2,9 +2,7 @@ from flask import render_template_string
 
 
 def generate_html_classification(results):
-    """
-    Function that creates the HTML response for classification.
-    """
+
     html_template = """
         <!DOCTYPE html>
             <html lang="en">

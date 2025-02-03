@@ -9,9 +9,7 @@ NAMESPACES = {
 
 
 def parse_xml_file(result_path):
-    """
-    Function that parse the result file.
-    """
+
     try:
         tree = ET.parse(result_path)
         root = tree.getroot()
