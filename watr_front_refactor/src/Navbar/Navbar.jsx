@@ -7,7 +7,7 @@ export default function Navbar() {
   const [nav, setNav] = useState(false);
   const location = useLocation();
   const navItems = [
-    { label: "Visualisation", path: "/visualize" },
+    { label: "Visualization", path: "/visualize" },
     { label: "Comparison", path: "/compare" },
     { label: "Classification", path: "/classify" },
     { label: "Alignment", path: "/align" },
