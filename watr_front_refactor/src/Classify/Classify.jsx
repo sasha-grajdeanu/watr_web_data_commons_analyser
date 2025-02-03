@@ -55,11 +55,10 @@ export default function Classify() {
 
       const htmlData = await response.text();
 
-      // Create a blob and trigger download
       const blob = new Blob([htmlData], { type: "text/html" });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Classify_${selectedClass}_${selectedProperties}_data.html`; // Name of the downloaded file
+      link.download = `Classify_${selectedClass}_${selectedProperties}_data.html`; 
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -86,13 +85,12 @@ export default function Classify() {
 
       const jsonLDData = await response.text();
 
-      // Create a blob and trigger download
       const blob = new Blob([JSON.stringify(jsonLDData, null, 2)], {
         type: "application/ld+json",
       });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Classify_${selectedClass}_${selectedProperties}_data.jsonld`; // Name of the downloaded file
+      link.download = `Classify_${selectedClass}_${selectedProperties}_data.jsonld`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

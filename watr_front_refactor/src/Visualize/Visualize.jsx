@@ -8,7 +8,6 @@ import {
   Fieldset,
   Input,
   Button,
-  Switch,
 } from "@headlessui/react";
 import ErrorsMessage from "../utils_components/Errors";
 import ImportButtons from "../utils_components/ImportButtons";
@@ -16,8 +15,6 @@ import sadcat from "../assets/sadsadfatcat.jpg";
 import SwitchDisplay from "../utils_components/Switch";
 import Spinner from "../utils_components/Loading";
 import GraphMLViewer from "../utils_components/GraphComponent";
-import VisualisationCharts from "../utils_components/Visualize_charts";
-import ChartWithPagination from "../utils_components/Visualize_charts";
 import DataVisualization from "../utils_components/Visualize_charts";
 
 export default function Visualize() {
@@ -56,11 +53,10 @@ export default function Visualize() {
 
       const htmlData = await response.text();
 
-      // Create a blob and trigger download
       const blob = new Blob([htmlData], { type: "text/html" });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Visualize_${selectedClass}_data.html`; // Name of the downloaded file
+      link.download = `Visualize_${selectedClass}_data.html`; 
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -89,14 +85,12 @@ export default function Visualize() {
       }
 
       const jsonLDData = await response.text();
-
-      // Create a blob and trigger download
       const blob = new Blob([JSON.stringify(jsonLDData, null, 2)], {
         type: "application/ld+json",
       });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Visualize_${selectedClass}_data.jsonld`; // Name of the downloaded file
+      link.download = `Visualize_${selectedClass}_data.jsonld`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -126,13 +120,12 @@ export default function Visualize() {
 
       const jsonLDData = await response.text();
 
-      // Create a blob and trigger download
       const blob = new Blob([JSON.stringify(jsonLDData, null, 2)], {
         type: "application/ld+json",
       });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Visualize_${selectedClass}_statistics.jsonld`; // Name of the downloaded file
+      link.download = `Visualize_${selectedClass}_statistics.jsonld`; 
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

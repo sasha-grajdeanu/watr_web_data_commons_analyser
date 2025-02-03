@@ -105,12 +105,10 @@ const GraphMLViewer = ({ graphMLData }) => {
       const networkInstance = new Network(graphContainer.current, data, options);
       setNetwork(networkInstance);
 
-      // Center the graph after rendering
       networkInstance.on("stabilizationIterationsDone", () => {
         networkInstance.fit();
       });
 
-      // Handle window resize events
       const handleResize = () => {
         if (graphContainer.current && networkInstance) {
           networkInstance.setSize(
@@ -123,7 +121,6 @@ const GraphMLViewer = ({ graphMLData }) => {
 
       window.addEventListener("resize", handleResize);
 
-      // Cleanup on unmount
       return () => {
         window.removeEventListener("resize", handleResize);
         networkInstance.destroy();

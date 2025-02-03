@@ -4,7 +4,6 @@ const AlignTableWithPagination = ({ data, average }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  // Convert object data to an array
   const formattedData = Object.entries(data).map(([key, value]) => ({ id: key, ...value }));
 
   const shortenEdgeLabel = (label) => {
@@ -25,10 +24,8 @@ const AlignTableWithPagination = ({ data, average }) => {
     return shortenedLabel;
   };
 
-  // Calculate total pages
   const totalPages = Math.ceil(formattedData.length / itemsPerPage);
 
-  // Get current page items
   const currentItems = formattedData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage

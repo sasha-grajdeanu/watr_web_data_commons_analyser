@@ -4,10 +4,8 @@ export default function CompareStatistics({ statistics }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 1;
 
-  // Convert statistics object into an array
   let categories = Object.entries(statistics);
 
-  // Function to shorten URLs or labels
   const shortenEdgeLabel = (label) => {
     label = label.replace(/https?:\/\//g, "").replace(/www\./g, "");
 

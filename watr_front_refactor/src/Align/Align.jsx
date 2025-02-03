@@ -76,11 +76,10 @@ export default function Align() {
 
       const htmlData = await response.text();
 
-      // Create a blob and trigger download
       const blob = new Blob([htmlData], { type: "text/html" });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Align_${selectedOntology}_data.html`; // Name of the downloaded file
+      link.download = `Align_${selectedOntology}_data.html`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -108,13 +107,12 @@ export default function Align() {
 
       const jsonLDData = await response.text();
 
-      // Create a blob and trigger download
       const blob = new Blob([JSON.stringify(jsonLDData, null, 2)], {
         type: "application/ld+json",
       });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Align_${selectedOntology}_data.jsonld`; // Name of the downloaded file
+      link.download = `Align_${selectedOntology}_data.jsonld`; 
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -210,7 +208,6 @@ export default function Align() {
       setLoading(true);
       setShowStatistics(false);
   
-      // Execute all API calls in parallel
       const [graphData, statistics, graphFile] = await Promise.all([
         fetchData(selectedOntology),
         fetchStatisticsData(selectedOntology),
@@ -222,7 +219,7 @@ export default function Align() {
       console.log(graphData);
     } catch (error) {
       console.error("Error during visualization process:", error);
-      setLoading(false); // Ensure loading state is reset in case of an error
+      setLoading(false); 
     }
   };
   

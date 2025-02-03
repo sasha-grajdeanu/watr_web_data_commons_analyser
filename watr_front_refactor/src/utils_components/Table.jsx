@@ -22,16 +22,13 @@ const TableWithPagination = ({ data }) => {
     return shortenedLabel;
   };
 
-  // Calculate total pages
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
-  // Get current page items
   const currentItems = data.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  // Ensure "property" key is renamed and moved first
   const allKeys = data.length > 0 ? Object.keys(data[0]) : [];
   const formattedKeys = allKeys.map((key) => (key === "property" ? "Property" : key));
   const sortedKeys = ["Property", ...formattedKeys.filter((key) => key !== "Property")];

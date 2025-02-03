@@ -5,7 +5,6 @@ export default function Home() {
           <h1 className="xl:text-9xl text-6xl max-[480px]:text-7xl min-[480px]:text-9xl font-bold md:text-7xl text-gray-800 mb-4">Hello!</h1>
           <h1 className="xl:text-6xl text-4xl max-[520px]:text-4xl min-[520px]:text-6xl md:text-4xl font-semibold">This is WATR.</h1>
         </div>
-        {/* <div className="hidden md:block w-px bg-gray-400 h-48 mx-8"></div> */}
         <div className="md:w-1/2">
         <div className="max-w-2xl p-8 bg-pink-200 rounded-2xl shadow-lg">
           <p className="text-gray-600 leading-relaxed">

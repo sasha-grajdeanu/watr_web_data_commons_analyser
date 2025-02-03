@@ -27,11 +27,9 @@ const StatisticsCard = ({ data }) => {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { display: false }, // Disable default legend
+      legend: { display: false },
     },
   };
-
-  // Generate custom legend
   useEffect(() => {
     if (chartRef.current) {
       setCustomLegend(chartRef.current?.legend?.legendItems || []);
