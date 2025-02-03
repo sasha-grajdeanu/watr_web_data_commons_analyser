@@ -53,12 +53,8 @@
   * [Prerequisites](#bangbang-prerequisites)
   * [Installation](#gear-installation)
   * [Run Locally](#running-run-locally)
-  * [Running Tests](#test_tube-running-tests)
-  * [Deployment](#triangular_flag_on_post-deployment)
 - [Usage](#eyes-usage)
 - [Contributing](#wave-contributing)
-- [License](#warning-license)
-- [Contact](#handshake-contact)
 
   
 
@@ -179,7 +175,7 @@ Install dependencies
 - to install all libraries for back-end component, run
   
 ```bash
-pip install -r requirements.txt
+  pip install -r requirements.txt
 ```
 
 - to install the front-end component, run:
@@ -248,16 +244,4 @@ After submission, a panel will appear on the right side displaying a table with 
 </a>
 
 
-<!-- License -->
-## :warning: License
-
-Distributed under the no License. See LICENSE.txt for more information.
-
-
-<!-- Contact -->
-## :handshake: Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template)
 
