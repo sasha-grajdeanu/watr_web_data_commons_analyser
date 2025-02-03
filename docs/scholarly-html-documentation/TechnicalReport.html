@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
     <title>Scholarly Technical Report</title>
-    <link rel="stylesheet" href="css/scholarly.min.css">
+    <link rel="stylesheet" href="css/scholarly.min.css" />
     <script src="js/scholarly.min.js"></script>
   </head>
   <body prefix="schema: http://schema.org">
     <header>
       <h1>Web Data Commons Analyzer</h1>
     </header>
-    
+
     <div role="contentinfo">
       <dl>
         <dt>Authors</dt>
-        <dd>
-          Alexandru-Cristian Grăjdeanu
-          &amp;
-          Maria Nestor
-        </dd>
+        <dd>Alexandru-Cristian Grăjdeanu &amp; Maria Nestor</dd>
 
         <dt>License (OARE TREBUIE??)</dt>
         <dd>
@@ -30,57 +29,84 @@
     <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
       <h2>Abstract</h2>
       <p>
-        The Web Data Commons Analyzer (WATR) is a web-based application designed to process 
-        and analyze metadata extracted from the <a role="doc-biblioref">Web Data Commons</a>. Through this platform, users 
-        can perform complex tasks such as visualizing the structure and relationships within the data, 
-        classifying it according to predefined categories, comparing data, and aligning the data with 
-        existing ontologies. The system uses <a role="doc-biblioref">SPARQL</a> queries to a <a role="doc-biblioref">Apache Jena Fuseki</a> server to retrieve the data, and results 
-        are available in HTML, <a role="doc-biblioref">JSON-LD</a> and JSON formats. Various statistics for each operation are provided using the
+        The Web Data Commons Analyzer (WATR) is a web-based application designed
+        to process and analyze metadata extracted from the
+        <a role="doc-biblioref">Web Data Commons</a>. Through this platform,
+        users can perform complex tasks such as visualizing the structure and
+        relationships within the data, classifying it according to predefined
+        categories, comparing data, and aligning the data with existing
+        ontologies. The system uses <a role="doc-biblioref">SPARQL</a> queries
+        to a <a role="doc-biblioref">Apache Jena Fuseki</a> server to retrieve
+        the data, and results are available in HTML,
+        <a role="doc-biblioref">JSON-LD</a> and JSON formats. Various statistics
+        for each operation are provided using the
         <a role="doc-biblioref">RDF Data Cube vocabulary</a>.
       </p>
     </section>
     <section id="introduction" role="doc-introduction">
       <h2>Introduction</h2>
       <p>
-        With the increasing amount of metadata embedded in web pages, effective processing and analysis tools
-        are essential for extracting meaningful insights. The Web Data Commons Analyzer (WATR) is a web-based
-        application designed to process and analyze metadata extracted from the <a role="doc-biblioref">Web Data Commons</a>. The platform enables
-        users to perform four key operations on <a role="doc-biblioref">RDFa</a> and <a role="doc-biblioref">HTML5</a>  microdata: visualization, classification, comparison, and
-        alignment. These operations allow users to gain insights into the structure of the data, classify
-        it according to predefined categories, compare datasets, and align them with existing ontologies.
+        With the increasing amount of metadata embedded in web pages, effective
+        processing and analysis tools are essential for extracting meaningful
+        insights. The Web Data Commons Analyzer (WATR) is a web-based
+        application designed to process and analyze metadata extracted from the
+        <a role="doc-biblioref">Web Data Commons</a>. The platform enables users
+        to perform four key operations on <a role="doc-biblioref">RDFa</a> and
+        <a role="doc-biblioref">HTML5</a> microdata: visualization,
+        classification, comparison, and alignment. These operations allow users
+        to gain insights into the structure of the data, classify it according
+        to predefined categories, compare datasets, and align them with existing
+        ontologies.
       </p>
 
       <p>
-        The system is structured into distinct modules, each dedicated to a specific task:
+        The system is structured into distinct modules, each dedicated to a
+        specific task:
       </p>
 
       <ul>
-          <li>Visualization, for exploring metadata structures and relationships.</li>
-          <li>Classification, for categorizing metadata based on subject and predicate</li>
-          <li>Comparison, for </li>
-          <li>Alignment, for mapping metadata to existing ontologies, using <a role="doc-biblioref">AgreementMakerLight (AML)</a></li>
-        </ul>
+        <li>
+          Visualization, for exploring metadata structures and relationships.
+        </li>
+        <li>
+          Classification, for categorizing metadata based on subject and
+          predicate
+        </li>
+        <li>Comparison, for</li>
+        <li>
+          Alignment, for mapping metadata to existing ontologies, using
+          <a role="doc-biblioref">AgreementMakerLight (AML)</a>
+        </li>
+      </ul>
 
       <p>
-        The backend is implemented in <a role="doc-biblioref">Flask</a>, serving data from <a role="doc-biblioref">Apache Jena Fuseki</a>  SPARQL endpoint, while the frontend is build
-        using React for an interactive user experience.
+        The backend is implemented in <a role="doc-biblioref">Flask</a>, serving
+        data from <a role="doc-biblioref">Apache Jena Fuseki</a> SPARQL
+        endpoint, while the frontend is build using React for an interactive
+        user experience.
       </p>
 
       <p>
-        This report provides an in-depth look at the system architecture, the data structures used, the API 
-        implementation, and how external data sources are integrated. Furthermore, it discusses the technical 
-        details behind each operation and the challenges encountered during development.
+        This report provides an in-depth look at the system architecture, the
+        data structures used, the API implementation, and how external data
+        sources are integrated. Furthermore, it discusses the technical details
+        behind each operation and the challenges encountered during development.
       </p>
     </section>
-    
+
     <section id="data-structures">
       <h2>Internal Data Structures</h2>
 
       <p>
-        The application processes data in RDF format, specifically <a role="doc-biblioref">RDFa</a> and <a role="doc-biblioref">HTML5</a>  microdata
-        collected from the <a role="doc-biblioref">Web Data Commons</a>. This data is stored in an <a role="doc-biblioref">Apache Jena Fuseki</a> server, a robust
-        RDF storage system that allows for efficient querying and manipulation of RDF data. The datasets are stored in the 
-        <code>/watr-dataset</code> dataset in <a role="doc-biblioref">Apache Jena Fuseki</a>.
+        The application processes data in RDF format, specifically
+        <a role="doc-biblioref">RDFa</a> and
+        <a role="doc-biblioref">HTML5</a> microdata collected from the
+        <a role="doc-biblioref">Web Data Commons</a>. This data is stored in an
+        <a role="doc-biblioref">Apache Jena Fuseki</a> server, a robust RDF
+        storage system that allows for efficient querying and manipulation of
+        RDF data. The datasets are stored in the
+        <code>/watr-dataset</code> dataset in
+        <a role="doc-biblioref">Apache Jena Fuseki</a>.
       </p>
 
       <h3>Data Models and Structure</h3>
@@ -89,120 +115,242 @@
       </p>
 
       <ol>
-        <li>RDF Data Models<br>
+        <li>
+          RDF Data Models<br />
           The core data used by the application follows the Resource Description
-          Framework (RDF), a specification that encodes data in a graph structure consisting of
-          subject-predicate-object triples. This allows for the representation of relationships between
-          entities. The data is provided in <a role="doc-biblioref">N-Quads</a> format, which is a serialization of RDF that supports
-          the inclusion of multiple graphs in a single file.
+          Framework (RDF), a specification that encodes data in a graph
+          structure consisting of subject-predicate-object triples. This allows
+          for the representation of relationships between entities. The data is
+          provided in <a role="doc-biblioref">N-Quads</a> format, which is a
+          serialization of RDF that supports the inclusion of multiple graphs in
+          a single file.
         </li>
-        <li>Preprocessed RDF Data<br>
-          The metadata is extracted and preprocessed by the <a role="doc-biblioref">Web Data Commons</a> team from <a role="doc-biblioref">RDFa</a> and <a role="doc-biblioref">HTML5</a>  microdata
-          embedded pages. This metadata is then made available in <a role="doc-biblioref">N-Quads</a> format (files with the .nq extension).
-          The WATR application will consume this data for its analysis.
+        <li>
+          Preprocessed RDF Data<br />
+          The metadata is extracted and preprocessed by the
+          <a role="doc-biblioref">Web Data Commons</a> team from
+          <a role="doc-biblioref">RDFa</a> and
+          <a role="doc-biblioref">HTML5</a> microdata embedded pages. This
+          metadata is then made available in
+          <a role="doc-biblioref">N-Quads</a> format (files with the .nq
+          extension). The WATR application will consume this data for its
+          analysis.
         </li>
       </ol>
 
       <h3>Database and Data Access</h3>
       <p>
-        The RDF datasets are stored in an <a role="doc-biblioref">Apache Jena Fuseki</a> server, which serves as the
-        primary (and only) RDF database of the application. The database is structured into a dataset named
-        /watr-dataset, where all the metadata from the <a role="doc-biblioref">Web Data Commons</a> is stored.
+        The RDF datasets are stored in an
+        <a role="doc-biblioref">Apache Jena Fuseki</a> server, which serves as
+        the primary (and only) RDF database of the application. The database is
+        structured into a dataset named /watr-dataset, where all the metadata
+        from the <a role="doc-biblioref">Web Data Commons</a> is stored.
       </p>
 
       <p>
-        Data access is achieved using <a role="doc-biblioref">SPARQL</a> queries, the query language designed for
-        querying RDF datasets. Each operation (visualization, classification, comparison, and alignment)
-        utilizes specific <a role="doc-biblioref">SPARQL</a> query patterns that are made specifically to retrieve
-        relevant results from the dataset. These queries interact directly with the Fuseki server, enabling
-        dynamic and real-time processing of metadata.
+        Data access is achieved using
+        <a role="doc-biblioref">SPARQL</a> queries, the query language designed
+        for querying RDF datasets. Each operation (visualization,
+        classification, comparison, and alignment) utilizes specific
+        <a role="doc-biblioref">SPARQL</a> query patterns that are made
+        specifically to retrieve relevant results from the dataset. These
+        queries interact directly with the Fuseki server, enabling dynamic and
+        real-time processing of metadata.
       </p>
 
       <h3>Data Flow and Access Patterns</h3>
       <p>
-        The application fetches RDF data from the <a role="doc-biblioref">Apache Jena Fuseki</a> server based on user requests. <a role="doc-biblioref">SPARQL</a> queries
-        are constructed based on the type of the operation:
+        The application fetches RDF data from the
+        <a role="doc-biblioref">Apache Jena Fuseki</a> server based on user
+        requests. <a role="doc-biblioref">SPARQL</a> queries are constructed
+        based on the type of the operation:
       </p>
       <ul>
-        <li>Visualization </li>
-        <li>Classification queries categorize the metadata based on selected subject-predicate relationships.</li>
-        <li>Comparison </li>
-        <li>Alignment queries extracts the necessary metadata and structures in RDF format to be further processed by the backend.</li>
+        <li>Visualization</li>
+        <li>
+          Classification queries categorize the metadata based on selected
+          subject-predicate relationships.
+        </li>
+        <li>Comparison</li>
+        <li>
+          Alignment queries extracts the necessary metadata and structures in
+          RDF format to be further processed by the backend.
+        </li>
       </ul>
-
     </section>
 
     <section id="api">
       <h2>API Implementation</h2>
 
       <p>
-        The application exposes a RESTful API implemented in <a role="doc-biblioref">Flask</a>. The API allows users to
-        interact with the system and perform the four key operations: visualization, classification, comparison, 
-        and alignment. Each operation is associated with a set of endpoints that handle user input, 
-        execute <a role="doc-biblioref">SPARQL</a> queries, and return the results.
+        The application exposes a RESTful API implemented in
+        <a role="doc-biblioref">Flask</a>. The API allows users to interact with
+        the system and perform the four key operations: visualization,
+        classification, comparison, and alignment. Each operation is associated
+        with a set of endpoints that handle user input, execute
+        <a role="doc-biblioref">SPARQL</a> queries, and return the results.
       </p>
 
       <p>Below is an overview of the endpoints exposed by the application:</p>
       <ol>
-          <li>
-            Visualization Operation:
-            <ul>
-              <li><code>/api/visualise/data</code> - Visualise data in various formats (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)</li>
-              <li><code>/api/visualise/html</code> - Visualises the data filtered by the provided RDF class, with an optional limit and count limit, returning the data in an HTML format</li>
-              <li><code>/api/visualise/json_ld</code> - Visualises the data filtered by the provided RDF class, with an optional limit and count limit, returning the data in an <a role="doc-biblioref">JSON-LD</a> format</li>
-              <li><code>/api/visualise/graph</code> - Visualises the data filtered by the provided RDF class, with an optional limit and count limit, returning the data as a <a role="doc-biblioref">GraphML</a> file</li>
-              <li><code>/api/visualise/statistics</code> - Creates statistics for visualisation, such as the properties types and their distribution, types of entities within class, how many unique entities, and the value types distribution</li>
-              <li><code>/api/visualise/download_statistics</code> - This endpoint allows you to download visualisation statistics filtered by RDF class. You can also limit the number of returned items and specify a count limit.</li>
-            </ul>
-          </li>
+        <li>
+          Visualization Operation:
+          <ul>
+            <li>
+              <code>/api/visualise/data</code> - Visualise data in various
+              formats (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)
+            </li>
+            <li>
+              <code>/api/visualise/html</code> - Visualises the data filtered by
+              the provided RDF class, with an optional limit and count limit,
+              returning the data in an HTML format
+            </li>
+            <li>
+              <code>/api/visualise/json_ld</code> - Visualises the data filtered
+              by the provided RDF class, with an optional limit and count limit,
+              returning the data in an
+              <a role="doc-biblioref">JSON-LD</a> format
+            </li>
+            <li>
+              <code>/api/visualise/graph</code> - Visualises the data filtered
+              by the provided RDF class, with an optional limit and count limit,
+              returning the data as a <a role="doc-biblioref">GraphML</a> file
+            </li>
+            <li>
+              <code>/api/visualise/statistics</code> - Creates statistics for
+              visualisation, such as the properties types and their
+              distribution, types of entities within class, how many unique
+              entities, and the value types distribution
+            </li>
+            <li>
+              <code>/api/visualise/download_statistics</code> - This endpoint
+              allows you to download visualisation statistics filtered by RDF
+              class. You can also limit the number of returned items and specify
+              a count limit.
+            </li>
+          </ul>
+        </li>
 
-          <li>
-            Classification Operation:
-            <ul>
-                <li><code>/api/classify/properties</code> - Having a RDF class, this endpoint returns the unique properties of that class.</li>
-                <li><code>/api/classify/data</code> - Classify the data filtered by the provided RDF class and property, returning the data in various formats (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)</li>
-                <li><code>/api/classify/html</code> - Classify the data filtered by the provided RDF class and property, returning the data in HTML format</li>
-                <li><code>/api/classify/json_ld</code> - Classify the data filtered by the provided RDF class and property, returning the data in <a role="doc-biblioref">JSON-LD</a> format.</li>
-                <li><code>/api/classify/graph</code> - Classify the data filtered by the provided RDF class and property, returning the data as a <a role="doc-biblioref">GraphML</a> file</li>
-                <li><code>/api/classify/statistics</code> - Creates statistics for classification, such as the depth of a subject-predicate pair, and the distribution of unique subjects.</li>
-                <li><code>/api/classify/statistics/graph</code> - Saves the statistics of the classification operation in temporary files, using <a role="doc-biblioref">RDF Data Cube vocabulary</a>, for further downloading</li>
-            </ul>
-          </li>
+        <li>
+          Classification Operation:
+          <ul>
+            <li>
+              <code>/api/classify/properties</code> - Having a RDF class, this
+              endpoint returns the unique properties of that class.
+            </li>
+            <li>
+              <code>/api/classify/data</code> - Classify the data filtered by
+              the provided RDF class and property, returning the data in various
+              formats (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)
+            </li>
+            <li>
+              <code>/api/classify/html</code> - Classify the data filtered by
+              the provided RDF class and property, returning the data in HTML
+              format
+            </li>
+            <li>
+              <code>/api/classify/json_ld</code> - Classify the data filtered by
+              the provided RDF class and property, returning the data in
+              <a role="doc-biblioref">JSON-LD</a> format.
+            </li>
+            <li>
+              <code>/api/classify/graph</code> - Classify the data filtered by
+              the provided RDF class and property, returning the data as a
+              <a role="doc-biblioref">GraphML</a> file
+            </li>
+            <li>
+              <code>/api/classify/statistics</code> - Creates statistics for
+              classification, such as the depth of a subject-predicate pair, and
+              the distribution of unique subjects.
+            </li>
+            <li>
+              <code>/api/classify/statistics/graph</code> - Saves the statistics
+              of the classification operation in temporary files, using
+              <a role="doc-biblioref">RDF Data Cube vocabulary</a>, for further
+              downloading
+            </li>
+          </ul>
+        </li>
 
-          <li>
-            Comparison Operation:
-            <ul>
-              <li><code>/api/compare/data</code> - Compare the data provided by two RDF classes, returning the result of the operation in various formats (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)</li>
-              <li><code>/api/compare/html</code> - Compare the data provided by two RDF classes, returning the result of the operation in HTML format</li>
-              <li><code>/api/compare/json_ld</code> - Compare the data provided by two RDF classes, returning the result of the operation in <a role="doc-biblioref">JSON-LD</a> format</li>
-              <li><code>/api/compare/statistics</code> - Creates statistics for comparison operation, such as the properties of each class, which is the last/most used property, how many properties, which are the unique properties (that don't appear in the other class), or which are the common properties</li>
-              <li><code>/api/compare/download_statistics</code> - This endpoint allows you to download comparison statistics.</li>
-            </ul>
-          </li>
+        <li>
+          Comparison Operation:
+          <ul>
+            <li>
+              <code>/api/compare/data</code> - Compare the data provided by two
+              RDF classes, returning the result of the operation in various
+              formats (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)
+            </li>
+            <li>
+              <code>/api/compare/html</code> - Compare the data provided by two
+              RDF classes, returning the result of the operation in HTML format
+            </li>
+            <li>
+              <code>/api/compare/json_ld</code> - Compare the data provided by
+              two RDF classes, returning the result of the operation in
+              <a role="doc-biblioref">JSON-LD</a> format
+            </li>
+            <li>
+              <code>/api/compare/statistics</code> - Creates statistics for
+              comparison operation, such as the properties of each class, which
+              is the last/most used property, how many properties, which are the
+              unique properties (that don't appear in the other class), or which
+              are the common properties
+            </li>
+            <li>
+              <code>/api/compare/download_statistics</code> - This endpoint
+              allows you to download comparison statistics.
+            </li>
+          </ul>
+        </li>
 
-          <li>
-            Alignment Operation:
-            <ul>
-              <li><code>/api/align/data</code> - Align the data to an ontology provided, returning the result of the operation in various formats (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)</li>
-              <li><code>/api/align/html</code> - Align the data to an ontology provided, returning the result of the operation in HTML format</li>
-              <li><code>/api/align/json_ld</code> - Align the data to an ontology provided, returning the result of the operation in <a role="doc-biblioref">JSON-LD</a> format</li>
-              <li><code>/api/align/table</code> - Align the data to an ontology provided, returning the result of the operation in JSON format, to further create a table</li>
-              <li><code>/api/align/statistics</code> - Create statistics for alignment operation, namely the average measure of the alignment</li>
-              <li><code>/api/align/statistics/graph</code> - Creates statistics in <a role="doc-biblioref">RDF Data Cube vocabulary</a> for alignment operation, and saves the results in a temporary file for further downloading</li>
-            </ul>
-          </li>
+        <li>
+          Alignment Operation:
+          <ul>
+            <li>
+              <code>/api/align/data</code> - Align the data to an ontology
+              provided, returning the result of the operation in various formats
+              (JSON, HTML, <a role="doc-biblioref">JSON-LD</a>)
+            </li>
+            <li>
+              <code>/api/align/html</code> - Align the data to an ontology
+              provided, returning the result of the operation in HTML format
+            </li>
+            <li>
+              <code>/api/align/json_ld</code> - Align the data to an ontology
+              provided, returning the result of the operation in
+              <a role="doc-biblioref">JSON-LD</a> format
+            </li>
+            <li>
+              <code>/api/align/table</code> - Align the data to an ontology
+              provided, returning the result of the operation in JSON format, to
+              further create a table
+            </li>
+            <li>
+              <code>/api/align/statistics</code> - Create statistics for
+              alignment operation, namely the average measure of the alignment
+            </li>
+            <li>
+              <code>/api/align/statistics/graph</code> - Creates statistics in
+              <a role="doc-biblioref">RDF Data Cube vocabulary</a> for alignment
+              operation, and saves the results in a temporary file for further
+              downloading
+            </li>
+          </ul>
+        </li>
 
-          <li>
-            Other endpoints:
-            <ul>
-                <li><code>/api/download-stats</code> - Sends the file as an attachment, where the file name is sent as parameter; it is used in Classification and Alignment operations</li>
-            </ul>
-          </li>
+        <li>
+          Other endpoints:
+          <ul>
+            <li>
+              <code>/api/download-stats</code> - Sends the file as an
+              attachment, where the file name is sent as parameter; it is used
+              in Classification and Alignment operations
+            </li>
+          </ul>
+        </li>
       </ol>
 
-      <p>
-        Below are some example requests for each operation:
-      </p>
+      <p>Below are some example requests for each operation:</p>
 
       <figure typeof="schema:SoftwareSourceCode">
         <pre>
@@ -367,77 +515,97 @@
           </code>
         </pre>
       </figure>
-
     </section>
 
     <section id="rdf-models">
       <h2>RDF-based Knowledge Models</h2>
 
       <p>
-        The system is built upon RDF-based knowledge models, using structured semantic data to facilitate visualisation, 
-        classification, comparison, and alignment operations.
+        The system is built upon RDF-based knowledge models, using structured
+        semantic data to facilitate visualisation, classification, comparison,
+        and alignment operations.
       </p>
 
       <h3>Data sources and Storage</h3>
       <p>
-        The input RDF data is obtained from <a role="doc-biblioref">Web Data Commons</a> in <a role="doc-biblioref">N-Quads</a> 
-        format and consists of structured entities belonging to various RDF classes. These datasets are loaded into an 
-        <a role="doc-biblioref">Apache Jena Fuseki</a> server, using an additional tool built by us, namely <strong>FusekiPopulationTool</strong> 
-        which reads the URLs to the sample files, processes them, and adds them to the server. This allows efficient SPARQL querying and reasoning 
-        over RDF graphs.
+        The input RDF data is obtained from
+        <a role="doc-biblioref">Web Data Commons</a> in
+        <a role="doc-biblioref">N-Quads</a>
+        format and consists of structured entities belonging to various RDF
+        classes. These datasets are loaded into an
+        <a role="doc-biblioref">Apache Jena Fuseki</a> server, using an
+        additional tool built by us, namely
+        <strong>FusekiPopulationTool</strong>
+        which reads the URLs to the sample files, processes them, and adds them
+        to the server. This allows efficient SPARQL querying and reasoning over
+        RDF graphs.
       </p>
 
       <p>
-        The samples from <a role="doc-biblioref">Web Data Commons</a> represent class-specific subsets of the <a role="doc-biblioref">schema.org</a> 
-        data. Some examples of those subsets are: AdministrativeArea, Airport, Book, CollegeOrUniveristy, Event, etc.
+        The samples from <a role="doc-biblioref">Web Data Commons</a> represent
+        class-specific subsets of the <a role="doc-biblioref">schema.org</a>
+        data. Some examples of those subsets are: AdministrativeArea, Airport,
+        Book, CollegeOrUniveristy, Event, etc.
       </p>
 
       <h3>Ontology and Alignment</h3>
       <p>
-        To ensure compatibility with widely used knowledge graphs, the system performs <strong>ontology alignment</strong> with external 
-        knowledge bases, specifically <a role="doc-biblioref">schema.org</a> and <a role="doc-biblioref">DBPedia</a>. This alignment 
-        process allows mapping entities and properties from the extracted RDF dataset to standard vocabularies, improving 
-        data integration and semantic consistency.
+        To ensure compatibility with widely used knowledge graphs, the system
+        performs <strong>ontology alignment</strong> with external knowledge
+        bases, specifically <a role="doc-biblioref">schema.org</a> and
+        <a role="doc-biblioref">DBPedia</a>. This alignment process allows
+        mapping entities and properties from the extracted RDF dataset to
+        standard vocabularies, improving data integration and semantic
+        consistency.
       </p>
       <p>
-        For aligment, we use <a role="doc-biblioref">AgreementMakerLight (AML)</a>, an automated and efficient ontology matching system. 
-        It is primarily based on the use of element-level matching techniques.
+        For aligment, we use
+        <a role="doc-biblioref">AgreementMakerLight (AML)</a>, an automated and
+        efficient ontology matching system. It is primarily based on the use of
+        element-level matching techniques.
       </p>
     </section>
 
     <section id="external-sources">
       <h2>External Data/Knowledge Sources</h2>
-      
+
       <p>
-        The system integrates external knowledge sources to enhance the interoperability of the RDF-based models. These sources provide 
-        structured data that support various operations, such as visualisation, classification, comparison, and alignment.
+        The system integrates external knowledge sources to enhance the
+        interoperability of the RDF-based models. These sources provide
+        structured data that support various operations, such as visualisation,
+        classification, comparison, and alignment.
       </p>
 
       <h3>External Data Sources</h3>
       <p>
-        The system primarily utilizes data from <a role="doc-biblioref">Web Data Commons</a>, which serves as the source of RDF data, organized 
-        in <a role="doc-biblioref">N-Quads</a> format. These datasets contain structured metadata extracted from the web, covering multiple entity types such as 
-        organizations, places, events, and products.
+        The system primarily utilizes data from
+        <a role="doc-biblioref">Web Data Commons</a>, which serves as the source
+        of RDF data, organized in <a role="doc-biblioref">N-Quads</a> format.
+        These datasets contain structured metadata extracted from the web,
+        covering multiple entity types such as organizations, places, events,
+        and products.
       </p>
 
       <p>
-        The system also performs, besides other operations, the ontology alignment with widely used knowledge graphs, 
-        <a role="doc-biblioref">schema.org</a> and <a role="doc-biblioref">DBPedia</a>. These sources provide well-defined 
+        The system also performs, besides other operations, the ontology
+        alignment with widely used knowledge graphs,
+        <a role="doc-biblioref">schema.org</a> and
+        <a role="doc-biblioref">DBPedia</a>. These sources provide well-defined
         vocabularies and entity relationships.
       </p>
 
       <h3>SPARQL Queries for data extraction</h3>
 
       <p>
-        Data stored in <a role="doc-biblioref">Apache Jena Fuseki</a> is queried using SPARQL to enable 
-        various processing tasks, including visualization, classification, comparison, and alignment.
+        Data stored in <a role="doc-biblioref">Apache Jena Fuseki</a> is queried
+        using SPARQL to enable various processing tasks, including
+        visualization, classification, comparison, and alignment.
       </p>
-
 
       <h4>Visualisation Operation</h4>
       <p>
-        The system retireves instances of a given RDF class along with their properties and values, including blank nodes (bnodes) when 
-        applicable.
+        The system retireves instances of a given RDF class along with their
+        properties and values, including blank nodes (bnodes) when applicable.
       </p>
 
       <figure typeof="schema:SoftwareSourceCode">
@@ -459,8 +627,10 @@
 
       <h4>Classification Operation</h4>
       <p>
-        This operation classifies data based on an RDF class and property. To classify and analyze structured entities, 
-        the system expands RDF relationships across multiple levels, retrieving both direct and nested connections.
+        This operation classifies data based on an RDF class and property. To
+        classify and analyze structured entities, the system expands RDF
+        relationships across multiple levels, retrieving both direct and nested
+        connections.
       </p>
 
       <figure typeof="schema:SoftwareSourceCode">
@@ -490,8 +660,8 @@
 
       <h4>Comparison Operation</h4>
       <p>
-        This query compares two RDF classes by extracting shared properties and counting their 
-        occurences in each class.
+        This query compares two RDF classes by extracting shared properties and
+        counting their occurences in each class.
       </p>
       <figure typeof="schema:SoftwareSourceCode">
         <pre>
@@ -514,9 +684,11 @@
 
       <h4>Alignment Operation</h4>
       <p>
-        Ontology alignment is performed using <a role="doc-biblioref">AgreementMakerLight</a>,  
-        mapping extracted triples from Fuseki to <a role="doc-biblioref">schema.org</a> and 
-        <a role="doc-biblioref">DBPedia</a>. Instead of querying these ontologies online, we downloaded their RDF dumps and integrated them 
+        Ontology alignment is performed using
+        <a role="doc-biblioref">AgreementMakerLight</a>, mapping extracted
+        triples from Fuseki to <a role="doc-biblioref">schema.org</a> and
+        <a role="doc-biblioref">DBPedia</a>. Instead of querying these
+        ontologies online, we downloaded their RDF dumps and integrated them
         into our processing pipeline.
       </p>
       <figure typeof="schema:SoftwareSourceCode">
@@ -533,35 +705,110 @@
           </code>
         </pre>
       </figure>
-
-
     </section>
 
     <section id="user-guide">
       <h2>User Guide</h2>
-      <ul>
-        <li>descrierea interfetei, cu print screens</li>
-        <li>exemple de utilizare</li>
-        <li>functionalitatile cheie ale aplicatiei</li>
-      </ul>
+      <p>
+        When opening the web application, the user will see the home page, where
+        information about the project is displayed.
+      </p>
+      <p>From the navigation bar, they can select the following pages:</p>
+      <subsection id="visualisation-guide">
+        <h3>Visualisation</h3>
+        <p>
+          This page is dedicated to viewing data provided by Web Data Common.
+          The user will fill out a form to select the class from which they want
+          to view data, then choose whether they want to see all data related to
+          the class or only a portion of it. If they select “true”, they must
+          specify the desired number of records. If any form field is left
+          empty, the user will be warned before submission.
+        </p>
+        <p>
+          After submitting the form, a panel will appear on the right side,
+          displaying a graph generated using the selected class's data, along
+          with various statistics about the data (number of unique entities,
+          properties, and their usage frequency, etc.).
+        </p>
+        <p>
+          The user can download data files in various formats (HTML, JSON-LD) as
+          well as a file with the generated statistics, modeled using the RDF
+          Data Cube.
+        </p>
+      </subsection>
+      <subsection id="comparison-guide">
+        <h3>Comparison</h3>
+        <p>
+          This page is dedicated to comparing two classes from the dataset
+          provided by Web Data Common. The user will fill out a form to select
+          two different classes for comparison. If any field is left empty or
+          the user selects the same class twice, they will be warned before
+          submitting the form.
+        </p>
+        <p>
+          After submission, a panel will appear on the right side displaying a
+          table showing the properties used by each class, their frequency, and
+          various statistics about the comparison (common properties, unique
+          properties for each class, the most used and least used properties).
+        </p>
+        <p>
+          The user can download data files in various formats (HTML, JSON-LD) as
+          well as a file with the generated statistics, modeled using the RDF
+          Data Cube.
+        </p>
+      </subsection>
+      <subsection id="classification-guide">
+        <h3>Classification</h3>
+        <p>
+          This page allows the classification of data provided by Web Data
+          Common based on class and property. The user will fill out a form to
+          select a class and a property for classification. If any field is left
+          empty, the user will be warned before submitting the form.
+        </p>
+        <p>
+          After submission, a panel will appear on the right side, displaying a
+          graph generated using the provided data, along with various statistics
+          about the data. The user can download data files in various formats
+          (HTML, JSON-LD) as well as files with the generated statistics,
+          modeled using the RDF Data Cube.
+        </p>
+      </subsection>
+      <subsection id="alignment-guide">
+        <h3>Alignment</h3>
+        <p>
+          This page is dedicated to aligning the data provided by Web Data
+          Common to an existing ontology. The user will fill out a form to
+          select the ontology based on which the alignment will be performed. If
+          any field is left empty, the user will be warned before submitting the
+          form.
+        </p>
+        <p>
+          After submission, a panel will appear on the right side displaying a
+          table with the alignment results and an average of the aligned data.
+          The user can download data files in various formats (HTML, JSON-LD) as
+          well as a file with the generated statistics, modeled using the RDF
+          Data Cube.
+        </p>
+      </subsection>
     </section>
 
     <section id="demonstration">
       <h2>Demonstration</h2>
+      <p>link la demo</p>
+
+      <p></p>
       <p>
-        link la demo
-      <p>
-      <p>
-        A demonstration of the WATR application is available at the following link:
+        A demonstration of the WATR application is available at the following
+        link:
         <a>WATR Demo</a>
       </p>
     </section>
 
     <section id="conclusions">
       <h2>Conclusions and Future Perspectives</h2>
-      <p>
-        provocari, realizari
-      <p>
+      <p>provocari, realizari</p>
+
+      <p></p>
     </section>
   </body>
 </html>

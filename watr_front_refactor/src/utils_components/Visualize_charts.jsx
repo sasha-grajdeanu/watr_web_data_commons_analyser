@@ -88,7 +88,7 @@ export default function DataVisualization({ data }) {
               </div>
 
               {/* Custom Scrollable Legend */}
-              <div className=" hidden lg:flex flex-col justify-center overflow-y-auto w-full lg:w-1/3 mt-4 md:mt-0 max-h-72"> {/* Add max-height and overflow-y-auto for scrolling */}
+              <div className=" hidden lg:flex flex-col justify-center overflow-y-auto w-full lg:w-1/3 mt-4 md:mt-0 max-h-80"> {/* Add max-height and overflow-y-auto for scrolling */}
                 {Object.keys(section.data).map((label, idx) => (
                   <div key={idx} className="flex items-center mr-4 mb-2">
                     <div
