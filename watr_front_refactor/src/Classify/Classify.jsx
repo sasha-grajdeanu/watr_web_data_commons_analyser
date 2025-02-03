@@ -135,7 +135,7 @@ export default function Classify() {
         const blob = await response.blob();
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = 'graph_data.ttl';  
+        link.download = `Classify_${selectedClass}_${selectedProperties}_statistics.ttl`;  
         link.click();  
     } catch (error) {
         console.error("Error downloading file:", error);

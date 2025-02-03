@@ -11,7 +11,7 @@ const colorClasses = {
 
 export default function Spinner({ size = "md", color = "white" }) {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center h-full min-h-60">
       <div
         className={`${sizeClasses[size]} ${
           colorClasses[color]

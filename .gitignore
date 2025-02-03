@@ -1,3 +1,6 @@
 *.pyc
 /watr_front_refactor/node_modules
 /watr_front_refactor/.vite
+/watr_back/__pycache__
+/watr_front_refactor/node_modules
+/watr_front_refactor/node_modules

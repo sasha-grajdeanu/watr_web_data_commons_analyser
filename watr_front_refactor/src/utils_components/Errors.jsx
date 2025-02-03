@@ -1,12 +1,12 @@
 import { FiAlertCircle } from "react-icons/fi";
 
 const ErrorsMessage = ({ errorMessage }) => {
-    return (
-        <div className="text-red-500 text-md mt-1 flex flex-row gap-1 items-center">
-        <FiAlertCircle className="inline" />
-        <span>{errorMessage}</span>
-        </div>
-    );
-}
+  return (
+    <div className="text-md mt-2 flex flex-row gap-2 items-center">
+      <FiAlertCircle className="inline text-red-500" />
+      <span className="text-red-500">{errorMessage}</span>
+    </div>
+  );
+};
 
 export default ErrorsMessage;

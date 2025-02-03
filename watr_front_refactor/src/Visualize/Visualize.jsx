@@ -247,17 +247,17 @@ export default function Visualize() {
                 className="w-full bg-watr-400 p-2 rounded-md"
                 onChange={(e) => setHaveLimit(e.target.value)}
               >
-                <option value="false">No</option>
-                <option value="true">Yes</option>
+                <option id="id_1" value="false">No</option>
+                <option id="id_2" value="true">Yes</option>
               </Select>
             </Field>
             {haveLimit === "true" && (
               <Field className="flex flex-col w-full px-1 pb-2">
-                <Label htmlFor="limit" className="py-1">
+                <Label htmlFor="limit_count" className="py-1">
                   Limit:
                 </Label>
                 <Input
-                  id="limit"
+                  id="limit_count"
                   type="number"
                   value={limit}
                   className="w-full bg-watr-400 p-2 rounded-md"

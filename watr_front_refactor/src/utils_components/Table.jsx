@@ -31,16 +31,20 @@ const TableWithPagination = ({ data }) => {
     currentPage * itemsPerPage
   );
 
+  // Ensure "property" key is renamed and moved first
+  const allKeys = data.length > 0 ? Object.keys(data[0]) : [];
+  const formattedKeys = allKeys.map((key) => (key === "property" ? "Property" : key));
+  const sortedKeys = ["Property", ...formattedKeys.filter((key) => key !== "Property")];
+
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <div className="overflow-x-auto w-full justify-center items-center flex-grow-1 h-full my-auto"> {/* Added horizontal scroll container */}
+      <div className="overflow-x-auto w-full justify-center items-center flex-grow-1 h-full my-auto">
         <table className="min-w-full h-full flex-grow-1 text-xs sm:text-lg">
           <thead>
             <tr className="bg-watr-100 text-white">
-              {Object.keys(data[0] || {}).map((key, index) => (
-                // Ensure 'Property' column is always first
-                <th key={key} className=" p-2">
-                  {index === 0 ? shortenEdgeLabel('Property') : shortenEdgeLabel(key)}
+              {sortedKeys.map((key) => (
+                <th key={key} className="p-2">
+                  {shortenEdgeLabel(key)}
                 </th>
               ))}
             </tr>
@@ -48,10 +52,9 @@ const TableWithPagination = ({ data }) => {
           <tbody>
             {currentItems.map((item, index) => (
               <tr key={index} className="bg-watr-400 text-watr-100">
-                {Object.entries(item).map(([key, value], i) => (
-                  // Ensure the first column (property) is rendered first
-                  <td key={i} className=" border-white p-2 text-center">
-                    {i === 0 ? shortenEdgeLabel('Property') : shortenEdgeLabel(value)}
+                {sortedKeys.map((key, i) => (
+                  <td key={i} className="border-white p-2 text-center">
+                    {shortenEdgeLabel(item[key === "Property" ? "property" : key] || "")}
                   </td>
                 ))}
               </tr>
@@ -67,7 +70,9 @@ const TableWithPagination = ({ data }) => {
         >
           Previous
         </button>
-        <span className="px-2 py-1 hidden min-[400px]:block">Page {currentPage} of {totalPages}</span>
+        <span className="px-2 py-1 hidden min-[400px]:block">
+          Page {currentPage} of {totalPages}
+        </span>
         <button
           className="px-2 py-2 bg-watr-200 text-white rounded disabled:opacity-50 hover:bg-watr-100"
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
