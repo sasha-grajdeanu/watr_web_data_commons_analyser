@@ -1,36 +1,73 @@
-# WATR - Web Data Commons Analyzer
 
+<div align="center">
 
-# Table of Contents
+  <h1>WATR - Web Data Commons Analyzer</h1>
+  
+  
+  
+<!-- Badges -->
+<p>
+  <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/sasha-grajdeanu/watr_web_data_commons_analyser" alt="contributors" />
+  </a>
+  <a href="">
+    <img src="https://img.shields.io/github/last-commit/sasha-grajdeanu/watr_web_data_commons_analyser" alt="last update" />
+  </a>
+  <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/network/members">
+    <img src="https://img.shields.io/github/forks/sasha-grajdeanu/watr_web_data_commons_analyser" alt="forks" />
+  </a>
+  <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/stargazers">
+    <img src="https://img.shields.io/github/stars/sasha-grajdeanu/watr_web_data_commons_analyser" alt="stars" />
+  </a>
+  <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/issues/">
+    <img src="https://img.shields.io/github/issues/sasha-grajdeanu/watr_web_data_commons_analyser" alt="open issues" />
+  </a>
+  <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/sasha-grajdeanu/watr_web_data_commons_analyser.svg" alt="license" />
+  </a>
+</p>
+   
+<h4>
+    <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/">View Demo</a>
+  <span> · </span>
+    <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser">Documentation</a>
+  <span> · </span>
+    <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/issues/">Report Bug</a>
+  <span> · </span>
+    <a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/issues/">Request Feature</a>
+  </h4>
+</div>
 
-- [About the Project](#about-the-project)
-  * [Screenshots](#screenshots)
-  * [Tech Stack](#tech-stack)
-  * [Features](#features)
-  * [Color Reference](#color-reference)
-  * [Environment Variables](#environment-variables)
-- [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-  * [Running Tests](#running-tests)
-  * [Run Locally](#run-locally)
-  * [Deployment](#deployment)
-- [Usage](#usage)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-  * [Code of Conduct](#code-of-conduct)
-- [FAQ](#faq)
-- [License](#license)
-- [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
+<br />
+
+<!-- Table of Contents -->
+# :notebook_with_decorative_cover: Table of Contents
+
+- [About the Project](#star2-about-the-project)
+  * [Screenshots](#camera-screenshots)
+  * [Tech Stack](#space_invader-tech-stack)
+  * [Features](#dart-features)
+  * [Color Reference](#art-color-reference)
+  * [Environment Variables](#key-environment-variables)
+- [Getting Started](#toolbox-getting-started)
+  * [Prerequisites](#bangbang-prerequisites)
+  * [Installation](#gear-installation)
+  * [Run Locally](#running-run-locally)
+  * [Running Tests](#test_tube-running-tests)
+  * [Deployment](#triangular_flag_on_post-deployment)
+- [Usage](#eyes-usage)
+- [Contributing](#wave-contributing)
+- [License](#warning-license)
+- [Contact](#handshake-contact)
+
   
 
 <!-- About the Project -->
-## About the Project
+## :star2: About the Project
 
 
 <!-- Screenshots -->
-### Screenshots
+### :camera: Screenshots
 
 <div align="center"> 
   <img src="https://placehold.co/600x400?text=Your+Screenshot+here" alt="screenshot" />
@@ -38,61 +75,48 @@
 
 
 <!-- TechStack -->
-### Tech Stack
+### :space_invader: Tech Stack
 
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
-    <li><a href="https://nextjs.org/">Next.js</a></li>
     <li><a href="https://reactjs.org/">React.js</a></li>
-    <li><a href="https://tailwindcss.com/">TailwindCSS</a></li>
+    <li><a href="https://vite.dev/">Vite</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-    <li><a href="https://go.dev/">Golang</a></li>
-    <li><a href="https://nestjs.com/">Nest.js</a></li>
-    <li><a href="https://socket.io/">SocketIO</a></li>
-    <li><a href="https://www.prisma.io/">Prisma</a></li>    
-    <li><a href="https://www.apollographql.com/">Apollo</a></li>
-    <li><a href="https://graphql.org/">GraphQL</a></li>
+    <li><a href="https://flask.palletsprojects.com/">Flask</a></li>
   </ul>
 </details>
 
 <details>
-<summary>Database</summary>
+<summary>Database/Triple Store</summary>
   <ul>
-    <li><a href="https://www.mysql.com/">MySQL</a></li>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-    <li><a href="https://redis.io/">Redis</a></li>
-    <li><a href="https://neo4j.com/">Neo4j</a></li>
-    <li><a href="https://www.mongodb.com/">MongoDB</a></li>
+    <li><a href="https://jena.apache.org/documentation/fuseki2/">Apache Jena Fuseki</a></li>
   </ul>
 </details>
 
 <details>
-<summary>DevOps</summary>
+  <summary>Ontology Matching</summary>
   <ul>
-    <li><a href="https://www.docker.com/">Docker</a></li>
-    <li><a href="https://www.jenkins.io/">Jenkins</a></li>
-    <li><a href="https://circleci.com/">CircleCLI</a></li>
+    <li><a href="https://github.com/AgreementMakerLight/AML-Project">Agreement Maker Light (AML)</a> </li>
   </ul>
 </details>
+
 
 <!-- Features -->
-### Features
+### :dart: Features
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Visualize data from Fuseki
+- Classify data based on subject and predicate
+- Compare data from Fuseki
+- Align the ontology extracted from Fuseki to other ontologies
 
 <!-- Color Reference -->
-### Color Reference
+### :art: Color Reference
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
@@ -103,85 +127,96 @@
 
 
 <!-- Env Variables -->
-### Environment Variables
+### :key: Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`API_KEY`
+`SPARQL_ENDPOINT="http://localhost:3030/watr-dataset/sparql"`
 
-`ANOTHER_API_KEY`
+> **⚠️ Note:** It is important to create a dataset named "/watr-dataset" in Fuseki to work.
+
+`AML_PATH=C:\\AML_v3.2\\AgreementMakerLight.jar` (Windows)    
+`AML_PATH=/home/user/AML_v3.2/AgreementMakerLight.jar` (Linux/maxOS)
+
+> **⚠️ Note:** If you installed AML in different location, make sure to update the path accordingly in the `.env` file.
+
 
 <!-- Getting Started -->
-## Getting Started
+## 	:toolbox: Getting Started
 
 <!-- Prerequisites -->
-### Prerequisites
+### :bangbang: Prerequisites
 
-This project uses Yarn as package manager
-
-```bash
- npm install --global yarn
-```
 
 <!-- Installation -->
-### Installation
+### :gear: Installation
 
-Install my-project with npm
+Install the necessary tools for the project:
+1. [Node.js](https://nodejs.org/) (required)
+2. [Python](https://www.python.org/) (required)
+3. [Apache Jena Fuseki](https://dlcdn.apache.org/jena/binaries/apache-jena-fuseki-5.3.0.zip) (required)
+4. [AgreementMakerLight](https://github.com/AgreementMakerLight/AML-Project/releases/download/v3.2/AML_v3.2.zip) (required)
 
-```bash
-  yarn install my-project
-  cd my-project
-```
-   
-<!-- Running Tests -->
-### Running Tests
-
-To run tests, run the following command
-
-```bash
-  yarn test test
-```
 
 <!-- Run Locally -->
-### Run Locally
+### :running: Run Locally
 
 Clone the project
 
 ```bash
-  git clone https://github.com/Louis3797/awesome-readme-template.git
+  git clone https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd watr_web_data_commons_analyser
 ```
 
 Install dependencies
 
-```bash
-  yarn install
-```
+- pe back o sa fie nevoie de un fisier requirements.txt
+- pe front (???)
 
 Start the server
 
 ```bash
-  yarn start
+# Start the frontend
+cd watr_front ; npm run dev
+
+# Start the backend
+cd watr_back/watr_back ; python app.py
+
+# Start the Fuseki server
+cd /path/to/fuseki ; fuseki-server --update
+```
+
+> **⚠️ Note:** For the backend API to work, you need to have Apache Jena Fuseki running on `http://localhost:3030` 
+> with a dataset named `watr-dataset`
+
+
+<!-- Running Tests -->
+### :test_tube: Running Tests
+
+To run tests, run the following command
+
+```bash
+  # yarn test test
 ```
 
 
 <!-- Deployment -->
-### Deployment
+### :triangular_flag_on_post: Deployment
 
 To deploy this project run
 
 ```bash
-  yarn deploy
+  # yarn deploy
 ```
 
 
 <!-- Usage -->
-## Usage
+## :eyes: Usage
 
 Use this space to tell a little more about your project and how it can be used. Show additional screenshots, code samples, demos or link to other resources.
 
@@ -194,63 +229,25 @@ function App() {
 }
 ```
 
-<!-- Roadmap -->
-## Roadmap
-
-* [x] Todo 1
-* [ ] Todo 2
-
 
 <!-- Contributing -->
-## Contributing
+## :wave: Contributing
 
-<a href="https://github.com/Louis3797/awesome-readme-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Louis3797/awesome-readme-template" />
+<a href="https://github.com/sasha-grajdeanu/watr_web_data_commons_analyser/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sasha-grajdeanu/watr_web_data_commons_analyser" />
 </a>
 
 
-Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
-
-
-<!-- Code of Conduct -->
-### Code of Conduct
-
-Please read the [Code of Conduct](https://github.com/Louis3797/awesome-readme-template/blob/master/CODE_OF_CONDUCT.md)
-
-<!-- FAQ -->
-## FAQ
-
-- Question 1
-
-  + Answer 1
-
-- Question 2
-
-  + Answer 2
-
-
 <!-- License -->
-## License
+## :warning: License
 
 Distributed under the no License. See LICENSE.txt for more information.
 
 
 <!-- Contact -->
-## Contact
+## :handshake: Contact
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
 Project Link: [https://github.com/Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template)
 
-
-<!-- Acknowledgments -->
-## Acknowledgements
-
-Use this section to mention useful resources and libraries that you have used in your projects.
-
- - [Shields.io](https://shields.io/)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#travel--places)
- - [Readme Template](https://github.com/othneildrew/Best-README-Template)
